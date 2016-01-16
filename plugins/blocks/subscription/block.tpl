@@ -8,8 +8,8 @@
  * Common site sidebar menu -- subscription info.
  *
  *}
-<div class="block" id="sidebarSubscription">
-	<span class="blockTitle">{translate key="plugins.block.subscription.blockTitle"}</span>
+<h4 class="side">{translate key="plugins.block.subscription.blockTitle"}</h4>
+<div class="edit-pics" id="sidebarSubscription">
 	{if $individualSubscription}
 		{assign var=individualSubscriptionValid value=$individualSubscription->isValid()}
 	{else}

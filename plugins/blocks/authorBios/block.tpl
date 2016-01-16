@@ -9,14 +9,12 @@
  *
  *}
 
-<div class="block" id="sidebarRTAuthorBios">
-	<span class="blockTitle">
-		{if count($article->getAuthors()) gt 1}
+<h4 class="side">{if count($article->getAuthors()) gt 1}
 			{translate key="plugins.block.authorBios.aboutTheAuthors"}
 		{else}
 			{translate key="plugins.block.authorBios.aboutTheAuthor"}
-		{/if}
-	</span>
+		{/if}</h4>
+<div class="edit-pics" id="sidebarRTAuthorBios">
 	{foreach from=$article->getAuthors() item=author name=authors}
 	<div class="authorBio">
 	<p>

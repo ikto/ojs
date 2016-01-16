@@ -15,17 +15,17 @@
 	{literal}initRelatedItems();{/literal}
 </script>
 
-
-<div class="block" id="sidebarRTRelatedItems">
-	<span class="blockTitle">{translate key="plugins.block.relatedItems.title"}</span>
-		<table width="100%">
+<h4 class="side">{translate key="plugins.block.relatedItems.title"}</h4>
+<div class="edit-pics" id="sidebarRTRelatedItems">
+		<div class="table-responsive">
+		<table class="table table-striped" width="100%">
 			<tr>
 				<td valign="top" style="width:26px;">
 					<img src="{$baseUrl}/plugins/blocks/relatedItems/icons/lookupTerms.png" class="articleToolIcon" alt=""/>
 				</td>
 				<td valign="top">
 					<div id="relatedItems">
-						<ul class="plain">
+						<ul class="stay">
 						{foreach from=$version->getContexts() item=context}
 							{if !$context->getDefineTerms()}
 								<li><a href="javascript:openRTWindowWithToolbar('{url page="rt" op="context" path=$articleId|to_array:$galleyId:$context->getContextId()}');">{$context->getTitle()|escape}</a></li>
@@ -46,6 +46,7 @@
 				</td>
 			</tr>
 		</table>
+		</div>
 </div>
 
 {/if}

@@ -9,7 +9,8 @@
  *
  *}
 {if $donationEnabled}
-<div class="block" id="sidebarDonation">
-	<span class="blockTitle"><a href="{url page="donations"}">{translate key="payment.type.donation"}</a></span>
+<h4 class="side">Donation</h4>
+<div class="edit-pics" id="sidebarDonation">
+	<p class="help-block"><a href="{url page="donations"}">{translate key="payment.type.donation"}</a></p>
 </div>
 {/if}

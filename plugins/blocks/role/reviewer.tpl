@@ -13,10 +13,10 @@
    see if the user object actually exists before displaying submission counts. *}
 
 {if $isUserLoggedIn}
-	<div class="block" id="sidebarReviewer">
-		<span class="blockTitle">{translate key="user.role.reviewer"}</span>
-		<span class="blockSubtitle">{translate key="article.submissions"}</span>
-		<ul>
+<h4 class="side">{translate key="user.role.reviewer"}</h4>
+	<div class="edit-pics" id="sidebarReviewer">
+		<p class="help-block">{translate key="article.submissions"}</p>
+		<ul class="stay">
 			<li><a href="{url op="index" path="active"}">{translate key="common.queue.short.active"}</a>&nbsp;({if $submissionsCount[0]}{$submissionsCount[0]}{else}0{/if})</li>
 			<li><a href="{url op="index" path="completed"}">{translate key="common.queue.short.completed"}</a>&nbsp;({if $submissionsCount[1]}{$submissionsCount[1]}{else}0{/if})</li>
 		</ul>

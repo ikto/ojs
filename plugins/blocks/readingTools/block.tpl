@@ -11,9 +11,9 @@
 
 {if $journalRt && $journalRt->getEnabled()}
 
-<div class="block" id="sidebarRTArticleTools">
+<h4 class="side">{translate key="plugins.block.readingTools.articleTools"}</h4>
+<div class="edit-pics" id="sidebarRTArticleTools">
 
-	<span class="blockTitle">{translate key="plugins.block.readingTools.articleTools"}</span>
 	{if $journalRt->getAbstract() && $galley && $article->getLocalizedAbstract()}
 		<div class="articleToolItem">
 			<img src="{$baseUrl}/plugins/blocks/readingTools/icons/abstract.png" class="articleToolIcon" alt="" /> <a href="{url page="article" op="view" path=$articleId}" target="_parent">{translate key="article.abstract"}</a><br />

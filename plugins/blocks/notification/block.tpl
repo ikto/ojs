@@ -9,9 +9,9 @@
  *
  *}
  {if $currentJournal}
-<div class="block" id="notification">
-	<span class="blockTitle">{translate key="notification.notifications"}</span>
-	<ul>
+<h4 class="side">{translate key="notification.notifications"}</h4>
+<div class="edit-pics" id="notification">
+	<ul class="stay">
 		{if $isUserLoggedIn}
 			<li><a href="{url page="notification"}">{translate key="common.view"}</a>
 				{if $unreadNotifications > 0}{translate key="notification.notificationsNew" numNew=$unreadNotifications}{/if}</li>

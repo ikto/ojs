@@ -18,8 +18,8 @@
 	// -->
 {/literal}</script>
 
-<div class="block" id="sidebarFontSize" style="margin-bottom: 4px;">
-	<span class="blockTitle">{translate key="plugins.block.fontSize.title"}</span>
+<h4 class="side">{translate key="plugins.block.fontSize.title"}</h4>
+<div class="edit-pics" id="sidebarFontSize" style="margin-bottom: 4px;">
 	<div id="sizer"></div>
 </div>
 <br />
