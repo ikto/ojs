@@ -15,23 +15,23 @@
 {/if}
 {include file="common/header.tpl"}
 
-<div id="results">
-{if $enableBrowseBySections}
-{iterate from=results key=title item=id}
-<h4><a href="{url op="sections" path="view" sectionId=$id}">{$title|escape}</a></h4>
-{/iterate}
-{else if $enableBrowseByIdentifyTypes}
-{iterate from=results item=identifyType}
-<h4><a href="{url op="identifyTypes" path="view" identifyType=$identifyType}">{$identifyType|escape}</a></h4>
-{/iterate}
-{/if}
-{if !$results->wasEmpty()}
-	<br />
-	{page_info iterator=$results}&nbsp;&nbsp;&nbsp;&nbsp;{page_links anchor="results" iterator=$results name="search"}
-{else}
-	<br />
-	{translate key="search.noResults"}
-{/if}
+<div id="results" class="col-md-12 mag-innert-left">
+	{if $enableBrowseBySections}
+		{iterate from=results key=title item=id}
+			<h4><a href="{url op="sections" path="view" sectionId=$id}">{$title|escape}</a></h4>
+		{/iterate}
+	{else if $enableBrowseByIdentifyTypes}
+		{iterate from=results item=identifyType}
+			<h4><a href="{url op="identifyTypes" path="view" identifyType=$identifyType}">{$identifyType|escape}</a></h4>
+		{/iterate}
+	{/if}
+	{if !$results->wasEmpty()}
+		<br />
+		{page_info iterator=$results}&nbsp;&nbsp;&nbsp;&nbsp;{page_links anchor="results" iterator=$results name="search"}
+	{else}
+		<br />
+		<p class="help-block">{translate key="search.noResults"}</p>
+	{/if}
 </div>
 
 {include file="common/footer.tpl"}

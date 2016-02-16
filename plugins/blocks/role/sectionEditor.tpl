@@ -8,6 +8,7 @@
  * Section Editor navigation sidebar.
  *
  *}
+
 <h4 class="side">{translate key="user.role.sectionEditor"}</h4>
 <div class="edit-pics" id="sidebarSectionEditor">
 	<p class="help-block">{translate key="article.submissions"}</p>

@@ -8,8 +8,9 @@
  * Announcement feed plugin navigation sidebar.
  *
  *}
-<div class="block" id="sidebarAnnouncementFeed">
-	<span class="blockTitle">{translate key="announcement.announcements"}</span>
+
+<h4 class="side">{translate key="announcement.announcements"}</h4>
+<div class="edit-pics" id="sidebarAnnouncementFeed">
 	<a href="{url page="gateway" op="plugin" path="AnnouncementFeedGatewayPlugin"|to_array:"atom"}">
 	<img src="{$baseUrl}/plugins/generic/announcementFeed/templates/images/atom10_logo.gif" alt="{translate key="plugins.generic.announcementfeed.atom.altText"}" border="0" /></a>
 	<br/>

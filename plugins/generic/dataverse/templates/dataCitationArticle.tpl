@@ -8,10 +8,11 @@
  * Dataverse plugin: include data citation in article landing page
  *
  *}
+
 {if $dataCitation}
 	<div class="separator"></div>
-	<div id="dataCitation">
+	<div id="dataCitation" class="col-md-12 mag-innert-left">
 		<h4>{translate key="plugins.generic.dataverse.dataCitation"}</h4>
-		<p>{$dataCitation|strip_unsafe_html}</p>
+		<p class="help-block">{$dataCitation|strip_unsafe_html}</p>
 	</div>
 {/if}

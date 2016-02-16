@@ -13,6 +13,6 @@
 {include file="common/header.tpl"}
 {/strip}
 
-<p>{translate key="plugins.importexport.quickSubmit.successDescription"}  <a href="{plugin_url}">{translate key="plugins.importexport.quickSubmit.successReturn"}</a></p>
+<p class="help-block">{translate key="plugins.importexport.quickSubmit.successDescription"}  <a href="{plugin_url}">{translate key="plugins.importexport.quickSubmit.successReturn"}</a></p>
 
 {include file="common/footer.tpl"}

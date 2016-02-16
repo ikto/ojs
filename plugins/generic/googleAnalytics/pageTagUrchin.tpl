@@ -8,6 +8,7 @@
  * Google Analytics urchin.js (legacy) page tag.
  *
  *}
+
 <!-- Google Analytics -->
 <script src="//www.google-analytics.com/urchin.js" type="text/javascript">
 </script>
@@ -20,4 +21,3 @@ urchinTracker();
 {/foreach}
 </script>
 <!-- /Google Analytics -->
-

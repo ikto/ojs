@@ -13,7 +13,7 @@
    see if the user object actually exists before displaying submission counts. *}
 
 {if $isUserLoggedIn}
-<h4 class="side">{translate key="user.role.reviewer"}</h4>
+	<h4 class="side">{translate key="user.role.reviewer"}</h4>
 	<div class="edit-pics" id="sidebarReviewer">
 		<p class="help-block">{translate key="article.submissions"}</p>
 		<ul class="stay">

@@ -8,6 +8,7 @@
  * Author navigation sidebar.
  *
  *}
+
 <h4 class="side">{translate key="user.role.author"}</h4>
 <div class="edit-pics" id="sidebarAuthor">
 	<p class="help-block">{translate key="article.submissions"}</p>

@@ -8,6 +8,7 @@
  * Common site sidebar menu -- subscription info.
  *
  *}
+
 <h4 class="side">{translate key="plugins.block.subscription.blockTitle"}</h4>
 <div class="edit-pics" id="sidebarSubscription">
 	{if $individualSubscription}

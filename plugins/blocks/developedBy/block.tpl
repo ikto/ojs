@@ -8,7 +8,8 @@
  * Common site sidebar menu -- "Developed By" block.
  *
  *}
+
 <h4 class="side">Developed By</h4>
 <div class="edit-pics" id="sidebarDevelopedBy">
-	<a class="blockTitle" href="http://pkp.sfu.ca/ojs/" id="developedBy">{translate key="common.openJournalSystems"}</a>
+	<a class="blockTitle" target="_blank" href="http://pkp.sfu.ca/ojs/" id="developedBy">{translate key="common.openJournalSystems"}</a>
 </div>

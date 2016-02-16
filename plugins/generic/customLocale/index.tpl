@@ -13,47 +13,49 @@
 {include file="common/header.tpl"}
 {/strip}
 
-<p>{translate key="plugins.generic.customLocale.longDescription"}</p>
+<p class="help-block">{translate key="plugins.generic.customLocale.longDescription"}</p>
 
-<div id="locales">
-<h3>{translate key="plugins.generic.customLocale.availableLocales"}</h3>
-<table class="listing" width="100%">
-	<tr><td colspan="3" class="headseparator">&nbsp;</td></tr>
-	<tr class="heading" valign="bottom">
-		<td width="15%">{translate key="plugins.generic.customLocale.localeKey"}</td>
-		<td width="60%">{translate key="plugins.generic.customLocale.localeName"}</td>
-		<td width="25%">{translate key="common.action"}</td>
-	</tr>
-	<tr><td colspan="3" class="headseparator">&nbsp;</td></tr>
+<div id="locales" class="col-md-12 mag-innert-left">
+	<h3>{translate key="plugins.generic.customLocale.availableLocales"}</h3>
 
-{iterate from=locales key=localeKey item=localeName}
-	<tr valign="top">
-		<td>{$localeKey|escape}</td>
-		<td>{$localeName|escape}</td>
-		<td>
-			<a href="{plugin_url path="edit" key=$localeKey}" class="action">{translate key="common.edit"}</a>
-		</td>
-	</tr>
-	<tr>
-		<td colspan="3" class="{if $locales->eof()}end{/if}separator">&nbsp;</td>
-	</tr>
-{/iterate}
+	<div class="table-responsive">
+		<table class="table table-striped" width="100%">
+			<tr><td colspan="3" class="headseparator">&nbsp;</td></tr>
+			<tr class="heading" valign="bottom">
+				<td width="15%"><label>{translate key="plugins.generic.customLocale.localeKey"}</label></td>
+				<td width="60%"><label>{translate key="plugins.generic.customLocale.localeName"}</label></td>
+				<td width="25%"><label>{translate key="common.action"}</label></td>
+			</tr>
+			<tr><td colspan="3" class="headseparator">&nbsp;</td></tr>
 
-{if $locales->wasEmpty()}
-	<tr>
-		<td colspan="3" class="nodata">{translate key="common.none"}</td>
-	</tr>
-	<tr>
-		<td colspan="3" class="endseparator">&nbsp;</td>
-	</tr>
-{else}
-	<tr>
-		<td colspan="2" align="left">{page_info iterator=$locales}</td>
-		<td align="right">{page_links anchor="locales" name="locales" iterator=$locales}</td>
-	</tr>
-{/if}
+			{iterate from=locales key=localeKey item=localeName}
+				<tr valign="top">
+					<td>{$localeKey|escape}</td>
+					<td>{$localeName|escape}</td>
+					<td>
+						<a href="{plugin_url path="edit" key=$localeKey}" class="action">{translate key="common.edit"}</a>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3" class="{if $locales->eof()}end{/if}separator">&nbsp;</td>
+				</tr>
+			{/iterate}
 
-</table>
+			{if $locales->wasEmpty()}
+				<tr>
+					<td colspan="3" class="nodata"><p class="help-block">{translate key="common.none"}</p></td>
+				</tr>
+				<tr>
+					<td colspan="3" class="endseparator">&nbsp;</td>
+				</tr>
+			{else}
+				<tr>
+					<td colspan="2" align="left">{page_info iterator=$locales}</td>
+					<td align="right">{page_links anchor="locales" name="locales" iterator=$locales}</td>
+				</tr>
+			{/if}
+		</table>
+	</div>
 </div>
 
 {include file="common/footer.tpl"}

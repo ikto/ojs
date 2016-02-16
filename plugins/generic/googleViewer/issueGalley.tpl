@@ -10,7 +10,7 @@
 {include file="issue/header.tpl"}
 {url|assign:"pdfUrl" op="viewFile" path=$issueId|to_array:$galley->getBestGalleyId($currentJournal)}
 
-<div id="pdfDownloadLinkContainer">
+<div id="pdfDownloadLinkContainer" class="col-md-12 mag-innert-left">
 	<a class="action pdf" id="pdfDownloadLink" target="_parent" href="{url op="download" path=$issueId|to_array:$galley->getBestGalleyId($currentJournal)}">{translate key="article.pdf.download"}</a>
 </div>
 

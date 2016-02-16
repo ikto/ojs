@@ -9,9 +9,9 @@
  * Lists active assignments and editor functions.
  *
  *}
-<h4 class="side">{translate key="user.role.editor"}</h4>
-<div class="edit-pics" id="sidebarEditor">
 
+<h4 class="side">{translate key="user.role.editor"}</h4>
+<div class="edit-pics" id="sidebarEditor">	
 	<p class="help-block">{translate key="article.submissions"}</p>
 	<ul class="stay">
 		<li><a href="{url op="submissions" path="submissionsUnassigned"}">{translate key="common.queue.short.submissionsUnassigned"}</a>&nbsp;({if $submissionsCount[0]}{$submissionsCount[0]}{else}0{/if})</li>

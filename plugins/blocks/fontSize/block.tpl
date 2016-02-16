@@ -10,13 +10,15 @@
  *}
 
 <!-- Add javascript required for font sizer -->
-<script type="text/javascript">{literal}
+<script type="text/javascript">
+{literal}
 	<!--
 	$(function(){
 		fontSize("#sizer", "body", 9, 16, 32, "{/literal}{$basePath|escape:"javascript"}{literal}"); // Initialize the font sizer
 	});
 	// -->
-{/literal}</script>
+{/literal}
+</script>
 
 <h4 class="side">{translate key="plugins.block.fontSize.title"}</h4>
 <div class="edit-pics" id="sidebarFontSize" style="margin-bottom: 4px;">

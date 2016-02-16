@@ -8,13 +8,14 @@
  * Common site sidebar menu -- user tools.
  *
  *}
-{if !$implicitAuth}
-<h4 class="side">{translate key="navigation.user"}</h4>
-{/if}
-<div class="edit-pics" id="sidebarUser">
 
+{if !$implicitAuth}
+	<h4 class="side">{translate key="navigation.user"}</h4>
+{/if}
+
+<div class="edit-pics" id="sidebarUser">
 	{if $isUserLoggedIn}
-		{translate key="plugins.block.user.loggedInAs"}<br />
+		<p class="help-block">{translate key="plugins.block.user.loggedInAs"}</p>
 		<strong>{$loggedInUsername|escape}</strong>
 		<ul class="stay">
 			{if $hasOtherJournals}
@@ -34,22 +35,22 @@
 		{else}
 			<form method="post" action="{$userBlockLoginUrl}">
 				<div class="table-responsive">
-				<table class="table table-striped">
-					<tr>
-						<td><label class="control-label" for="sidebar-username">{translate key="user.username"}</label></td>
-						<td><input type="text" id="sidebar-username" name="username" value="" size="12" maxlength="32" class="textField" /></td>
-					</tr>
-					<tr>
-						<td><label class="control-label" for="sidebar-password">{translate key="user.password"}</label></td>
-						<td><input type="password" id="sidebar-password" name="password" value="{$password|escape}" size="12" class="textField" /></td>
-					</tr>
-					<tr>
-						<td colspan="2"><input type="checkbox" id="remember" name="remember" value="1" /> <label for="remember">{translate key="plugins.block.user.rememberMe"}</label></td>
-					</tr>
-					<tr>
-						<td colspan="2"><input type="submit" value="{translate key="user.login"}" class="button" /></td>
-					</tr>
-				</table>
+					<table class="table table-striped">
+						<tr>
+							<td><label class="control-label" for="sidebar-username">{translate key="user.username"}</label></td>
+							<td><div class="form-group"><input type="text" id="sidebar-username" name="username" value="" size="12" maxlength="32" class="form-control" /></div></td>
+						</tr>
+						<tr>
+							<td><label class="control-label" for="sidebar-password">{translate key="user.password"}</label></td>
+							<td><div class="form-group"><input type="password" id="sidebar-password" name="password" value="{$password|escape}" size="12" class="form-control" /></div></td>
+						</tr>
+						<tr>
+							<td colspan="2"><div class="form-group"><input type="checkbox" id="remember" name="remember" value="1" /> <label for="remember">{translate key="plugins.block.user.rememberMe"}</label></div></td>
+						</tr>
+						<tr>
+							<td colspan="2"><input type="submit" value="{translate key="user.login"}" class="btn btn-success" /></td>
+						</tr>
+					</table>
 				</div>
 			</form>
 		{/if}

@@ -11,16 +11,16 @@
 {assign var="pageTitle" value="plugins.generic.booksForReview.author.booksForReviewRequested"}
 {include file="common/header.tpl"}
 
-<div id="authorBooksForReview">
+<div id="authorBooksForReview" class="col-md-12 mag-innert-left">
+	
+	<ul class="stay">
+		<li class="current"><a href="{url op="booksForReview" path="requested"}">{translate key="plugins.generic.booksForReview.author.requested"} ({$counts[$smarty.const.BFR_STATUS_REQUESTED]})</a></li>
+		<li><a href="{url op="booksForReview" path="assigned"}">{translate key="plugins.generic.booksForReview.author.assigned"} ({$counts[$smarty.const.BFR_STATUS_ASSIGNED]})</a></li>
+		<li><a href="{url op="booksForReview" path="mailed"}">{translate key="plugins.generic.booksForReview.author.mailed"} ({$counts[$smarty.const.BFR_STATUS_MAILED]})</a></li>
+		<li><a href="{url op="booksForReview" path="submitted"}">{translate key="plugins.generic.booksForReview.author.submitted"} ({$counts[$smarty.const.BFR_STATUS_SUBMITTED]})</a></li>
+	</ul>
 
-<ul class="menu">
-	<li class="current"><a href="{url op="booksForReview" path="requested"}">{translate key="plugins.generic.booksForReview.author.requested"} ({$counts[$smarty.const.BFR_STATUS_REQUESTED]})</a></li>
-	<li><a href="{url op="booksForReview" path="assigned"}">{translate key="plugins.generic.booksForReview.author.assigned"} ({$counts[$smarty.const.BFR_STATUS_ASSIGNED]})</a></li>
-	<li><a href="{url op="booksForReview" path="mailed"}">{translate key="plugins.generic.booksForReview.author.mailed"} ({$counts[$smarty.const.BFR_STATUS_MAILED]})</a></li>
-	<li><a href="{url op="booksForReview" path="submitted"}">{translate key="plugins.generic.booksForReview.author.submitted"} ({$counts[$smarty.const.BFR_STATUS_SUBMITTED]})</a></li>
-</ul>
-
-{include file="../plugins/generic/booksForReview/templates/author/booksForReview.tpl"}
+	{include file="../plugins/generic/booksForReview/templates/author/booksForReview.tpl"}
 
 </div>
 

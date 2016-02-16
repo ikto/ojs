@@ -8,6 +8,7 @@
  * Google Analytics ga.js page tag.
  *
  *}
+
 <!-- Google Analytics -->
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
@@ -26,4 +27,3 @@ pageTracker._trackPageview();
 {/foreach}
 </script>
 <!-- /Google Analytics -->
-

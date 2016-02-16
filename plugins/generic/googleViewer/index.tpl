@@ -8,7 +8,7 @@
  * Embedded PDF viewer using Google Doc embedder service.
  *}
 
-<div id="pdfDownloadLinkContainer">
+<div id="pdfDownloadLinkContainer" class="col-md-12 mag-innert-left">
 	<a class="action pdf" id="pdfDownloadLink" target="_parent" href="{url op="download" path=$articleId|to_array:$galley->getBestGalleyId($currentJournal)}">{translate key="article.pdf.download"}</a>
 </div>
 

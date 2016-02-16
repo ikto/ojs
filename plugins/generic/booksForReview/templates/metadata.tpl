@@ -8,6 +8,7 @@
  * Supplemental Dublin Core book for review metadata.
  *
  *}
+
 <meta name="DC.Relation" scheme="isReviewOf" content="{$book->getLocalizedTitle()|escape}"/>
 {if $book->getISBN()}
 	<meta name="DC.Relation" scheme="isReviewOf" content="ISBN {$book->getISBN()|escape}"/>

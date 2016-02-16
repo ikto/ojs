@@ -8,6 +8,7 @@
  * Sidebar menu -- "Custom" block.
  *
  *}
-<div class="block custom" id="{$customBlockId}">
+
+<div class="edit-pics" id="{$customBlockId}">
 	{$customBlockContent}
 </div>	

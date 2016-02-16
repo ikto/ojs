@@ -8,9 +8,10 @@
  * Common site sidebar menu -- donation links.
  *
  *}
+
 {if $donationEnabled}
-<h4 class="side">Donation</h4>
-<div class="edit-pics" id="sidebarDonation">
-	<p class="help-block"><a href="{url page="donations"}">{translate key="payment.type.donation"}</a></p>
-</div>
+	<h4 class="side">Donation</h4>
+	<div class="edit-pics" id="sidebarDonation">
+		<p class="help-block"><a href="{url page="donations"}">{translate key="payment.type.donation"}</a></p>
+	</div>
 {/if}

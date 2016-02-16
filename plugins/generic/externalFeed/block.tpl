@@ -8,15 +8,16 @@
  * External feed plugin navigation sidebar.
  *
  *}
-<div class="block" id="sidebarExternalFeed">
+
+<div class="edit-pics" id="sidebarExternalFeed">
 	{foreach from=$externalFeeds item=externalFeed}
-		<span class="blockTitle">{$externalFeed.title|truncate:20:"..."}</span>
-		<ul>
-		{foreach from=$externalFeed.items item=feedItem}
-			<li>
-				<a href="{$feedItem->get_permalink()}" target="_blank">{$feedItem->get_title()|truncate:40:"..."}</a>
-			</li>
-		{/foreach}
+		<span class="help-block">{$externalFeed.title|truncate:20:"..."}</span>
+		<ul class="stay">
+			{foreach from=$externalFeed.items item=feedItem}
+				<li>
+					<a href="{$feedItem->get_permalink()}" target="_blank">{$feedItem->get_title()|truncate:40:"..."}</a>
+				</li>
+			{/foreach}
 		</ul>
 	{/foreach}
 </div>

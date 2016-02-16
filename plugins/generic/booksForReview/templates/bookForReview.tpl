@@ -13,51 +13,51 @@
 
 <br/>
 
-<div id="bookForReviewDetails">
+<div id="bookForReviewDetails" class="col-md-12 mag-innert-left">
 
-<table class="bookForReviewDetails">
-	<tr>
-		{if $bookForReview->getFileName($locale)}
-			<td class="coverPage"><br /><img src="{$coverPagePath|escape}{$bookForReview->getFileName($locale)|escape}"{if $bookForReview->getCoverPageAltText($locale) != ''} alt="{$bookForReview->getCoverPageAltText($locale)|escape}"{else} alt="{translate key="plugins.generic.booksForReview.public.coverPage.altText"}"{/if}/></td>
-		{else}
-			<td class="coverPage">&nbsp;</td>
-		{/if}
-		<td class="coverDetails">
-			<h3>{$bookForReview->getLocalizedTitle()|escape}</h3>
-			{translate key=$bookForReview->getAuthorTypeString()}&nbsp;{$bookForReview->getAuthorString()|escape}
-			<br />
-			<br />
-			{$bookForReview->getYear()|escape}&nbsp;|&nbsp;{if $bookForReview->getUrl()}<a href="{$bookForReview->getUrl()|escape}" target="_blank">{$bookForReview->getPublisher()|escape}</a>&nbsp;({translate key="plugins.generic.booksForReview.public.externalSite"}){else}{$bookForReview->getPublisher()|escape}{/if}
-			<br />
-			{translate key="plugins.generic.booksForReview.public.copy"}:&nbsp;{if $bookForReview->getCopy()}{translate key="plugins.generic.booksForReview.public.copyYes"}{else}{translate key="plugins.generic.booksForReview.public.copyNo"}{/if}
-			<br />
-			<br />
-			{translate key="plugins.generic.booksForReview.public.language"}:&nbsp;{$bookForReview->getLanguageString()|escape}
-			<br />
-			{if $bookForReview->getEdition()}
-				{translate key="plugins.generic.booksForReview.public.edition"}:&nbsp;{$bookForReview->getEdition()|escape}
-				<br />
-			{/if}
-			{if $bookForReview->getPages()}
-				{translate key="plugins.generic.booksForReview.public.pages"}:&nbsp;{$bookForReview->getPages()|escape}
-				<br />
-			{/if}
-			{if $bookForReview->getISBN()}
-				{translate key="plugins.generic.booksForReview.public.isbn"}:&nbsp;{$bookForReview->getISBN()|escape}
-				<br />
-			{/if}
-			{if $isAuthor}
-				<br />
-				<a href="{url page="author" op="requestBookForReview" path=$bookForReview->getId()}" class="action">{translate key="plugins.generic.booksForReview.author.requestBookForReview}</a>
-			{/if}
-			<br />
-			<br />
-			{$bookForReview->getLocalizedDescription()|strip_unsafe_html|nl2br}
-		</td>
-	</tr>
-</table>
-
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<tr>
+				{if $bookForReview->getFileName($locale)}
+					<td class="coverPage"><br /><img class="img-responsive" src="{$coverPagePath|escape}{$bookForReview->getFileName($locale)|escape}"{if $bookForReview->getCoverPageAltText($locale) != ''} alt="{$bookForReview->getCoverPageAltText($locale)|escape}"{else} alt="{translate key="plugins.generic.booksForReview.public.coverPage.altText"}"{/if}/></td>
+				{else}
+					<td class="coverPage">&nbsp;</td>
+				{/if}
+				<td class="coverDetails">
+					<h3>{$bookForReview->getLocalizedTitle()|escape}</h3>
+					{translate key=$bookForReview->getAuthorTypeString()}&nbsp;{$bookForReview->getAuthorString()|escape}
+					<br />
+					<br />
+					{$bookForReview->getYear()|escape}&nbsp;|&nbsp;{if $bookForReview->getUrl()}<a href="{$bookForReview->getUrl()|escape}" target="_blank">{$bookForReview->getPublisher()|escape}</a>&nbsp;({translate key="plugins.generic.booksForReview.public.externalSite"}){else}{$bookForReview->getPublisher()|escape}{/if}
+					<br />
+					{translate key="plugins.generic.booksForReview.public.copy"}:&nbsp;{if $bookForReview->getCopy()}{translate key="plugins.generic.booksForReview.public.copyYes"}{else}{translate key="plugins.generic.booksForReview.public.copyNo"}{/if}
+					<br />
+					<br />
+					{translate key="plugins.generic.booksForReview.public.language"}:&nbsp;{$bookForReview->getLanguageString()|escape}
+					<br />
+					{if $bookForReview->getEdition()}
+						{translate key="plugins.generic.booksForReview.public.edition"}:&nbsp;{$bookForReview->getEdition()|escape}
+						<br />
+					{/if}
+					{if $bookForReview->getPages()}
+						{translate key="plugins.generic.booksForReview.public.pages"}:&nbsp;{$bookForReview->getPages()|escape}
+						<br />
+					{/if}
+					{if $bookForReview->getISBN()}
+						{translate key="plugins.generic.booksForReview.public.isbn"}:&nbsp;{$bookForReview->getISBN()|escape}
+						<br />
+					{/if}
+					{if $isAuthor}
+						<br />
+						<a href="{url page="author" op="requestBookForReview" path=$bookForReview->getId()}" class="action">{translate key="plugins.generic.booksForReview.author.requestBookForReview}</a>
+					{/if}
+					<br />
+					<br />
+					{$bookForReview->getLocalizedDescription()|strip_unsafe_html|nl2br}
+				</td>
+			</tr>
+		</table>
+	</div>
 </div>
-
 
 {include file="common/footer.tpl"}

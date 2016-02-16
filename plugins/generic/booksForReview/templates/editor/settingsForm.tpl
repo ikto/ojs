@@ -11,7 +11,7 @@
 {assign var="pageTitle" value="plugins.generic.booksForReview.booksForReviewSettings"}
 {include file="common/header.tpl"}
 
-<ul class="menu">
+<ul class="stay">
 	<li><a href="{url op="booksForReview"}">{translate key="plugins.generic.booksForReview.editor.all"}</a></li>
 	<li><a href="{url op="booksForReview" path="available"}">{translate key="plugins.generic.booksForReview.editor.available"} ({$counts[$smarty.const.BFR_STATUS_AVAILABLE]})</a></li>
 	{if $mode == $smarty.const.BFR_MODE_FULL}
@@ -25,115 +25,132 @@
 
 <br />
 
-<form method="post" id="booksForReviewSettingsForm" action="{url op="booksForReviewSettings"}">
-{include file="common/formErrors.tpl"}
+<form role="form" method="post" id="booksForReviewSettingsForm" action="{url op="booksForReviewSettings"}">
+	
+	{include file="common/formErrors.tpl"}
 
-<script type="text/javascript">
-	{literal}
-	<!--
-		function toggleAllowSetBeforeDueReminder(form) {
-			form.numDaysBeforeDueReminder.disabled = !form.numDaysBeforeDueReminder.disabled;
-		}
-		function toggleAllowSetAfterDueReminder(form) {
-			form.numDaysAfterDueReminder.disabled = !form.numDaysAfterDueReminder.disabled;
-		}
-	// -->
-	{/literal}
-</script>
+	<script type="text/javascript">
+		{literal}
+		<!--
+			function toggleAllowSetBeforeDueReminder(form) {
+				form.numDaysBeforeDueReminder.disabled = !form.numDaysBeforeDueReminder.disabled;
+			}
+			function toggleAllowSetAfterDueReminder(form) {
+				form.numDaysAfterDueReminder.disabled = !form.numDaysAfterDueReminder.disabled;
+			}
+		// -->
+		{/literal}
+	</script>
 
-<div class="separator"></div>
+	<div class="separator"></div>
 
-<div id="booksForReviewMode">
+	<div id="booksForReviewMode" class="col-md-12 mag-innert-left">
+		<h4>{translate key="plugins.generic.booksForReview.settings.booksForReviewMode"}</h4>
+		<br />
+		
+		<div class="table-responsive">
+			<table width="100%" class="table table-striped">
+				<tr valign="top">
+					<td width="10%" align="right"><div class="form-group"><input type="radio" name="mode" id="mode-1" value="{$smarty.const.BFR_MODE_FULL}" {if $mode eq "1"}checked="checked" {/if}/>&nbsp;</div></td>
+					<td width="90%" class="value">{translate key="plugins.generic.booksForReview.settings.modeFull"}</td>
+				</tr>
+				<tr valign="top">
+					<td width="10%" align="right"><div class="form-group"><input type="radio" name="mode" id="mode-2" value="{$smarty.const.BFR_MODE_METADATA}" {if $mode eq "2"}checked="checked" {/if}/>&nbsp;</div></td>
+					<td width="90%" class="value">{translate key="plugins.generic.booksForReview.settings.modeMetadata"}</td>
+				</tr>
+				<tr>
+					<td colspan="2"><p class="help-block">{translate key="plugins.generic.booksForReview.settings.description"}</p></td>
+				</tr>
+			</table>
+		</div>
+	</div>
 
-<h4>{translate key="plugins.generic.booksForReview.settings.booksForReviewMode"}</h4>
-<br />
-<table width="100%" class="data">
-	<tr valign="top">
-		<td width="10%" class="label" align="right"><input type="radio" name="mode" id="mode-1" value="{$smarty.const.BFR_MODE_FULL}" {if $mode eq "1"}checked="checked" {/if}/>&nbsp;</td>
-		<td width="90%" class="value">{translate key="plugins.generic.booksForReview.settings.modeFull"}</td>
-	</tr>
-	<tr valign="top">
-		<td width="10%" class="label" align="right"><input type="radio" name="mode" id="mode-2" value="{$smarty.const.BFR_MODE_METADATA}" {if $mode eq "2"}checked="checked" {/if}/>&nbsp;</td>
-		<td width="90%" class="value">{translate key="plugins.generic.booksForReview.settings.modeMetadata"}</td>
-	</tr>
-	<tr>
-		<td colspan="2">{translate key="plugins.generic.booksForReview.settings.description"}</td>
-	</tr>
-</table>
-</div>
+	<div class="separator"></div>
 
-<div class="separator"></div>
+	<div id="booksForReviewCoverImages" class="col-md-12 mag-innert-left">
+		<h4>{translate key="plugins.generic.booksForReview.settings.coverImages"}</h4>
+		<p>
+			<div class="form-group">
+				<input type="checkbox" name="coverPageIssue" id="coverPageIssue" value="1" {if $coverPageIssue} checked="checked"{/if} />&nbsp;
+				{fieldLabel name="coverPageIssue" key="plugins.generic.booksForReview.settings.coverPageIssue"}
+			</div>
+		</p>
+		<p>
+			<div class="form-group">
+				<input type="checkbox" name="coverPageAbstract" id="coverPageAbstract" value="1" {if $coverPageAbstract} checked="checked"{/if} />&nbsp;
+				{fieldLabel name="coverPageAbstract" key="plugins.generic.booksForReview.settings.coverPageAbstract"}
+			</div>
+		</p>
+	</div>
 
-<div id="booksForReviewCoverImages">
-<h4>{translate key="plugins.generic.booksForReview.settings.coverImages"}</h4>
-<p>
-	<input type="checkbox" name="coverPageIssue" id="coverPageIssue" value="1" {if $coverPageIssue} checked="checked"{/if} />&nbsp;
-	{fieldLabel name="coverPageIssue" key="plugins.generic.booksForReview.settings.coverPageIssue"}
-</p>
-<p>
-	<input type="checkbox" name="coverPageAbstract" id="coverPageAbstract" value="1" {if $coverPageAbstract} checked="checked"{/if} />&nbsp;
-	{fieldLabel name="coverPageAbstract" key="plugins.generic.booksForReview.settings.coverPageAbstract"}
-</p>
-</div>
+	<div class="separator"></div>
 
-<div class="separator"></div>
+	<div id="booksForReviewDue" class="col-md-12 mag-innert-left">
+		<h4>{translate key="plugins.generic.booksForReview.settings.booksForReviewDue"}</h4>
+		<p>
+			<div class="form-group">{fieldLabel name="dueWeeks" key="plugins.generic.booksForReview.settings.dueWeeks1"}&nbsp;<select name="dueWeeks" id="dueWeeks" class="form-control">{html_options options=$validDueWeeks selected=$dueWeeks|escape}</select></div>&nbsp;<p class="help-block">{translate key="plugins.generic.booksForReview.settings.dueWeeks2}</p>
+		</p>
+	</div>
 
-<div id="booksForReviewDue">
-<h4>{translate key="plugins.generic.booksForReview.settings.booksForReviewDue"}</h4>
-<p>
-	{fieldLabel name="dueWeeks" key="plugins.generic.booksForReview.settings.dueWeeks1"}&nbsp;<select name="dueWeeks" id="dueWeeks" class="selectMenu">{html_options options=$validDueWeeks selected=$dueWeeks|escape}</select>&nbsp;{translate key="plugins.generic.booksForReview.settings.dueWeeks2}
-</p>
-</div>
+	<div class="separator"></div>
 
-<div class="separator"></div>
+	<div id="booksForReviewEmailReminders" class="col-md-12 mag-innert-left">
+		<h4>{translate key="plugins.generic.booksForReview.settings.emailReminders"}</h4>
+		<p>
+			<div class="form-group">
+				<input type="checkbox" name="enableDueReminderBefore" id="enableDueReminderBefore" value="1" onclick="toggleAllowSetBeforeDueReminder(this.form)"{if !$scheduledTasksEnabled} disabled="disabled" {elseif $enableDueReminderBefore} checked="checked"{/if} />&nbsp;
+				{fieldLabel name="enableDueReminderBefore" key="plugins.generic.booksForReview.settings.enableDueReminderBeforeDays1"}
+			</div>
+			<div class="form-group">
+				<select name="numDaysBeforeDueReminder" id="numDaysBeforeDueReminder" class="form-control"{if not $enableDueReminderBefore || !$scheduledTasksEnabled} disabled="disabled"{/if}>{html_options options=$validNumDays selected=$numDaysBeforeDueReminder}</select>
+				{fieldLabel name="numDaysBeforeDueReminder" key="plugins.generic.booksForReview.settings.enableDueReminderBeforeDays2"}
+			</div>
+		</p>
+		<p>
+			<div class="form-group">
+				<input type="checkbox" name="enableDueReminderAfter" id="enableDueReminderAfter" value="1" onclick="toggleAllowSetAfterDueReminder(this.form)"{if !$scheduledTasksEnabled} disabled="disabled" {elseif $enableDueReminderAfter} checked="checked"{/if} />&nbsp;
+				{fieldLabel name="enableDueReminderAfter" key="plugins.generic.booksForReview.settings.enableDueReminderAfterDays1"}
+			</div>
+			<div class="form-group">
+				<select name="numDaysAfterDueReminder" id="numDaysAfterDueReminder" class="form-control"{if not $enableDueReminderAfter || !$scheduledTasksEnabled} disabled="disabled"{/if}>{html_options options=$validNumDays selected=$numDaysAfterDueReminder}</select>
+				{fieldLabel name="numDaysAfterDueReminder" key="plugins.generic.booksForReview.settings.enableDueReminderAfterDays2"}
+			</div>
+		</p>
 
-<div id="booksForReviewEmailReminders">
-<h4>{translate key="plugins.generic.booksForReview.settings.emailReminders"}</h4>
-<p>
-	<input type="checkbox" name="enableDueReminderBefore" id="enableDueReminderBefore" value="1" onclick="toggleAllowSetBeforeDueReminder(this.form)"{if !$scheduledTasksEnabled} disabled="disabled" {elseif $enableDueReminderBefore} checked="checked"{/if} />&nbsp;
-	{fieldLabel name="enableDueReminderBefore" key="plugins.generic.booksForReview.settings.enableDueReminderBeforeDays1"}
-	<select name="numDaysBeforeDueReminder" id="numDaysBeforeDueReminder" class="selectMenu"{if not $enableDueReminderBefore || !$scheduledTasksEnabled} disabled="disabled"{/if}>{html_options options=$validNumDays selected=$numDaysBeforeDueReminder}</select>
-	{fieldLabel name="numDaysBeforeDueReminder" key="plugins.generic.booksForReview.settings.enableDueReminderBeforeDays2"}
-</p>
-<p>
-	<input type="checkbox" name="enableDueReminderAfter" id="enableDueReminderAfter" value="1" onclick="toggleAllowSetAfterDueReminder(this.form)"{if !$scheduledTasksEnabled} disabled="disabled" {elseif $enableDueReminderAfter} checked="checked"{/if} />&nbsp;
-	{fieldLabel name="enableDueReminderAfter" key="plugins.generic.booksForReview.settings.enableDueReminderAfterDays1"}
-	<select name="numDaysAfterDueReminder" id="numDaysAfterDueReminder" class="selectMenu"{if not $enableDueReminderAfter || !$scheduledTasksEnabled} disabled="disabled"{/if}>{html_options options=$validNumDays selected=$numDaysAfterDueReminder}</select>
-	{fieldLabel name="numDaysAfterDueReminder" key="plugins.generic.booksForReview.settings.enableDueReminderAfterDays2"}
-</p>
+		{if !$scheduledTasksEnabled}
+			<p class="help-block">{translate key="plugins.generic.booksForReview.settings.scheduledTasksDisabled"}</p>
+		{/if}
+	</div>
 
-{if !$scheduledTasksEnabled}
+	<div class="separator"></div>
+
+	<div id="booksForReviewadditionalInformation" class="col-md-12 mag-innert-left">
+		<h4>{translate key="plugins.generic.booksForReview.settings.additionalInformation"}</h4>
+		<p class="help-block">{translate key="plugins.generic.booksForReview.settings.additionalInformationDescription"}</p>
+	
+		<div class="table-responsive">
+			<table width="100%" class="table table-striped">
+				{if count($formLocales) > 1}
+					<tr valign="top">
+						<td width="100%" class="value">
+							{url|assign:"settingsUrl" op="booksForReviewSettings"}
+							{form_language_chooser form="booksForReviewSettingsForm" url=$settingsUrl}
+							<span class="help-block">{translate key="form.formLanguage.description"}</span>
+						</td>
+					</tr>
+				{/if}
+				<tr valign="top">
+					<td width="100%" class="value"><div class="form-group"><textarea name="additionalInformation[{$formLocale|escape}]" id="additionalInformation" rows="6" cols="60" class="form-control">{$additionalInformation[$formLocale]|escape}</textarea></div></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
 	<br/>
-	{translate key="plugins.generic.booksForReview.settings.scheduledTasksDisabled"}
-{/if}
-</div>
 
-<div class="separator"></div>
-
-<div id="booksForReviewadditionalInformation">
-<h4>{translate key="plugins.generic.booksForReview.settings.additionalInformation"}</h4>
-<p>{translate key="plugins.generic.booksForReview.settings.additionalInformationDescription"}</p>
-<table width="100%" class="data">
-{if count($formLocales) > 1}
-	<tr valign="top">
-		<td width="100%" class="value">
-			{url|assign:"settingsUrl" op="booksForReviewSettings"}
-			{form_language_chooser form="booksForReviewSettingsForm" url=$settingsUrl}
-			<span class="instruct">{translate key="form.formLanguage.description"}</span>
-		</td>
-	</tr>
-{/if}
-	<tr valign="top">
-		<td width="100%" class="value"><textarea name="additionalInformation[{$formLocale|escape}]" id="additionalInformation" rows="6" cols="60" class="textArea">{$additionalInformation[$formLocale]|escape}</textarea></td>
-	</tr>
-</table>
-</div>
-
-<br/>
-
-<input type="submit" name="save" class="button defaultButton" value="{translate key="common.save"}"/>&nbsp;<input type="button" class="button" value="{translate key="common.cancel"}" onclick="history.go(-1)"/>
+	<input type="submit" name="save" class="btn btn-success" value="{translate key="common.save"}"/>&nbsp;<input type="button" class="btn btn-danger" value="{translate key="common.cancel"}" onclick="history.go(-1)"/>
 </form>
 
-<p><span class="formRequired">{translate key="common.requiredField"}</span></p>
+<p><span class="help-block">{translate key="common.requiredField"}</span></p>
 
 {include file="common/footer.tpl"}

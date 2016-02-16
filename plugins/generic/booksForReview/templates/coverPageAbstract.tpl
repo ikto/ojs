@@ -8,8 +8,9 @@
  * Display book cover image as article cover image in article view.
  *
  *}
+
 {if !$article->getFileName($locale) && !$article->getHideCoverPageAbstract($locale) && $book->getFileName($locale)}
 	<div class="articleCoverImage">
-	<img src="{$baseCoverPagePath|escape}{$book->getFileName($locale)|escape}"{if $book->getCoverPageAltText($locale) != ''} alt="{$book->getCoverPageAltText($locale)|escape}"{else} alt="{translate key="plugins.generic.booksForReview.public.coverPage.altText"}"{/if}/>
+		<img class="img-responsive" src="{$baseCoverPagePath|escape}{$book->getFileName($locale)|escape}"{if $book->getCoverPageAltText($locale) != ''} alt="{$book->getCoverPageAltText($locale)|escape}"{else} alt="{translate key="plugins.generic.booksForReview.public.coverPage.altText"}"{/if}/>
 	</div>
 {/if}

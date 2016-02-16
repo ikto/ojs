@@ -7,6 +7,7 @@
  *
  * A template to be included via Templates::Search::SearchResults::PreResults hook.
  *}
+
 <div id="lucenePreResults" class="plugins_generic_lucene_preResults">
 	{if !empty($spellingSuggestion)}
 		<strong class="plugins_generic_lucene_preResults_spelling">{translate key="plugins.generic.lucene.results.didYouMean"}: <a href="{url op="search" params=$spellingSuggestionUrlParams|escape}">{$spellingSuggestion|escape}</a></strong>

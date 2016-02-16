@@ -8,6 +8,7 @@
  * Google Analytics analytics.js page tag.
  *
  *}
+ 
 <!-- Google Analytics -->
 {literal}
 <script>

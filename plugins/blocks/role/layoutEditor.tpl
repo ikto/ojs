@@ -8,6 +8,7 @@
  * LayoutEditor navigation sidebar.
  *
  *}
+
 <h4 class="side">{translate key="user.role.layoutEditor"}</h4>
 <div class="edit-pics" id="sidebarLayoutEditor">
 	<p class="help-block">{translate key="article.submissions"}</p>

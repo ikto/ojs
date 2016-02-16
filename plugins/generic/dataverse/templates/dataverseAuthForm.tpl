@@ -13,48 +13,54 @@
 	{include file="common/header.tpl"}
 {/strip}
 
-<ul class="menu">
+<ul class="stay">
 	<li class="current"><a href="{plugin_url path="connect"}">{translate key="plugins.generic.dataverse.settings.connect"}</a></li>
 	<li><a href="{plugin_url path="select"}">{translate key="plugins.generic.dataverse.settings.selectDataverse"}</a></li>
 	<li><a href="{plugin_url path="settings"}">{translate key="plugins.generic.dataverse.settings"}</a></li>
 </ul>
 
-<div style="margin: 1em 0;">
+<div style="margin: 1em 0;" class="col-md-12 mag-innert-left">
 
-	<form method="post" action="{plugin_url path="connect"}" id="dvnForm">
+	<form role="form" method="post" action="{plugin_url path="connect"}" id="dvnForm">
+		
 		{include file="common/formErrors.tpl"}
 
-		<table width="100%" class="data">
-			<tr valign="top">
-				<td class="label">{fieldLabel name="dvnUri" required="true" key="plugins.generic.dataverse.settings.dvnUri"}</td>
-				<td class="value"><input type="text" name="dvnUri" id="dvnUri" value="{$dvnUri|escape}" size="40" maxlength="90" class="textField"/></td>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td>{translate key="plugins.generic.dataverse.settings.dvnUriDescription"}</td>
-			</tr>
-			<tr valign="top">
-				<td class="label">{fieldLabel name="username" required="true" key="user.username"}</td>
-				<td class="value"><input type="text" name="username" id="username" value="{$username|escape}" size="20" maxlength="90" class="textField" /></td>
-			</tr>			 
-			<tr>
-				<td>&nbsp;</td>
-				<td>{translate key="plugins.generic.dataverse.settings.usernameDescription"}</td>
-			</tr>
-			<tr valign="top">
-				<td class="label">{fieldLabel name="password" required="true" key="user.password"}</td>
-				<td class="value">
-					<input type="password" name="password" id="password" value="{$password|escape}" size="20" maxlength="90" class="textField"/>
-				</td>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td>{translate key="plugins.generic.dataverse.settings.passwordDescription"}</td>
-			</tr>
-		</table>
-		<input type="submit" class="button defaultButton" name="save" value="{translate key="common.saveAndContinue"}"	/> 
-		<input type="button" class="button" value="{translate key="common.cancel"}" onclick="document.location='{plugin_url path=""}';"/>
+		<div class="table-responsive">
+			<table width="100%" class="table table-striped">
+				<tr valign="top">
+					<td>{fieldLabel name="dvnUri" required="true" key="plugins.generic.dataverse.settings.dvnUri"}</td>
+					<td class="value"><div class="form-group"><input type="text" name="dvnUri" id="dvnUri" value="{$dvnUri|escape}" size="40" maxlength="90" class="form-control"/></div></td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td><p class="help-block">{translate key="plugins.generic.dataverse.settings.dvnUriDescription"}</p></td>
+				</tr>
+				<tr valign="top">
+					<td>{fieldLabel name="username" required="true" key="user.username"}</td>
+					<td class="value"><div class="form-group"><input type="text" name="username" id="username" value="{$username|escape}" size="20" maxlength="90" class="form-control" /></div></td>
+				</tr>			 
+				<tr>
+					<td>&nbsp;</td>
+					<td><p class="help-block">{translate key="plugins.generic.dataverse.settings.usernameDescription"}</p></td>
+				</tr>
+				<tr valign="top">
+					<td>{fieldLabel name="password" required="true" key="user.password"}</td>
+					<td class="value">
+						<div class="form-group"><input type="password" name="password" id="password" value="{$password|escape}" size="20" maxlength="90" class="form-control"/></div>
+					</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td><p class="help-block">{translate key="plugins.generic.dataverse.settings.passwordDescription"}</p></td>
+				</tr>
+			</table>
+		</div>
+		
+		<input type="submit" class="btn btn-success" name="save" value="{translate key="common.saveAndContinue"}"	/> 
+		<input type="button" class="btn btn-danger" value="{translate key="common.cancel"}" onclick="document.location='{plugin_url path=""}';"/>
 	</form>
-	<p><span class="formRequired">{translate key="common.requiredField"}</span></p>
 </div>
+
+<p><span class="help-block">{translate key="common.requiredField"}</span></p>
+
 {include file="common/footer.tpl"}

@@ -8,7 +8,7 @@
  * Common site sidebar menu -- help pop-up link.
  *
  *}
-<h4 class="side">Help</h4>
+<h4 class="side">{translate key="navigation.journalHelp"}</h4>
 <div class="edit-pics" id="sidebarHelp">
 	<a class="blockTitle" href="javascript:openHelp('{if $helpTopicId}{get_help_id|escape key="$helpTopicId" url="true"}{else}{url page="help"}{/if}')">{translate key="navigation.journalHelp"}</a>
 </div>

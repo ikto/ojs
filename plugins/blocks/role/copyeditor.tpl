@@ -8,6 +8,7 @@
  * Copyeditor navigation sidebar.
  *
  *}
+
 <h4 class="side">{translate key="user.role.copyeditor"}</h4>
 <div class="edit-pics" id="sidebarCopyeditor">
 	<p class="help-block">{translate key="article.submissions"}</p>

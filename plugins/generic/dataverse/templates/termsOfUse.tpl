@@ -12,8 +12,11 @@
 {assign var=pageTitle value="plugins.generic.dataverse.termsOfUse.title"}
 {include file="rt/header.tpl"}
 {/strip}
+
 <div>
 	{$termsOfUse|strip_unsafe_html}
 </div>
-<div class="separator"></div>	
+
+<div class="separator"></div>
+
 {include file="rt/footer.tpl"}

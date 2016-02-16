@@ -7,6 +7,7 @@
  *
  * Faceted search results navigation block.
  *}
+
 <div class="block plugins_generic_lucene_facets" id="luceneFacets">
 	<span class="blockTitle">{translate key="plugins.generic.lucene.faceting.title"}</span>
 

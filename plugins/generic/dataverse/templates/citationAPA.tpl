@@ -21,4 +21,3 @@
 {/if}
 {$article->getLocalizedTitle()|strip_unsafe_html}.
 <em>{$journal->getLocalizedTitle()|capitalize}{if $issue}, {$issue->getVolume()|escape}</em>{if $issue->getNumber()}({$issue->getNumber()|strip_unsafe_html}){/if}{else}</em>{/if}{if $article->getPages()}, {$article->getPages()|strip_unsafe_html}{/if}.
-

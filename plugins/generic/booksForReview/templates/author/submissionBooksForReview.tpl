@@ -9,17 +9,18 @@
  *
  *}
 
-
 <h3>{translate key="plugins.generic.booksForReview.author.booksForReview"}</h3>
-<p>{translate key="plugins.generic.booksForReview.author.submitInstructions"}:</p>
+<p class="help-block">{translate key="plugins.generic.booksForReview.author.submitInstructions"}:</p>
 
-<table width="100%" class="listing">
-{iterate from=booksForReview item=bookForReview}
-	{assign var=bookId value=$bookForReview->getId()}
-	<tr valign="top">
-		<td><input type="radio" name="bookForReviewId" id="bookForReviewId-{$bookId|escape}" value="{$bookId|escape}" /> <label for="bookForReviewId-{$bookId|escape}">{$bookForReview->getLocalizedTitle()|escape|truncate:100:"..."}</label></td>
-	</tr>
-{/iterate}
-</table>
+<div class="table-responsive">
+	<table width="100%" class="table table-striped">
+		{iterate from=booksForReview item=bookForReview}
+			{assign var=bookId value=$bookForReview->getId()}
+			<tr valign="top">
+				<td><div class="form-group"><input type="radio" name="bookForReviewId" id="bookForReviewId-{$bookId|escape}" value="{$bookId|escape}" /> <label class="control-label" for="bookForReviewId-{$bookId|escape}">{$bookForReview->getLocalizedTitle()|escape|truncate:100:"..."}</label></div></td>
+			</tr>
+		{/iterate}
+	</table>
+</div>
 
 <div class="separator"></div>

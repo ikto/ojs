@@ -11,6 +11,7 @@
  *   $filterName string
  *   $filterValue string
  *}
+
 <script type="text/javascript">
 	{if $filterName == "simpleQuery"}
 		{url|assign:"autocompleteUrl" page="lucene" op="queryAutocomplete"}

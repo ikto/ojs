@@ -10,10 +10,10 @@
 {assign var="pageTitle" value="plugins.generic.backup.link"}
 {include file="common/header.tpl"}
 
-{translate key="plugins.generic.backup.longdescription"}
+<p class="help-block">{translate key="plugins.generic.backup.longdescription"}</p>
 
 {assign var=footNoteNum value=1}
-<ul>
+<ul class="stay">
 	<li>{if $isDumpConfigured}<a href="{url op="db"}">{/if}{translate key="plugins.generic.backup.db"}{if $isDumpConfigured}</a>{else}<sup>{$footNoteNum}{assign var=dumpFootNote value=$footNoteNum}{assign var=footNoteNum value=$footNoteNum+1}</sup>{/if}</li>
 	<li>{if $isTarConfigured}<a href="{url op="files"}">{/if}{translate key="plugins.generic.backup.files"}{if $isTarConfigured}</a>{else}<sup>{$footNoteNum}{assign var=tarFootNote value=$footNoteNum}{assign var=footNoteNum value=$footNoteNum+1}</sup>{/if}</li>
 	<li>{if $isTarConfigured}<a href="{url op="code"}">{/if}{translate key="plugins.generic.backup.code"}{if $isTarConfigured}</a>{else}<sup>{$tarFootNote}</sup>{/if}</li>

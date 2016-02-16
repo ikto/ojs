@@ -7,12 +7,13 @@
  *
  * A template to be included via Templates::Manager::Sections::SectionForm::AdditionalMetadata hook.
  *}
+
 <tr valign="top">
-	<td class="label">{fieldLabel name="rankingBoost" key="plugins.generic.lucene.sectionForm.rankingBoost"}</td>
+	<td>{fieldLabel name="rankingBoost" key="plugins.generic.lucene.sectionForm.rankingBoost"}</td>
 	<td class="value">
-		<span class="instruct">{translate key="plugins.generic.lucene.sectionForm.rankingBoostInstructions"}</span><br />
-		<p><select name="rankingBoostOption" size="1" id="rankingBoostOption" class="selectMenu">
+		<span class="help-block">{translate key="plugins.generic.lucene.sectionForm.rankingBoostInstructions"}</span><br />
+		<p><div class="form-group"><select name="rankingBoostOption" size="1" id="rankingBoostOption" class="form-control">
 			{html_options options=$rankingBoostOptions selected=$rankingBoostOption}
-		</select></p>
+		</select></div></p>
 	</td>
 </tr>

@@ -8,11 +8,12 @@
  * Display book cover image as article cover image in issue table of contents.
  *
  *}
+
 {if !$article->getFileName($locale) && !$article->getHideCoverPageToc($locale) && $book->getFileName($locale)}
 	<td rowspan="2">
 		<div class="tocArticleCoverImage">
-		<a href="{url page="article" op="view" path=$articlePath}" class="file">
-		<img src="{$coverPagePath|escape}{$book->getFileName($locale)|escape}"{if $book->getCoverPageAltText($locale) != ''} alt="{$book->getCoverPageAltText($locale)|escape}"{else} alt="{translate key="plugins.generic.booksForReview.public.coverPage.altText"}"{/if}/></a>
+			<a href="{url page="article" op="view" path=$articlePath}" class="file">
+			<img class="img-responsive" src="{$coverPagePath|escape}{$book->getFileName($locale)|escape}"{if $book->getCoverPageAltText($locale) != ''} alt="{$book->getCoverPageAltText($locale)|escape}"{else} alt="{translate key="plugins.generic.booksForReview.public.coverPage.altText"}"{/if}/></a>
 		</div>
 	</td>
 {/if}
