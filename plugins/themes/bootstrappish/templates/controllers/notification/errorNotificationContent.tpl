@@ -7,6 +7,7 @@
  *
  * Display error notification content.
  *}
+
 {foreach item=message from=$errors}
 	<ul>
 		<li>{$message|escape}</li>

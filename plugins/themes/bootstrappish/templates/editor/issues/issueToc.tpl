@@ -36,104 +36,101 @@ $(document).ready(function() {
 {/if}
 
 {if not $noIssue}
-<br />
+	
+	<br />
 
-<form action="#">
-{translate key="issue.issue"}: <select name="issue" class="selectMenu" onchange="if(this.options[this.selectedIndex].value > 0) location.href='{url|escape:"javascript" op="issueToc" path="ISSUE_ID" escape=false}'.replace('ISSUE_ID', this.options[this.selectedIndex].value)" size="1">{html_options options=$issueOptions|truncate:40:"..." selected=$issueId}</select>
-</form>
+	<form role="form" action="#">
+		{translate key="issue.issue"}: <div class="form-group"><select name="issue" class="form-control" onchange="if(this.options[this.selectedIndex].value > 0) location.href='{url|escape:"javascript" op="issueToc" path="ISSUE_ID" escape=false}'.replace('ISSUE_ID', this.options[this.selectedIndex].value)" size="1">{html_options options=$issueOptions|truncate:40:"..." selected=$issueId}</select></div>
+	</form>
 
-<div class="separator"></div>
+	<div class="separator"></div>
 
-<ul class="stay">
-	<li class="current"><a href="{url op="issueToc" path=$issueId}">{translate key="issue.toc"}</a></li>
-	<li><a href="{url op="issueData" path=$issueId}">{translate key="editor.issues.issueData"}</a></li>
-	<li><a href="{url op="issueGalleys" path=$issueId}">{translate key="editor.issues.galleys"}</a></li>
-	{if $unpublished}<li><a href="{url page="issue" op="view" path=$issue->getBestIssueId()}">{translate key="editor.issues.previewIssue"}</a></li>{/if}
-	{call_hook name="Templates::Editor::Issues::IssueToc::IssuePages"}
-</ul>
+	<ul class="stay">
+		<li class="current"><a href="{url op="issueToc" path=$issueId}">{translate key="issue.toc"}</a></li>
+		<li><a href="{url op="issueData" path=$issueId}">{translate key="editor.issues.issueData"}</a></li>
+		<li><a href="{url op="issueGalleys" path=$issueId}">{translate key="editor.issues.galleys"}</a></li>
+		{if $unpublished}<li><a href="{url page="issue" op="view" path=$issue->getBestIssueId()}">{translate key="editor.issues.previewIssue"}</a></li>{/if}
+		{call_hook name="Templates::Editor::Issues::IssueToc::IssuePages"}
+	</ul>
 
-<h3>{translate key="issue.toc"}</h3>
-{url|assign:"url" op="resetSectionOrder" path=$issueId}
-{if $customSectionOrderingExists}{translate key="editor.issues.resetSectionOrder" url=$url}<br/>{/if}
-<form method="post" action="{url op="updateIssueToc" path=$issueId}" onsubmit="return confirm('{translate|escape:"jsparam" key="editor.issues.saveChanges"}')">
+	<h3>{translate key="issue.toc"}</h3>
+	{url|assign:"url" op="resetSectionOrder" path=$issueId}
+	{if $customSectionOrderingExists}{translate key="editor.issues.resetSectionOrder" url=$url}<br/>{/if}
+	<form role="form" method="post" action="{url op="updateIssueToc" path=$issueId}" onsubmit="return confirm('{translate|escape:"jsparam" key="editor.issues.saveChanges"}')">
 
-{assign var=numCols value=5}
-{if $issueAccess == $smarty.const.ISSUE_ACCESS_SUBSCRIPTION && $currentJournal->getSetting('publishingMode') == $smarty.const.PUBLISHING_MODE_SUBSCRIPTION}{assign var=numCols value=$numCols+1}{/if}
-{if $enablePublicArticleId}{assign var=numCols value=$numCols+1}{/if}
-{if $enablePageNumber}{assign var=numCols value=$numCols+1}{/if}
+		{assign var=numCols value=5}
+		{if $issueAccess == $smarty.const.ISSUE_ACCESS_SUBSCRIPTION && $currentJournal->getSetting('publishingMode') == $smarty.const.PUBLISHING_MODE_SUBSCRIPTION}{assign var=numCols value=$numCols+1}{/if}
+		{if $enablePublicArticleId}{assign var=numCols value=$numCols+1}{/if}
+		{if $enablePageNumber}{assign var=numCols value=$numCols+1}{/if}
 
-{foreach from=$sections key=sectionKey item=section}
-<h4>{$section[1]}{if $section[4]}<a href="{url op="moveSectionToc" path=$issueId d=u newPos=$section[4] sectionId=$section[0]}" class="plain">&uarr;</a>{else}&uarr;{/if} {if $section[5]}<a href="{url op="moveSectionToc" path=$issueId d=d newPos=$section[5] sectionId=$section[0]}" class="plain">&darr;</a>{else}&darr;{/if}</h4>
+		{foreach from=$sections key=sectionKey item=section}
+			<h4>{$section[1]}{if $section[4]}<a href="{url op="moveSectionToc" path=$issueId d=u newPos=$section[4] sectionId=$section[0]}" class="plain">&uarr;</a>{else}&uarr;{/if} {if $section[5]}<a href="{url op="moveSectionToc" path=$issueId d=d newPos=$section[5] sectionId=$section[0]}" class="plain">&darr;</a>{else}&darr;{/if}</h4>
+			<div class="table-responsive">
+				<table width="100%" class="table table-striped" id="issueToc-{$sectionKey|escape}">
+					<tr>
+						<td colspan="{$numCols|escape}" class="headseparator">&nbsp;</td>
+					</tr>
+					<tr class="heading" valign="bottom">
+						<td width="5%">&nbsp;</td>
+						<td width="15%"><label>{translate key="article.authors"}</label></td>
+						<td><label>{translate key="article.title"}</label></td>
+						{if $issueAccess == $smarty.const.ISSUE_ACCESS_SUBSCRIPTION && $currentJournal->getSetting('publishingMode') == $smarty.const.PUBLISHING_MODE_SUBSCRIPTION}<td width="10%"><label>{translate key="editor.issues.access"}</label></td>{/if}
+						{if $enablePublicArticleId}<td width="7%"><label>{translate key="editor.issues.publicId"}</label></td>{/if}
+						{if $enablePageNumber}<td width="7%"><label>{translate key="editor.issues.pages"}</label></td>{/if}
+						<td width="5%"><label>{translate key="common.remove"}</label></td>
+						<td width="5%"><label>{translate key="editor.issues.proofed"}</label></td>
+					</tr>
+					<tr>
+						<td colspan="{$numCols|escape}" class="headseparator">&nbsp;</td>
+					</tr>
 
-<div class="table-responsive">
-<table width="100%" class="table table-striped" id="issueToc-{$sectionKey|escape}">
-	<tr>
-		<td colspan="{$numCols|escape}" class="headseparator">&nbsp;</td>
-	</tr>
-	<tr class="heading" valign="bottom">
-		<td width="5%">&nbsp;</td>
-		<td width="15%">{translate key="article.authors"}</td>
-		<td>{translate key="article.title"}</td>
-		{if $issueAccess == $smarty.const.ISSUE_ACCESS_SUBSCRIPTION && $currentJournal->getSetting('publishingMode') == $smarty.const.PUBLISHING_MODE_SUBSCRIPTION}<td width="10%">{translate key="editor.issues.access"}</td>{/if}
-		{if $enablePublicArticleId}<td width="7%">{translate key="editor.issues.publicId"}</td>{/if}
-		{if $enablePageNumber}<td width="7%">{translate key="editor.issues.pages"}</td>{/if}
-		<td width="5%">{translate key="common.remove"}</td>
-		<td width="5%">{translate key="editor.issues.proofed"}</td>
-	</tr>
-	<tr>
-		<td colspan="{$numCols|escape}" class="headseparator">&nbsp;</td>
-	</tr>
+					{assign var="articleSeq" value=0}
+					{foreach from=$section[2] item=article name="currSection"}
+						{assign var="articleSeq" value=$articleSeq+1}
+						{assign var="articleId" value=$article->getId()}
+						<tr id="article-{$article->getPublishedArticleId()|escape}" class="data">
+							<td><a href="{url op="moveArticleToc" d=u id=$article->getPublishedArticleId()}" class="plain">&uarr;</a>&nbsp;<a href="{url op="moveArticleToc" d=d id=$article->getPublishedArticleId()}" class="plain">&darr;</a></td>
+							<td>
+								{foreach from=$article->getAuthors() item=author name=authorList}
+									{$author->getLastName()|escape}{if !$smarty.foreach.authorList.last},{/if}
+								{/foreach}
+							</td>
+							<td class="drag">{if !$isLayoutEditor}<a href="{url op="submission" path=$articleId}" class="action">{/if}{$article->getLocalizedTitle()|strip_tags|truncate:60:"..."}{if !$isLayoutEditor}</a>{/if}</td>
+							{if $issueAccess == $smarty.const.ISSUE_ACCESS_SUBSCRIPTION && $currentJournal->getSetting('publishingMode') == $smarty.const.PUBLISHING_MODE_SUBSCRIPTION}
+								<td><div class="form-group"><select name="accessStatus[{$article->getPublishedArticleId()}]" size="1" class="form-control">{html_options options=$accessOptions selected=$article->getAccessStatus()}</select></div></td>
+							{/if}
+							{if $enablePublicArticleId}
+								<td><div class="form-group"><input type="text" name="publishedArticles[{$article->getId()}]" value="{$article->getPubId('publisher-id')|escape}" size="7" maxlength="255" class="form-control" /></div></td>
+							{/if}
+							{if $enablePageNumber}<td><div class="form-group"><input type="text" name="pages[{$article->getId()}]" value="{$article->getPages()|escape}" size="7" maxlength="255" class="form-control" /></div></td>{/if}
+							<td><div class="form-group"><input type="checkbox" name="remove[{$article->getId()}]" value="{$article->getPublishedArticleId()}" /></div></td>
+							<td>
+								{if in_array($article->getId(), $proofedArticleIds)}
+									{icon name="checked"}
+								{else}
+									{icon name="unchecked"}
+								{/if}
+							</td>
+						</tr>
+					{/foreach}
+				</table>
+			</div>
+		{foreachelse}
+			<p class="help-block"><em>{translate key="editor.issues.noArticles"}</em></p>
 
-	{assign var="articleSeq" value=0}
-	{foreach from=$section[2] item=article name="currSection"}
+			<div class="separator"></div>
 
-	{assign var="articleSeq" value=$articleSeq+1}
-	{assign var="articleId" value=$article->getId()}
-	<tr id="article-{$article->getPublishedArticleId()|escape}" class="data">
-		<td><a href="{url op="moveArticleToc" d=u id=$article->getPublishedArticleId()}" class="plain">&uarr;</a>&nbsp;<a href="{url op="moveArticleToc" d=d id=$article->getPublishedArticleId()}" class="plain">&darr;</a></td>
-		<td>
-			{foreach from=$article->getAuthors() item=author name=authorList}
-				{$author->getLastName()|escape}{if !$smarty.foreach.authorList.last},{/if}
-			{/foreach}
-		</td>
-		<td class="drag">{if !$isLayoutEditor}<a href="{url op="submission" path=$articleId}" class="action">{/if}{$article->getLocalizedTitle()|strip_tags|truncate:60:"..."}{if !$isLayoutEditor}</a>{/if}</td>
-		{if $issueAccess == $smarty.const.ISSUE_ACCESS_SUBSCRIPTION && $currentJournal->getSetting('publishingMode') == $smarty.const.PUBLISHING_MODE_SUBSCRIPTION}
-		<td><select name="accessStatus[{$article->getPublishedArticleId()}]" size="1" class="selectMenu">{html_options options=$accessOptions selected=$article->getAccessStatus()}</select></td>
+		{/foreach}
+
+		<input type="submit" value="{translate key="common.save"}" class="btn btn-success" />
+		{if $unpublished && !$isLayoutEditor}
+			{* Unpublished; give the option to publish it. *}
+			<input type="button" value="{translate key="editor.issues.publishIssue"}" onclick="confirmAction('{url op="publishIssue" path=$issueId}', '{translate|escape:"jsparam" key="editor.issues.confirmPublish"}')" class="btn btn-success" />
+		{elseif !$isLayoutEditor}
+			{* Published; give the option to unpublish it. *}
+			<input type="button" value="{translate key="editor.issues.unpublishIssue"}" onclick="confirmAction('{url op="unpublishIssue" path=$issueId}', '{translate|escape:"jsparam" key="editor.issues.confirmUnpublish"}')" class="btn btn-warning" />
 		{/if}
-		{if $enablePublicArticleId}
-		<td><input type="text" name="publishedArticles[{$article->getId()}]" value="{$article->getPubId('publisher-id')|escape}" size="7" maxlength="255" class="textField" /></td>
-		{/if}
-		{if $enablePageNumber}<td><input type="text" name="pages[{$article->getId()}]" value="{$article->getPages()|escape}" size="7" maxlength="255" class="textField" /></td>{/if}
-		<td><input type="checkbox" name="remove[{$article->getId()}]" value="{$article->getPublishedArticleId()}" /></td>
-		<td>
-			{if in_array($article->getId(), $proofedArticleIds)}
-				{icon name="checked"}
-			{else}
-				{icon name="unchecked"}
-			{/if}
-		</td>
-	</tr>
-	{/foreach}
-</table>
-</div>
-{foreachelse}
-<p><em>{translate key="editor.issues.noArticles"}</em></p>
-
-<div class="separator"></div>
-{/foreach}
-
-<input type="submit" value="{translate key="common.save"}" class="btn btn-success" />
-{if $unpublished && !$isLayoutEditor}
-	{* Unpublished; give the option to publish it. *}
-	<input type="button" value="{translate key="editor.issues.publishIssue"}" onclick="confirmAction('{url op="publishIssue" path=$issueId}', '{translate|escape:"jsparam" key="editor.issues.confirmPublish"}')" class="btn btn-success" />
-{elseif !$isLayoutEditor}
-	{* Published; give the option to unpublish it. *}
-	<input type="button" value="{translate key="editor.issues.unpublishIssue"}" onclick="confirmAction('{url op="unpublishIssue" path=$issueId}', '{translate|escape:"jsparam" key="editor.issues.confirmUnpublish"}')" class="btn btn-warning" />
-{/if}
-
-</form>
-
+	</form>
 {/if}
 
 {include file="common/footer.tpl"}
-

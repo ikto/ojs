@@ -37,7 +37,7 @@ function invokeWLA() {
 <h3>{$article->getLocalizedTitle()|strip_unsafe_html}</h3>
 
 <!-- Include the real forms for each of the search engines -->
-<form id="googleScholar" method="get" action="http://scholar.google.com/scholar">
+<form role="form" id="googleScholar" method="get" action="http://scholar.google.com/scholar">
 	<input type="hidden" name="as_q" value="" />
 	<input type="hidden" name="as_sauthors" value="" />
 	<input type="hidden" name="btnG" value="Search Scholar" />
@@ -45,44 +45,41 @@ function invokeWLA() {
 	<input type="hidden" name="as_allsubj" value="all" />
 </form>
 
-<form id="wla" method="get" action="http://search.live.com/results.aspx">
+<form role="form" id="wla" method="get" action="http://search.live.com/results.aspx">
 	<input type="hidden" name="q" value="" />
 	<input type="hidden" name="scope" value="academic" />
 </form>
 
-<form id="inputForm" target="#">
+<form role="form" id="inputForm" target="#">
+	<!-- Display the form fields -->
+	<div class="table-responsive">
+		<table width="100%" class="table table-striped">
+			<tr valign="top">
+				<td width="20%"><label class="control-label" for="author">{translate key="user.role.author"}</label></td>
+				<td class="value" width="80%"><div class="form-group"><input name="author" id="author" type="text" size="20" maxlength="40" class="form-control" value="{$article->getAuthorString()|escape}" /></div></td>
+			</tr>
+			<tr valign="top">
+				<td><label class="control-label" for="title">{translate key="article.title"}</label></td>
+				<td class="value"><div class="form-group"><input type="text" id="title" name="title" size="40" maxlength="40" class="form-control" value="{$article->getLocalizedTitle()|escape}" /></div></td>
+			</tr>
+		</table>
+	</div>
 
-<!-- Display the form fields -->
-<div class="table-responsive">
-<table width="100%" class="table table-striped">
-	<tr valign="top">
-		<td width="20%"><label class="control-label" for="author">{translate key="user.role.author"}</label></td>
-		<td class="value" width="80%"><input name="author" id="author" type="text" size="20" maxlength="40" class="textField" value="{$article->getAuthorString()|escape}" /></td>
-	</tr>
-	<tr valign="top">
-		<td><label class="control-label" for="title">{translate key="article.title"}</label></td>
-		<td class="value"><input type="text" id="title" name="title" size="40" maxlength="40" class="textField" value="{$article->getLocalizedTitle()|escape}" /></td>
-	</tr>
-</table>
-</div>
-
-<!-- Display the search engine options -->
-<div class="table-responsive">
-<table class="table table-striped" width="100%">
-	<tr valign="top">
-		<td width="10%"><input value="{translate key="common.search"}" type="button" onclick="invokeGoogleScholar()" class="btn btn-info" /></td>
-		<td width="2%">1.</td>
-		<td width="88%">{translate key="rt.findingReferences.googleScholar"}</td>
-	</tr>
-	<tr valign="top">
-		<td><input value="{translate key="common.search"}" type="button" onclick="invokeWLA()" class="btn btn-info" /></td>
-		<td>2.</td>
-		<td>{translate key="rt.findingReferences.windowsLiveAcademic"}</td>
-	</tr>
-</table>
-</div>
-
+	<!-- Display the search engine options -->
+	<div class="table-responsive">
+		<table class="table table-striped" width="100%">
+			<tr valign="top">
+				<td width="10%"><input value="{translate key="common.search"}" type="button" onclick="invokeGoogleScholar()" class="btn btn-info" /></td>
+				<td width="2%">1.</td>
+				<td width="88%">{translate key="rt.findingReferences.googleScholar"}</td>
+			</tr>
+			<tr valign="top">
+				<td><input value="{translate key="common.search"}" type="button" onclick="invokeWLA()" class="btn btn-info" /></td>
+				<td>2.</td>
+				<td>{translate key="rt.findingReferences.windowsLiveAcademic"}</td>
+			</tr>
+		</table>
+	</div>
 </form>
 
 {include file="rt/footer.tpl"}
-

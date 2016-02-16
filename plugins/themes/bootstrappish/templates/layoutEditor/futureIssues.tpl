@@ -14,47 +14,47 @@
 {/strip}
 
 <ul class="stay">
-        <li class="current"><a href="{url op="futureIssues"}">{translate key="editor.navigation.futureIssues"}</a></li>
-        <li><a href="{url op="backIssues"}">{translate key="editor.navigation.issueArchive"}</a></li>
+    <li class="current"><a href="{url op="futureIssues"}">{translate key="editor.navigation.futureIssues"}</a></li>
+    <li><a href="{url op="backIssues"}">{translate key="editor.navigation.issueArchive"}</a></li>
 </ul>
 
 <br />
 
 <div id="issues" class="table-responsive">
-<table width="100%" class="table table-striped">
-	<tr>
-		<td colspan="2" class="headseparator">&nbsp;</td>
-	</tr>
-	<tr class="heading" valign="bottom">
-		<td width="80%">{translate key="issue.issue"}</td>
-		<td width="20%">{translate key="editor.issues.numArticles"}</td>
-	</tr>
-	<tr>
-		<td colspan="2" class="headseparator">&nbsp;</td>
-	</tr>
-	{iterate from=issues item=issue}
-	<tr valign="top">
-		<td><a href="{url op="issueToc" path=$issue->getId()}" class="action">{$issue->getIssueIdentification()|strip_unsafe_html|nl2br}</a></td>
-		<td>{$issue->getNumArticles()|escape}</td>
-	</tr>
-	<tr>
-		<td colspan="2" class="{if $issues->eof()}end{/if}separator">&nbsp;</td>
-	</tr>
-{/iterate}
-{if $issues->wasEmpty()}
-	<tr>
-		<td colspan="2" class="nodata">{translate key="issue.noIssues"}</td>
-	</tr>
-	<tr>
-		<td colspan="2" class="endseparator">&nbsp;</td>
-	</tr>
-{else}
-	<tr>
-		<td align="left">{page_info iterator=$issues}</td>
-		<td align="right">{page_links anchor="issues" name="issues" iterator=$issues}</td>
-	</tr>
-{/if}
-</table>
+	<table width="100%" class="table table-striped">
+		<tr>
+			<td colspan="2" class="headseparator">&nbsp;</td>
+		</tr>
+		<tr class="heading" valign="bottom">
+			<td width="80%"><label>{translate key="issue.issue"}</label></td>
+			<td width="20%"><label>{translate key="editor.issues.numArticles"}</label></td>
+		</tr>
+		<tr>
+			<td colspan="2" class="headseparator">&nbsp;</td>
+		</tr>
+		{iterate from=issues item=issue}
+			<tr valign="top">
+				<td><a href="{url op="issueToc" path=$issue->getId()}" class="action">{$issue->getIssueIdentification()|strip_unsafe_html|nl2br}</a></td>
+				<td>{$issue->getNumArticles()|escape}</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="{if $issues->eof()}end{/if}separator">&nbsp;</td>
+			</tr>
+		{/iterate}
+		{if $issues->wasEmpty()}
+			<tr>
+				<td colspan="2" class="nodata"><p class="help-block">{translate key="issue.noIssues"}</p></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="endseparator">&nbsp;</td>
+			</tr>
+		{else}
+			<tr>
+				<td align="left">{page_info iterator=$issues}</td>
+				<td align="right">{page_links anchor="issues" name="issues" iterator=$issues}</td>
+			</tr>
+		{/if}
+	</table>
 </div>
-{include file="common/footer.tpl"}
 
+{include file="common/footer.tpl"}

@@ -22,4 +22,3 @@
 		{* To hide the cell contents *}
 	</div>
 </span>
-

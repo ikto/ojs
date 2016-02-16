@@ -12,14 +12,15 @@
 {include file="common/header.tpl"}
 {/strip}
 
-<h3>{translate key="admin.languages.downloadLocales"}</h3>
+<div class="col-md-12 mag-innert-left">
+	<h3>{translate key="admin.languages.downloadLocales"}</h3>
 
-<p>{translate key="admin.languages.downloadFailed"}</p>
-<ul class="stay">
-	{foreach from=$errors item=error}<li>{$error}</li>{/foreach}
-</ul>
+	<p class="text">{translate key="admin.languages.downloadFailed"}</p>
+	<ul class="stay">
+		{foreach from=$errors item=error}<li>{$error}</li>{/foreach}
+	</ul>
 
-<a href="{url op="languages"}" class="action">{translate key="common.languages"}</a>
+	<a href="{url op="languages"}" class="action">{translate key="common.languages"}</a>
+</div>
 
 {include file="common/footer.tpl"}
-

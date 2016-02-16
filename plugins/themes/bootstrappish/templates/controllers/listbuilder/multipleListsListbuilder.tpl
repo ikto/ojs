@@ -16,6 +16,7 @@
 {elseif count($lists) == 3}
 	{assign var=widthClass value="pkp_helpers_third"}
 {/if}
+
 <script type="text/javascript">
 	$(function() {ldelim}
 		$('#{$gridId|escape}').pkpHandler(
@@ -30,7 +31,6 @@
 		);
 	});
 </script>
-
 
 <div id="{$gridId|escape}" class="pkp_controllers_grid pkp_controllers_listbuilder formWidget">
 

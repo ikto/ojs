@@ -15,7 +15,7 @@
 
 {if $message}{translate|assign:"messageTranslated" key=$message}{/if}
 
-<p>{$messageTranslated}</p>
+<p class="help-block">{$messageTranslated}</p>
 
 {if $backLink}
 	<ul>

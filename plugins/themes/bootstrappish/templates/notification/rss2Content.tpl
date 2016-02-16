@@ -22,4 +22,3 @@
 	</description>
 	<pubDate>{$notificationDateCreated|date_format:"%a, %d %b %Y %T %z"}</pubDate>
 </item>
-

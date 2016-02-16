@@ -25,4 +25,3 @@ hasSystemNotifications: '{$hasSystemNotifications}'
 		{/foreach}
 	{rdelim}
 {/if}
-

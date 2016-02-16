@@ -69,92 +69,88 @@
 {/literal}
 </script>
 
-<div id="context">
-<h3>{$article->getLocalizedTitle()|strip_unsafe_html}</h3>
+<div id="context" class="col-md-12 mag-innert-left">
+	<h3>{$article->getLocalizedTitle()|strip_unsafe_html}</h3>
+	<p class="help-block">{if $context->getDefineTerms()}{translate key="rt.context.defineTermsDescription"}{elseif $context->getAuthorTerms()}{translate key="rt.context.authorTermsDescription"}{elseif $context->getCitedBy()}{translate key="rt.context.citesContextDescription}{else}{translate key="rt.context.searchDescription"}{/if}</p>
 
-
-<p>{if $context->getDefineTerms()}{translate key="rt.context.defineTermsDescription"}{elseif $context->getAuthorTerms()}{translate key="rt.context.authorTermsDescription"}{elseif $context->getCitedBy()}{translate key="rt.context.citesContextDescription}{else}{translate key="rt.context.searchDescription"}{/if}</p>
-
-<div class="table-responsive">
-<table class="table table-striped" width="100%">
-	<form id="terms">
-	{if $context->getDefineTerms()}
-		<tr valign="top">
-			<td width="20%">{translate key="rt.context.termToDefine"}</td>
-			<td width="80%" class="value"><input name="searchTerm" value="{$defineTerm|escape}" length="40" class="textField" />
-		</tr>
-	{elseif $context->getAuthorTerms() || $context->getCitedBy()}
-		{foreach from=$article->getAuthors() item=author key=key}
-			<tr valign="top">
-				<td width="20%" align="right">
-					<input type="checkbox" checked="checked" style="checkbox" name="searchTerm{$key+1}Check" value="1" />
-				</td>
-				<td width="80%" class="value">
-					<input name="searchTerm{$key+1}" value="{$author->getFullName()|escape}" length="40" class="textField" />
-				</td>
-			</tr>
-		{/foreach}
-	{elseif $context->getGeoTerms()}
-		<tr valign="top">
-			<td width="20%">{translate key="rt.context.termToDefine"}</td>
-			<td width="80%" class="value"><input name="searchTerm" value="{$coverageGeo|escape}" length="40" class="textField" />
-		</tr>
-	{else}
-		<tr valign="top">
-			<td width="20%">{translate key="rt.context.searchTerms"}</td>
-			<td width="80%" class="value">
-				{foreach from=$keywords item=keyword name=keywords key=key}
-					<input name="searchTerm{$key+1}" value="{$keyword|trim|escape}" length="40" class="textField" />
-					{if !$smarty.foreach.keywords.last}{translate key="rt.context.and"}{/if}
-					<br />
-				{/foreach}
-			</td>
-		</tr>
-	{/if}
-	</form>
-
-
-	<form id="additionalParams">
-	{foreach from=$searchValues key=paramKey item=value}
-		<tr valign="top">
-			<td width="20%">
-				{if $paramKey == 'author'}{translate key="user.role.author"}
-				{elseif $paramKey == 'coverageGeo'}{translate key="article.coverageGeo"}
-				{elseif $paramKey == 'title'}{translate key="article.title"}
+	<div class="table-responsive">
+		<table class="table table-striped" width="100%">
+			<form role="form" id="terms">
+				{if $context->getDefineTerms()}
+					<tr valign="top">
+						<td width="20%">{translate key="rt.context.termToDefine"}</td>
+						<td width="80%" class="value"><div class="form-group"><input name="searchTerm" value="{$defineTerm|escape}" length="40" class="form-control" /></div>
+					</tr>
+				{elseif $context->getAuthorTerms() || $context->getCitedBy()}
+					{foreach from=$article->getAuthors() item=author key=key}
+						<tr valign="top">
+							<td width="20%" align="right">
+								<div class="form-group"><input type="checkbox" checked="checked" style="checkbox" name="searchTerm{$key+1}Check" value="1" /></div>
+							</td>
+							<td width="80%" class="value">
+								<div class="form-group"><input name="searchTerm{$key+1}" value="{$author->getFullName()|escape}" length="40" class="form-control" /></div>
+							</td>
+						</tr>
+					{/foreach}
+				{elseif $context->getGeoTerms()}
+					<tr valign="top">
+						<td width="20%">{translate key="rt.context.termToDefine"}</td>
+						<td width="80%" class="value"><div class="form-group"><input name="searchTerm" value="{$coverageGeo|escape}" length="40" class="form-control" /></div>
+					</tr>
+				{else}
+					<tr valign="top">
+						<td width="20%">{translate key="rt.context.searchTerms"}</td>
+						<td width="80%" class="value">
+							{foreach from=$keywords item=keyword name=keywords key=key}
+								<div class="form-group"><input name="searchTerm{$key+1}" value="{$keyword|trim|escape}" length="40" class="form-control" /></div>
+								{if !$smarty.foreach.keywords.last}{translate key="rt.context.and"}{/if}
+								<br />
+							{/foreach}
+						</td>
+					</tr>
 				{/if}
-			</td>
-			<td width="80%" class="value">
-					<input name="{$paramKey|escape}" value="{$value|escape}" length="40" class="textField" />
-			</td>
-	{/foreach}
-	</form>
-</table>
-</div>
+			</form>
 
-<div class="separator"></div>
+			<form role="form" id="additionalParams">
+				{foreach from=$searchValues key=paramKey item=value}
+					<tr valign="top">
+						<td width="20%">
+							{if $paramKey == 'author'}{translate key="user.role.author"}
+							{elseif $paramKey == 'coverageGeo'}{translate key="article.coverageGeo"}
+							{elseif $paramKey == 'title'}{translate key="article.title"}
+							{/if}
+						</td>
+						<td width="80%" class="value">
+								<div class="form-group"><input name="{$paramKey|escape}" value="{$value|escape}" length="40" class="form-control" /></div>
+						</td>
+				{/foreach}
+			</form>
+		</table>
+	</div>
 
-<div class="table-responsive">
-<table class="table table-striped" width="100%">
-	{foreach from=$searches item=search key=key name=searches}
-	<form id="search{$key+1}form" method="{if $search->getSearchPost()}post{else}get{/if}" action="{$search->getSearchUrl()|escape}">
-	{foreach from=$search->postParams item=postParam}
-		<input type="hidden" name="{$postParam.name|escape}" value="{$postParam.value|escape}" />
-	{/foreach}
-	<tr valign="top">
-		<td width="10%">
-			<input value="{translate key="common.search"}" type="button" onclick="addKeywords({$key+2});" class="btn btn-info" />
-		</td>
-		<td width="2%">{$key+1}.</td>
-		<td width="88%">{$search->getTitle()|escape} <a target="_new" href="{$search->getUrl()|escape}" class="action">{translate key="navigation.about"}</a></td>
-	</tr>
-	<tr><td colspan="3" class="{if $smarty.foreach.searches.last}end{/if}separator">&nbsp;</td></tr>
-	</form>
-	{/foreach}
-</table>
-</div>
+	<div class="separator"></div>
 
-<a href="http://pkp.sfu.ca/ojs/suggestRt" target="_new" class="action">{translate key="rt.search.suggest"}</a><br/>
+	<div class="table-responsive">
+		<table class="table table-striped" width="100%">
+			{foreach from=$searches item=search key=key name=searches}
+				<form role="form" id="search{$key+1}form" method="{if $search->getSearchPost()}post{else}get{/if}" action="{$search->getSearchUrl()|escape}">
+			{foreach from=$search->postParams item=postParam}
+				<input type="hidden" name="{$postParam.name|escape}" value="{$postParam.value|escape}" />
+			{/foreach}
+			<tr valign="top">
+				<td width="10%">
+					<input value="{translate key="common.search"}" type="button" onclick="addKeywords({$key+2});" class="btn btn-info" />
+				</td>
+				<td width="2%">{$key+1}.</td>
+				<td width="88%">{$search->getTitle()|escape} <a target="_new" href="{$search->getUrl()|escape}" class="action">{translate key="navigation.about"}</a></td>
+			</tr>
+			<tr><td colspan="3" class="{if $smarty.foreach.searches.last}end{/if}separator">&nbsp;</td></tr>
+			</form>
+			{/foreach}
+		</table>
+	</div>
+
+	<a href="http://pkp.sfu.ca/ojs/suggestRt" target="_new" class="action">{translate key="rt.search.suggest"}</a><br/>
 </div>
 
 {include file="rt/footer.tpl"}
-

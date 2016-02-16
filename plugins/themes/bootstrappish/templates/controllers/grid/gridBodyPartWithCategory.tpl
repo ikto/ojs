@@ -25,4 +25,3 @@
 		<td colspan="{$grid->getColumnsCount('indent')}">{translate key=$grid->getEmptyCategoryRowText()}</td>
 	</tr>
 </tbody>
-

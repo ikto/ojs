@@ -12,30 +12,29 @@
 {include file="common/header.tpl"}
 {/strip}
 
-<p>{translate key="rt.admin.validateUrls.description"}</p>
+<p class="help-block">{translate key="rt.admin.validateUrls.description"}</p>
 
 {iterate from=versions item=version}
-	<div id="version">
-	<h3>{$version->getTitle()|escape}</h3>
-	<ul class="stay">
-	{foreach from=$version->getContexts() item=context}
-		<li>{$context->getTitle()|escape}
-		{assign var=errors value=0}
-		{foreach from=$context->getSearches() item=search}
-			{assign var=errors value=$search|validate_url:$errors}.
-		{/foreach}
-		{foreach from=$errors item=error}
-			<br />
-			{translate key="rt.admin.validateUrls.urlIsInvalid" url=$error.url|truncate:50|escape}&nbsp;&nbsp;<a href="{url op="editSearch" path=$version->getVersionId()|to_array:$context->getContextId():$error.id}" class="action">{translate key="common.edit"}</a>
-		{foreachelse}
-			{translate key="rt.admin.validateUrls.ok"}
-		{/foreach}
-		</li>
-	{/foreach}
-	</ul>
+	<div id="version" class="col-md-12 mag-innert-left">
+		<h3>{$version->getTitle()|escape}</h3>
+		<ul class="stay">
+			{foreach from=$version->getContexts() item=context}
+				<li>{$context->getTitle()|escape}
+				{assign var=errors value=0}
+				{foreach from=$context->getSearches() item=search}
+					{assign var=errors value=$search|validate_url:$errors}.
+				{/foreach}
+				{foreach from=$errors item=error}
+					<br />
+					{translate key="rt.admin.validateUrls.urlIsInvalid" url=$error.url|truncate:50|escape}&nbsp;&nbsp;<a href="{url op="editSearch" path=$version->getVersionId()|to_array:$context->getContextId():$error.id}" class="action">{translate key="common.edit"}</a>
+				{foreachelse}
+					{translate key="rt.admin.validateUrls.ok"}
+				{/foreach}
+				</li>
+			{/foreach}
+		</ul>
 	</div>
 {/iterate}
-<p>{translate key="rt.admin.validateUrls.complete"}</p>
+<p clas="help-block">{translate key="rt.admin.validateUrls.complete"}</p>
 
 {include file="common/footer.tpl"}
-

@@ -7,6 +7,7 @@
  * Dublin Core metadata elements for articles.
  *
  *}
+
 <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
 
 {* DC.Contributor.PersonalName (reviewer) *}
@@ -93,4 +94,3 @@
 {/foreach}
 	<meta name="DC.Type" content="Text.Serial.Journal"/>
 	<meta name="DC.Type.articleType" content="{$article->getSectionTitle()|strip_tags|escape}"/>
-

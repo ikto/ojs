@@ -8,7 +8,6 @@
  * Listbuilder java script handler options.
  *}
 
-
 gridId: '{$grid->getId()|escape:javascript}',
 fetchRowUrl: '{url|escape:javascript op='fetchRow' params=$gridRequestArgs escape=false}',
 fetchOptionsUrl: '{url|escape:javascript op='fetchOptions' params=$gridRequestArgs escape=false}',

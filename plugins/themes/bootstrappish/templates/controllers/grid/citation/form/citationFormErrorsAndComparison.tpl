@@ -33,6 +33,7 @@
 		{/foreach}
 	{/foreach}
 {/strip}{/capture}
+
 <script type="text/javascript">
 	<!--
 	$(function() {ldelim}
@@ -176,6 +177,7 @@
 	{rdelim});
 	// -->
 </script>
+
 <div id="citationFormErrorsAndComparison" class="form-block">
 	{if $unsavedChanges || $isError}
 		<div id="citationFormMessages" class="help-message" title="{translate key="submission.citations.editor.details.clickToDismissMessage"}">
@@ -245,4 +247,3 @@
 		<div class="value ui-corner-all">{$generatedCitationWithMarkup}</div>
 	</div>
 </div>
-

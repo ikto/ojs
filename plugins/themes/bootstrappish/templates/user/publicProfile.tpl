@@ -20,42 +20,39 @@
 </div>
 
 <div id="mainContent">
+	<h4>
+		{$user->getFullName()|escape}
+		{if $isUserLoggedIn}
+			{url|assign:"mailUrl" page="user" op="email" to=$user->getEmail()|to_array}
+			{icon name="mail" url=$mailUrl}
+		{/if}
+	</h4>
 
-<h4>
-	{$user->getFullName()|escape}
-	{if $isUserLoggedIn}
-		{url|assign:"mailUrl" page="user" op="email" to=$user->getEmail()|to_array}
-		{icon name="mail" url=$mailUrl}
-	{/if}
-</h4>
+	<div class="table-responsive">
+		<table class="table table-striped" width="100%">
+			{if $user->getLocalizedAffiliation()}
+				<tr valign="top">
+					<td width="20%">
+						{translate key="user.affiliation"}
+					</td>
+					<td class="data" width="80%">
+						{$user->getLocalizedAffiliation()|escape|nl2br}
+					</td>
+				</tr>
+			{/if}{* $user->getLocalizedAffiliation() *}
 
-<div class="table-responsive">
-<table class="table table-striped" width="100%">
-	{if $user->getLocalizedAffiliation()}
-		<tr valign="top">
-			<td width="20%">
-				{translate key="user.affiliation"}
-			</td>
-			<td class="data" width="80%">
-				{$user->getLocalizedAffiliation()|escape|nl2br}
-			</td>
-		</tr>
-	{/if}{* $user->getLocalizedAffiliation() *}
-
-	{if $user->getLocalizedBiography()}
-		<tr valign="top">
-			<td>
-				{translate key="user.biography"}
-			</td>
-			<td class="data">
-				{$user->getLocalizedBiography()|strip_unsafe_html}
-			</td>
-		</tr>
-	{/if}{* $user->getLocalizedBiography() *}
-</table>
-</div>
-
+			{if $user->getLocalizedBiography()}
+				<tr valign="top">
+					<td>
+						{translate key="user.biography"}
+					</td>
+					<td class="data">
+						{$user->getLocalizedBiography()|strip_unsafe_html}
+					</td>
+				</tr>
+			{/if}{* $user->getLocalizedBiography() *}
+		</table>
+	</div>
 </div>{* id="mainContent" *}
 
 {include file="common/footer.tpl"}
-

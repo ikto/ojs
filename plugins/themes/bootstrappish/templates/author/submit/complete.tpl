@@ -12,19 +12,18 @@
 {include file="common/header.tpl"}
 {/strip}
 
-<div id="submissionComplete">
-<p>{translate key="author.submit.submissionComplete" journalTitle=$journal->getLocalizedTitle()}</p>
+<div id="submissionComplete" class="col-md-12 mag-innert-left">
+	<p class="help-block">{translate key="author.submit.submissionComplete" journalTitle=$journal->getLocalizedTitle()}</p>
 
-{if $canExpedite}
-	{url|assign:"expediteUrl" op="expediteSubmission" articleId=$articleId}
-	{translate key="author.submit.expedite" expediteUrl=$expediteUrl}
-{/if}
-{if $paymentButtonsTemplate }
-	{include file=$paymentButtonsTemplate orientation="vertical"}
-{/if}
+	{if $canExpedite}
+		{url|assign:"expediteUrl" op="expediteSubmission" articleId=$articleId}
+		<p class="help-block">{translate key="author.submit.expedite" expediteUrl=$expediteUrl}</p>
+	{/if}
+	{if $paymentButtonsTemplate }
+		{include file=$paymentButtonsTemplate orientation="vertical"}
+	{/if}
 
-<p>&#187; <a href="{url op="index"}">{translate key="author.track"}</a></p>
+	<p class="help-block">&#187; <a href="{url op="index"}">{translate key="author.track"}</a></p>
 </div>
 
 {include file="common/footer.tpl"}
-

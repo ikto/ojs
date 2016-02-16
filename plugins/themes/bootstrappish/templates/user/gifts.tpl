@@ -12,52 +12,52 @@
 {/strip}
 
 {if $acceptGiftSubscriptionPayments}
-<h3>{translate key="gifts.subscriptions"}</h3>
-<p>{translate key="gifts.subscriptionsDescription"}</p>
-<p><a class="action" href="{url page="gifts" op="purchaseGiftSubscription"}">{translate key="gifts.purchaseGiftSubscription"}</a></p>
+	<h3>{translate key="gifts.subscriptions"}</h3>
+	<p class="text">{translate key="gifts.subscriptionsDescription"}</p>
+	<p><a class="action" href="{url page="gifts" op="purchaseGiftSubscription"}">{translate key="gifts.purchaseGiftSubscription"}</a></p>
 
-<br />
+	<br />
 
-<div class="table-responsive">
-<table width="100%" class="table table-striped">
-	{iterate from=giftSubscriptions item=gift}
-		<tr valign="top">
-			<td width="65%">{$gift->getGiftName()|escape}</td>
-			<td width="15%">
-			{assign var="giftStatus" value=$gift->getStatus()}
-			{if $giftStatus == $smarty.const.GIFT_STATUS_NOT_REDEEMED}
-				<span class="disabled">{translate key="gifts.status.notRedeemed"}</span>
-			{elseif $giftStatus == $smarty.const.GIFT_STATUS_REDEEMED}
-				<span class="disabled">{translate key="gifts.status.redeemed"}</span>
+	<div class="table-responsive">
+		<table width="100%" class="table table-striped">
+			{iterate from=giftSubscriptions item=gift}
+				<tr valign="top">
+					<td width="65%">{$gift->getGiftName()|escape}</td>
+					<td width="15%">
+						{assign var="giftStatus" value=$gift->getStatus()}
+						{if $giftStatus == $smarty.const.GIFT_STATUS_NOT_REDEEMED}
+							<span class="disabled">{translate key="gifts.status.notRedeemed"}</span>
+						{elseif $giftStatus == $smarty.const.GIFT_STATUS_REDEEMED}
+							<span class="disabled">{translate key="gifts.status.redeemed"}</span>
+						{/if}
+					</td>
+					<td width="20%" align="right">
+						{if $giftStatus == $smarty.const.GIFT_STATUS_NOT_REDEEMED}
+							<a class="action" href="{url op="redeemGift" path=$gift->getId()}">{translate key="gifts.redeemGift"}</a>
+						{elseif $giftStatus == $smarty.const.GIFT_STATUS_REDEEMED}
+							{$gift->getDatetimeRedeemed()|escape}
+						{else}
+							&nbsp;
+						{/if}
+					</td>
+				</tr>
+				<tr valign="top">
+					<td colspan="3" class="separator">&nbsp;</td>
+				</tr>
+			{/iterate}
+			{if $giftSubscriptions->wasEmpty()}
+				<tr valign="top">
+					<td colspan="3" class="separator">&nbsp;</td>
+				</tr>
+				<tr valign="top">
+					<td colspan="3" class="nodata"><p class="help-block">{translate key="gifts.noSubscriptions"}</p></td>
+				</tr>
+				<tr valign="top">
+					<td colspan="3" class="separator">&nbsp;</td>
+				</tr>
 			{/if}
-			</td>
-			<td width="20%" align="right">
-				{if $giftStatus == $smarty.const.GIFT_STATUS_NOT_REDEEMED}
-					<a class="action" href="{url op="redeemGift" path=$gift->getId()}">{translate key="gifts.redeemGift"}</a>
-				{elseif $giftStatus == $smarty.const.GIFT_STATUS_REDEEMED}
-					{$gift->getDatetimeRedeemed()|escape}
-				{else}
-					&nbsp;
-				{/if}
-			</td>
-		</tr>
-		<tr valign="top">
-			<td colspan="3" class="separator">&nbsp;</td>
-		</tr>
-	{/iterate}
-	{if $giftSubscriptions->wasEmpty()}
-		<tr valign="top">
-			<td colspan="3" class="separator">&nbsp;</td>
-		</tr>
-		<tr valign="top">
-			<td colspan="3" class="nodata">{translate key="gifts.noSubscriptions"}</td>
-		</tr>
-		<tr valign="top">
-			<td colspan="3" class="separator">&nbsp;</td>
-		</tr>
-	{/if}
-</table>
-</div>
+		</table>
+	</div>
 {/if}
 
 {include file="common/footer.tpl"}

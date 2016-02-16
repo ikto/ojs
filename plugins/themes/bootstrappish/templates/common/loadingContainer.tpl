@@ -9,7 +9,7 @@
  *
  *}
 
-<div class="loading_container">
+<div class="loading_container" class="col-md-12 mag-innert-left">
 	<div class="pkp_helpers_progressIndicator"></div>
-	<span class="message">{translate key="common.loading"}</span>
+	<span class="help-block">{translate key="common.loading"}</span>
 </div>

@@ -7,10 +7,10 @@
  *
  * a set of grid rows within a tbody
  *}
+
 <tbody>
 	{foreach from=$rows item=row}
 		{$row}
 	{/foreach}
 	<tr></tr>
 </tbody>
-

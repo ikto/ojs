@@ -15,18 +15,17 @@
 {/strip}
 
 <div class="col-md-12 mag-innert-left">
-<p class="text">
-{if $currentJournal}
-	{translate key="about.aboutOJSJournal" ojsVersion=$ojsVersion}
-{else}
-	{translate key="about.aboutOJSSite" ojsVersion=$ojsVersion}
-{/if}
-</p>
+	<p class="text">
+		{if $currentJournal}
+			{translate key="about.aboutOJSJournal" ojsVersion=$ojsVersion}
+		{else}
+			{translate key="about.aboutOJSSite" ojsVersion=$ojsVersion}
+		{/if}
+	</p>
 
-<p class="text">
-	<img class="img-responsive" src="{$baseUrl}/{$edProcessFile}" alt="{translate key="about.aboutThisPublishingSystem.altText"}" />
-</p>
+	<p class="text">
+		<img class="img-responsive" src="{$baseUrl}/{$edProcessFile}" alt="{translate key="about.aboutThisPublishingSystem.altText"}" />
+	</p>
 </div>
 
 {include file="common/footer.tpl"}
-

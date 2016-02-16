@@ -15,4 +15,3 @@
 <span {if $cellId}id="{$cellId|escape}" {/if}class="gridCellContainer">
 	{include file="controllers/grid/gridCellContents.tpl"}
 </span>
-

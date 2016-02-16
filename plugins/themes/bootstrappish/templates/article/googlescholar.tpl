@@ -7,8 +7,9 @@
  * Metadata elements for articles based on preferred types for Google Scholar
  *
  *}
-	<meta name="gs_meta_revision" content="1.1" />
-	<meta name="citation_journal_title" content="{$currentJournal->getLocalizedTitle()|strip_tags|escape}"/>
+
+<meta name="gs_meta_revision" content="1.1" />
+<meta name="citation_journal_title" content="{$currentJournal->getLocalizedTitle()|strip_tags|escape}"/>
 {if $currentJournal->getSetting('onlineIssn')}{assign var="issn" value=$currentJournal->getSetting('onlineIssn')}
 {elseif $currentJournal->getSetting('printIssn')}{assign var="issn" value=$currentJournal->getSetting('printIssn')}
 {elseif $currentJournal->getSetting('issn')}{assign var="issn" value=$currentJournal->getSetting('issn')}
@@ -17,10 +18,10 @@
 	<meta name="citation_issn" content="{$issn|strip_tags|escape}"/>
 {/if}
 {foreach name="authors" from=$article->getAuthors() item=author}
-        <meta name="citation_author" content="{$author->getFirstName()|escape}{if $author->getMiddleName() != ""} {$author->getMiddleName()|escape}{/if} {$author->getLastName()|escape}"/>
-{if $author->getLocalizedAffiliation() != ""}
-        <meta name="citation_author_institution" content="{$author->getLocalizedAffiliation()|strip_tags|escape}"/>
-{/if}
+    <meta name="citation_author" content="{$author->getFirstName()|escape}{if $author->getMiddleName() != ""} {$author->getMiddleName()|escape}{/if} {$author->getLastName()|escape}"/>
+	{if $author->getLocalizedAffiliation() != ""}
+		<meta name="citation_author_institution" content="{$author->getLocalizedAffiliation()|strip_tags|escape}"/>
+	{/if}
 {/foreach}
 <meta name="citation_title" content="{$article->getLocalizedTitle()|strip_tags|escape}"/>
 
@@ -74,4 +75,3 @@
 		{/if}
 	{/foreach}
 {/if}
-

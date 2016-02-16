@@ -22,4 +22,3 @@
 {include file="copyeditor/$pageToDisplay.tpl"}
 
 {include file="common/footer.tpl"}
-

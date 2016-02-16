@@ -25,13 +25,14 @@
 	{assign var="passwordLengthRestrictionLocaleKey" value="user.register.passwordLengthRestriction"}
 {/if}
 
-<form class="pkp_form" id="loginChangePassword" method="post" action="{url page="login" op="savePassword"}">
+<form role="form" class="pkp_form" id="loginChangePassword" method="post" action="{url page="login" op="savePassword"}">
 {if $confirmHash}
 	<input type="hidden" value="{$confirmHash|escape}" name="confirmHash" />
 {/if}
+
 {include file="common/formErrors.tpl"}
 
-<p><p class="help-block">{if !$confirmHash}{translate key="user.login.changePasswordInstructions"}{else}{translate key="user.login.changePasswordInstructionsOneStep"}{/if}</p></p>
+<p class="help-block">{if !$confirmHash}{translate key="user.login.changePasswordInstructions"}{else}{translate key="user.login.changePasswordInstructionsOneStep"}{/if}</p>
 
 	{fbvFormArea id="loginFields"}
 		{fbvFormSection label="user.username" for="username"}

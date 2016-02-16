@@ -20,15 +20,15 @@
 
 <br/>
 
-<div id="reports">
-<h3>{translate key="manager.statistics.reports"}</h3>
-<p>{translate key="manager.statistics.reports.description"}</p>
+<div id="reports" class="col-md-12 mag-innert-left">
+	<h3>{translate key="manager.statistics.reports"}</h3>
+	<p class="help-block">{translate key="manager.statistics.reports.description"}</p>
 
-<ul class="stay">
-{foreach from=$reportPlugins key=key item=plugin}
-	<li>&#187; <a href="{url op="report" path=$plugin->getName()|escape}">{$plugin->getDisplayName()|escape}</a></li>
-{/foreach}
-</ul>
+	<ul class="stay">
+		{foreach from=$reportPlugins key=key item=plugin}
+			<li><a href="{url op="report" path=$plugin->getName()|escape}">{$plugin->getDisplayName()|escape}</a></li>
+		{/foreach}
+	</ul>
 </div>
-{include file="common/footer.tpl"}
 
+{include file="common/footer.tpl"}

@@ -17,21 +17,24 @@
 {else}
 	{url|assign:"articleUrl" page="article" op="view" path=$articleId}
 {/if}
-<div id="captureCite">
-<h3>{$article->getLocalizedTitle()|strip_unsafe_html}</h3>
 
-<form action="#">
-<label class="control-label" for="citeType">{translate key="rt.captureCite.format"}</label>&nbsp;&nbsp;<select onchange="document.location='{url|escape:"javascript" path=$articleId|to_array:$galleyId:"REPLACE"}'.replace('REPLACE', this.options[this.selectedIndex].value)">
-	{foreach from=$citationPlugins item=thisCitationPlugin}
-		<option {if $citationPlugin && $citationPlugin->getName() == $thisCitationPlugin->getName()}selected="selected" {/if}value="{$thisCitationPlugin->getName()|escape}">{$thisCitationPlugin->getCitationFormatName()|escape}</option>
-	{/foreach}
-</select>
-	
-</form>
+<div id="captureCite" class="col-md-12 mag-innert-left">
+	<h3>{$article->getLocalizedTitle()|strip_unsafe_html}</h3>
 
-{call_hook name="Template::RT::CaptureCite"}
+	<form role="form" action="#">
+		<label class="control-label" for="citeType">{translate key="rt.captureCite.format"}</label>&nbsp;&nbsp;
+		<div class="form-group">
+			<select onchange="document.location='{url|escape:"javascript" path=$articleId|to_array:$galleyId:"REPLACE"}'.replace('REPLACE', this.options[this.selectedIndex].value)" class="form-control">
+				{foreach from=$citationPlugins item=thisCitationPlugin}
+					<option {if $citationPlugin && $citationPlugin->getName() == $thisCitationPlugin->getName()}selected="selected" {/if}value="{$thisCitationPlugin->getName()|escape}">{$thisCitationPlugin->getCitationFormatName()|escape}</option>
+				{/foreach}
+			</select>
+		</div>
+	</form>
+
+	{call_hook name="Template::RT::CaptureCite"}
 </div>
+
 <div class="separator"></div>
 
 {include file="rt/footer.tpl"}
-

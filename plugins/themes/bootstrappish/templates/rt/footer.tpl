@@ -10,7 +10,7 @@
 <br />
 
 {if !$omitCloseButton}
-<input type="button" onclick="window.close()" value="{translate key="common.close"}" class="btn btn-warning" />
+	<input type="button" onclick="window.close()" value="{translate key="common.close"}" class="btn btn-warning" />
 {/if}
 
 {call_hook name="Templates::Rt::Footer::PageFooter"}
@@ -20,4 +20,3 @@
 </div>
 </body>
 </html>
-

@@ -22,4 +22,3 @@
 {include file="layoutEditor/$pageToDisplay.tpl"}
 
 {include file="common/footer.tpl"}
-

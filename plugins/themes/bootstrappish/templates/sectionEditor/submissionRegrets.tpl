@@ -29,4 +29,3 @@
 {include file="sectionEditor/submission/rounds.tpl"}
 
 {include file="common/footer.tpl"}
-

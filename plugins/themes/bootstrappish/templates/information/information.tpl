@@ -10,8 +10,9 @@
 {strip}
 {include file="common/header.tpl"}
 {/strip}
-<div id="journalInfo">
-<p>{$content|nl2br}</p>
-</div>
-{include file="common/footer.tpl"}
 
+<div id="journalInfo" class="col-md-12 mag-innert-left">
+	<p class="text">{$content|nl2br}</p>
+</div>
+
+{include file="common/footer.tpl"}

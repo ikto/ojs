@@ -6,9 +6,9 @@
  *
  * Top frame for issue galley proofing.
  *}
+
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset={$defaultCharset|escape}" />
@@ -30,16 +30,16 @@
 
 	{$additionalHeadData}
 </head>
+
 <body>
 	<div class="table-responsive">
-	<table width="100%" height="100%" class="table table-striped">
-		<tr>
-			<td align="center">
-				<a href="{url op=issueGalleys path=$issueId}" target="_top">{translate key="editor.issues.backToIssueGalleys"}</a>
-			</td>
-		</tr>
-	</table>
+		<table width="100%" height="100%" class="table table-striped">
+			<tr>
+				<td align="center">
+					<a href="{url op=issueGalleys path=$issueId}" target="_top">{translate key="editor.issues.backToIssueGalleys"}</a>
+				</td>
+			</tr>
+		</table>
 	<div>
 </body>
 </html>
-

@@ -29,4 +29,3 @@
 {include file="proofreader/submission/scheduling.tpl"}
 
 {include file="common/footer.tpl"}
-

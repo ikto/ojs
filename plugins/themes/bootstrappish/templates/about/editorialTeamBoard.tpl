@@ -16,7 +16,7 @@
 {call_hook name="Templates::About::EditorialTeam::Information"}
 
 {foreach from=$groups item=group}
-<div id="group">
+<div id="group" class="col-md-12 mag-innert-left">
 	<h4>{$group->getLocalizedTitle()}</h4>
 	{assign var=groupId value=$group->getId()}
 	{assign var=members value=$teamInfo[$groupId]}

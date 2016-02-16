@@ -34,4 +34,3 @@
 	</context>
 {/foreach}
 </version>
-

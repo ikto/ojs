@@ -224,16 +224,16 @@
 </script>
 
 {if $unprocessedCitations !== false}
-	<div id="refreshCitationListMessage" class="composite-ui">
+	<div id="refreshCitationListMessage" class="col-md-12 mag-innert-left">
 		<p>
 			<span class="control-label">{translate key="submission.citations.editor.unprocessedCitations"}</span>
 		</p>
-		<button id="refreshCitationListButton" type="button" title="{translate key="submission.citations.editor.unprocessedCitationsButtonTitle"}">{translate key="submission.citations.editor.unprocessedCitationsButton"}</button>
+		<button id="refreshCitationListButton" type="button" class="btn btn-success" title="{translate key="submission.citations.editor.unprocessedCitationsButtonTitle"}">{translate key="submission.citations.editor.unprocessedCitationsButton"}</button>
 	</div>
 {/if}
-<div id="citationEditor" class="composite-ui">
+<div id="citationEditor" class="col-md-12 mag-innert-left">
 	<div id="citationEditorMainTabs">
-		<button id="fullScreenButton" type="button">{translate key="common.fullscreen"}</button>
+		<button id="fullScreenButton" class="btn btn-success"type="button">{translate key="common.fullscreen"}</button>
 		<ul class="stay">
 			{if !$introductionHide}<li><a href="#citationEditorTabIntroduction">{translate key="submission.citations.editor.introduction"}</a></li>{/if}
 			<li><a href="#citationEditorTabEdit">{translate key="submission.citations.editor.edit"}</a></li>
@@ -250,7 +250,7 @@
 								{if $showIntroductoryMessage}{translate key="submission.citations.editor.introduction.introductionMessage" citationSetupUrl=$citationSetupUrl}{/if}
 							{else}
 								{if $showIntroductoryMessage}{translate key="submission.citations.editor.introduction.introductionMessage" citationSetupUrl=$citationSetupUrl}{/if}
-								<input id="introductionHide" type="checkbox" />{translate key="submission.citations.editor.details.dontShowMessageAgain"}
+								<div class="form-group"><input id="introductionHide" type="checkbox" />{translate key="submission.citations.editor.details.dontShowMessageAgain"}</div>
 							{/if}
 						</div>
 					</div>
@@ -281,4 +281,3 @@
 		</div>
 	</div>
 </div>
-

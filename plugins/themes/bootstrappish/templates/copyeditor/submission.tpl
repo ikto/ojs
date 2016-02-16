@@ -24,4 +24,3 @@
 {include file="copyeditor/submission/layout.tpl"}
 
 {include file="common/footer.tpl"}
-

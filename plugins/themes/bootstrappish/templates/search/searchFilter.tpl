@@ -24,11 +24,11 @@
 {if ($displayIf == "emptyFilter" && $isEmptyFilter) || ($displayIf == "activeFilter" && !$isEmptyFilter)}
 	<tr>
 		<td>
-			<label class="control-label" for="{$filterName}">{translate key=$key}</label>
+			<label class="control-label help-block" for="{$filterName}">{translate key=$key}</label>
 		</td>
 		<td class="value">
 			{if $filterType == "date"}
-				{html_select_date prefix=$filterName time=$filterValue all_extra="class=\"selectMenu\"" year_empty="" month_empty="" day_empty="" start_year="$startYear" end_year="$endYear"}
+				{html_select_date prefix=$filterName time=$filterValue all_extra="class=\"form-control\"" year_empty="" month_empty="" day_empty="" start_year="$startYear" end_year="$endYear"}
 				{if $filterName == "dateTo"}
 					<input type="hidden" name="dateToHour" value="23" />
 					<input type="hidden" name="dateToMinute" value="59" />
@@ -37,7 +37,7 @@
 			{else}
 				{capture assign="filterInput"}{call_hook name="Templates::Search::SearchResults::FilterInput" filterName=$filterName filterValue=$filterValue}{/capture}
 				{if empty($filterInput)}
-					<input type="text" name="{$filterName}" id="{$filterName}" size="40" maxlength="255" value="{$filterValue|escape}" class="textField" />
+					<div class="form-group"><input type="text" name="{$filterName}" id="{$filterName}" size="40" maxlength="255" value="{$filterValue|escape}" class="form-control" /></div>
 				{else}
 					{$filterInput}
 				{/if}

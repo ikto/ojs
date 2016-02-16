@@ -37,6 +37,7 @@
 	});
 {/literal}
 </script>
+
 <div id="inlinePdfResizer">
 	<div id="inlinePdf" class="ui-widget-content">
 		<div id='pluginMissing'>{translate key="article.pdf.pluginMissing"}</div>

@@ -15,4 +15,3 @@
 {include file="citation/citationEditor.tpl}
 
 {include file="common/footer.tpl"}
-

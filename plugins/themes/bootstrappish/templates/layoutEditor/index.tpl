@@ -12,23 +12,20 @@
 {include file="common/header.tpl"}
 {/strip}
 
-<div id="submissions">
-<h3>{translate key="article.submissions"}</h3>
-
-<ul class="stay">
-	<li>&#187; <a href="{url op="submissions" path="active"}">{translate key="common.queue.short.active"}</a></li>
-	<li>&#187; <a href="{url op="submissions" path="completed"}">{translate key="common.queue.short.completed"}</a></li>
-</ul>
+<div id="submissions" class="col-md-12 mag-innert-left">
+	<h3>{translate key="article.submissions"}</h3>
+	<ul class="stay">
+		<li><a href="{url op="submissions" path="active"}">{translate key="common.queue.short.active"}</a></li>
+		<li><a href="{url op="submissions" path="completed"}">{translate key="common.queue.short.completed"}</a></li>
+	</ul>
 </div>
 
-<div id="issues">
-<h3>{translate key="editor.navigation.issues"}</h3>
-
-<ul class="stay">
-	<li>&#187; <a href="{url op="futureIssues"}">{translate key="editor.navigation.futureIssues"}</a></li>
-	<li>&#187; <a href="{url op="backIssues"}">{translate key="editor.navigation.issueArchive"}</a></li>
-</ul>
+<div id="issues" class="col-md-12 mag-innert-left">
+	<h3>{translate key="editor.navigation.issues"}</h3>
+	<ul class="stay">
+		<li><a href="{url op="futureIssues"}">{translate key="editor.navigation.futureIssues"}</a></li>
+		<li><a href="{url op="backIssues"}">{translate key="editor.navigation.issueArchive"}</a></li>
+	</ul>
 </div>
 
 {include file="common/footer.tpl"}
-

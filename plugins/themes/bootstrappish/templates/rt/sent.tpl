@@ -12,7 +12,6 @@
 {include file="rt/header.tpl"}
 {/strip}
 
-<p>{translate key="rt.email.sent"}</p>
+<p class="help-block">{translate key="rt.email.sent"}</p>
 
 {include file="rt/footer.tpl"}
-

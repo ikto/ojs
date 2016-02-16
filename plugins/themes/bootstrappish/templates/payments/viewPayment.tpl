@@ -21,82 +21,83 @@
 <br />
 
 {if $payment}
-<div class="table-responsive">
-	<table width="100%" class="listing">
-		<tr>
-			<td colspan="4" class="headseparator">&nbsp;</td>
-		</tr>
-		<div id="payment">
-		<tr valign="top">
-		<tr>
-			<td width="25%">{translate key="manager.payment.paymentId"}</td>
-			<td>{$payment->getCompletedPaymentId()}</td>
-		</tr>
-		<tr>
-			<td width="25%">{translate key="user.username"}</td>
-			<td>
-			{if $isJournalManager}
-				<a class="action" href="{url op="userProfile" path=$payment->getUserId()}">{$payment->getUsername()|escape}</a>
-			{else}
-				{$payment->getUsername()|escape}
-			{/if}
-			</td>
-		</tr>
-		<tr>
-			<td width="25%">{translate key="manager.payment.description"}</td>
-			<td>{$payment->getName()|escape}</td>
-		</tr>
-		<tr>
-			<td width="25%">{translate key="manager.payment.timestamp"}</td>
-			<td class="nowrap">
-			{$payment->getTimestamp()|escape}
-			</td>
-		<tr>
-		<tr>
-			<td width="25%">{translate key="manager.payment.amount"}</td>
-			<td>{$payment->getAmount()|string_format:"%.2f"} ({$payment->getCurrencyCode()|escape})</td>
-		</tr>
-		<tr>
-			<td width="25%">{translate key="manager.payment.paymentMethod"}</td>
-			<td>{$payment->getPayMethodPluginName()|escape}</td>
-		</tr>		
-		<tr>
-			<td colspan="2" class="separator">&nbsp;</td>
-		</tr>
-		<tr>
-			<td width="25%">{translate key="manager.payment.details"}</td>
-			<td>
-				{if $payment->getAssocDescription()}
-					({$payment->getAssocId()|escape}) {$payment->getAssocDescription()|escape}</td>
-				{else}
-					-
+	<div class="table-responsive">
+		<table width="100%" class="listing">
+			<tr>
+				<td colspan="4" class="headseparator">&nbsp;</td>
+			</tr>
+			<div id="payment">
+				<tr valign="top">
+				<tr>
+					<td width="25%">{translate key="manager.payment.paymentId"}</td>
+					<td>{$payment->getCompletedPaymentId()}</td>
+				</tr>
+				<tr>
+					<td width="25%">{translate key="user.username"}</td>
+					<td>
+					{if $isJournalManager}
+						<a class="action" href="{url op="userProfile" path=$payment->getUserId()}">{$payment->getUsername()|escape}</a>
+					{else}
+						{$payment->getUsername()|escape}
+					{/if}
+					</td>
+				</tr>
+				<tr>
+					<td width="25%">{translate key="manager.payment.description"}</td>
+					<td>{$payment->getName()|escape}</td>
+				</tr>
+				<tr>
+					<td width="25%">{translate key="manager.payment.timestamp"}</td>
+					<td class="nowrap">
+					{$payment->getTimestamp()|escape}
+					</td>
+				<tr>
+				<tr>
+					<td width="25%">{translate key="manager.payment.amount"}</td>
+					<td>{$payment->getAmount()|string_format:"%.2f"} ({$payment->getCurrencyCode()|escape})</td>
+				</tr>
+				<tr>
+					<td width="25%">{translate key="manager.payment.paymentMethod"}</td>
+					<td>{$payment->getPayMethodPluginName()|escape}</td>
+				</tr>		
+				<tr>
+					<td colspan="2" class="separator">&nbsp;</td>
+				</tr>
+				<tr>
+					<td width="25%">{translate key="manager.payment.details"}</td>
+					<td>
+						{if $payment->getAssocDescription()}
+							({$payment->getAssocId()|escape}) {$payment->getAssocDescription()|escape}</td>
+						{else}
+							-
+						{/if}
+				</tr>
+				{if $payment->isSubscription()}
+					{assign var=subscriptionId value=$payment->getAssocId()}
+					{if $individualSubscriptionDao->subscriptionExists($subscriptionId)}
+						<tr>
+							<td colspan="2">
+								<a class="action" href="{url op="editSubscription" path="individual"|to_array:$subscriptionId}">{translate key="manager.payment.editSubscription"}</a>
+							</td>
+						</tr>
+					{elseif $institutionalSubscriptionDao->subscriptionExists($subscriptionId)}
+						<tr>
+							<td colspan="2">
+								<a class="action" href="{url op="editSubscription" path="institutional"|to_array:$subscriptionId}">{translate key="manager.payment.editSubscription"}</a>
+							</td>
+						</tr>
+					{/if}
 				{/if}
-		</tr>
-		{if $payment->isSubscription()}
-			{assign var=subscriptionId value=$payment->getAssocId()}
-			{if $individualSubscriptionDao->subscriptionExists($subscriptionId)}
 				<tr>
-					<td colspan="2">
-						<a class="action" href="{url op="editSubscription" path="individual"|to_array:$subscriptionId}">{translate key="manager.payment.editSubscription"}</a>
-					</td>
+					<td colspan="2" class="endseparator">&nbsp;</td>
 				</tr>
-			{elseif $institutionalSubscriptionDao->subscriptionExists($subscriptionId)}
-				<tr>
-					<td colspan="2">
-						<a class="action" href="{url op="editSubscription" path="institutional"|to_array:$subscriptionId}">{translate key="manager.payment.editSubscription"}</a>
-					</td>
-				</tr>
-			{/if}
-		{/if}
-		<tr>
-			<td colspan="2" class="endseparator">&nbsp;</td>
-		</tr>
-		</div>
-	</table>
+			</div>
+		</table>
 	</div>
 {else}
 	{translate key="manager.payment.paymentId"} {translate key="manager.payment.notFound"}
 {/if}
-<p><input type="button" value="{translate key="common.cancel"}" class="btn btn-danger" onclick="document.location.href='{url page="manager" op="viewPayments" escape=false}'" /></p>
-{include file="common/footer.tpl"}
 
+<p><input type="button" value="{translate key="common.cancel"}" class="btn btn-danger" onclick="document.location.href='{url page="manager" op="viewPayments" escape=false}'" /></p>
+
+{include file="common/footer.tpl"}

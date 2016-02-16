@@ -24,9 +24,10 @@
 {include file="sectionEditor/submission/management.tpl"}
 
 {if $authorFees}
-<div class="separator"></div>
 
-{include file="sectionEditor/submission/authorFees.tpl"}
+	<div class="separator"></div>
+	
+	{include file="sectionEditor/submission/authorFees.tpl"}
 {/if}
 
 <div class="separator"></div>
@@ -42,4 +43,3 @@
 {include file="submission/metadata/metadata.tpl"}
 
 {include file="common/footer.tpl"}
-

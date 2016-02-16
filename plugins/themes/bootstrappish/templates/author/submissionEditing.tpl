@@ -34,4 +34,3 @@
 {include file="author/submission/proofread.tpl"}
 
 {include file="common/footer.tpl"}
-

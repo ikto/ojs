@@ -16,7 +16,11 @@
 
 <br />
 
-{if $intro}{$intro|nl2br}{/if}
+{if $intro}
+	<div class="col-md-12 mag-innert-left">
+		{$intro|nl2br}
+	</div>
+{/if}
 
 <a name="journals"></a>
 
@@ -25,25 +29,27 @@
 {/if}
 
 {iterate from=journals item=journal}
-	{if $site->getSetting('showThumbnail')}
-		{assign var="displayJournalThumbnail" value=$journal->getLocalizedSetting('journalThumbnail')}
-		<div>
-		{if $displayJournalThumbnail && is_array($displayJournalThumbnail)}
-			{assign var="altText" value=$journal->getLocalizedSetting('journalThumbnailAltText')}
-			<div class="homepageImage"><a href="{url journal=$journal->getPath()}" class="action"><img class="img-responsive" src="{$journalFilesPath}{$journal->getId()}/{$displayJournalThumbnail.uploadName|escape:"url"}" {if $altText != ''}alt="{$altText|escape}"{else}alt="{translate key="common.pageHeaderLogo.altText"}"{/if} /></a></div>
+	<div class="col-md-12 mag-innert-left">
+		{if $site->getSetting('showThumbnail')}
+			{assign var="displayJournalThumbnail" value=$journal->getLocalizedSetting('journalThumbnail')}
+			{if $displayJournalThumbnail && is_array($displayJournalThumbnail)}
+				{assign var="altText" value=$journal->getLocalizedSetting('journalThumbnailAltText')}
+				<div class="col-md-12 mag-innert-left"><a href="{url journal=$journal->getPath()}" class="action"><img class="img-responsive" src="{$journalFilesPath}{$journal->getId()}/{$displayJournalThumbnail.uploadName|escape:"url"}" {if $altText != ''}alt="{$altText|escape}"{else}alt="{translate key="common.pageHeaderLogo.altText"}"{/if} /></a></div>
+			{/if}
 		{/if}
-		</div>
-	{/if}
-	{if $site->getSetting('showTitle')}
-		<h3>{$journal->getLocalizedTitle()|escape}</h3>
-	{/if}
-	{if $site->getSetting('showDescription')}
-		{if $journal->getLocalizedDescription()}
-			<p>{$journal->getLocalizedDescription()|nl2br}</p>
+		{if $site->getSetting('showTitle')}
+			<h3>{$journal->getLocalizedTitle()|escape}</h3>
 		{/if}
-	{/if}
-	<p><a href="{url journal=$journal->getPath()}" class="action">{translate key="site.journalView"}</a> | <a href="{url journal=$journal->getPath() page="issue" op="current"}" class="action">{translate key="site.journalCurrent"}</a> | <a href="{url journal=$journal->getPath() page="user" op="register"}" class="action">{translate key="site.journalRegister"}</a></p>
+		{if $site->getSetting('showDescription')}
+			{if $journal->getLocalizedDescription()}
+				<p>{$journal->getLocalizedDescription()|nl2br}</p>
+			{/if}
+		{/if}
+		<br/>
+		<p><a target="_blank" href="{url journal=$journal->getPath()}" class="action">{translate key="site.journalView"}</a> | <a target="_blank" href="{url journal=$journal->getPath() page="issue" op="current"}" class="action">{translate key="site.journalCurrent"}</a> | <a target="_blank" href="{url journal=$journal->getPath() page="user" op="register"}" class="action">{translate key="site.journalRegister"}</a></p>
+	</div>
 {/iterate}
+
 {if $journals->wasEmpty()}
 	{translate key="site.noJournals"}
 {/if}
@@ -52,4 +58,3 @@
 <div id="journalListPageLinks">{page_links anchor="journals" name="journals" iterator=$journals}</div>
 
 {include file="common/footer.tpl"}
-

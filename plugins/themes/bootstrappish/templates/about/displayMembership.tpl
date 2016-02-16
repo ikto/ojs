@@ -13,15 +13,14 @@
 {/strip}
 
 <div id="displayMembership" class="col-md-12 mag-innert-left">
-<h4>{$group->getLocalizedTitle()}</h4>
-{assign var=groupId value=$group->getId()}
+	<h4>{$group->getLocalizedTitle()}</h4>
+	{assign var=groupId value=$group->getId()}
 
-{foreach from=$memberships item=member}
-	{assign var=user value=$member->getUser()}
-	<div id="member"><a href="javascript:openRTWindow('{url op="editorialTeamBio" path=$user->getId()}')">{$user->getFullName()|escape}</a>{if $user->getLocalizedAffiliation()}, {$user->getLocalizedAffiliation()|escape}{/if}{if $user->getCountry()}{assign var=countryCode value=$user->getCountry()}{assign var=country value=$countries.$countryCode}, {$country|escape}{/if}</div>
-	<br />
-{/foreach}
+	{foreach from=$memberships item=member}
+		{assign var=user value=$member->getUser()}
+		<div id="member"><a href="javascript:openRTWindow('{url op="editorialTeamBio" path=$user->getId()}')">{$user->getFullName()|escape}</a>{if $user->getLocalizedAffiliation()}, {$user->getLocalizedAffiliation()|escape}{/if}{if $user->getCountry()}{assign var=countryCode value=$user->getCountry()}{assign var=country value=$countries.$countryCode}, {$country|escape}{/if}</div>
+		<br />
+	{/foreach}
 </div>
 
 {include file="common/footer.tpl"}
-

@@ -27,43 +27,43 @@ $(document).ready(function() { setupTableDND("#dragTable", {/literal}"{url op=mo
 <br/>
 
 <div id="membership" class="table-responsive">
-<table width="100%" class="table table-striped" id="dragTable">
-	<tr>
-		<td colspan="2" class="headseparator">&nbsp;</td>
-	</tr>
-	<tr class="heading" valign="bottom">
-		<td width="85%">{translate key="user.name"}</td>
-		<td width="15%">{translate key="common.action"}</td>
-	</tr>
-	<tr>
-		<td colspan="2" class="headseparator">&nbsp;</td>
-	</tr>
-{iterate from=memberships item=membership}
-	{assign var=user value=$membership->getUser()}
-	<tr valign="top" class="data" id=membership-{$membership->getUserId()}>
-		<td class="drag">{$user->getFullName()|escape}</td>
-		<td>
-			<a href="{url op="deleteMembership" path=$membership->getGroupId()|to_array:$membership->getUserId()}" onclick="return confirm('{translate|escape:"jsparam" key="manager.groups.membership.confirmDelete"}')" class="action">{translate key="common.delete"}</a>&nbsp;|&nbsp;<a href="{url op="moveMembership" d=u path=$group->getId() id=$user->getId()}">&uarr;</a>&nbsp;<a href="{url op="moveMembership" d=d path=$group->getId() id=$user->getId()}">&darr;</a>
-		</td>
-	</tr>
-{/iterate}
-{if $memberships->wasEmpty()}
-	<tr>
-		<td colspan="2" class="nodata">{translate key="manager.groups.membership.noneCreated"}</td>
-	</tr>
-	<tr>
-		<td colspan="2" class="endseparator">&nbsp;</td>
-	</tr>
-{else}
-	<tr><td colspan="2" class="endseparator">&nbsp;</td></tr>
-	<tr>
-		<td align="left">{page_info iterator=$memberships}</td>
-		<td align="right">{page_links anchor="membership" name="memberships" iterator=$memberships}</td>
-	</tr>
-{/if}
-</table>
+	<table width="100%" class="table table-striped" id="dragTable">
+		<tr>
+			<td colspan="2" class="headseparator">&nbsp;</td>
+		</tr>
+		<tr class="heading" valign="bottom">
+			<td width="85%"><label>{translate key="user.name"}</label></td>
+			<td width="15%"><label>{translate key="common.action"}</label></td>
+		</tr>
+		<tr>
+			<td colspan="2" class="headseparator">&nbsp;</td>
+		</tr>
+		{iterate from=memberships item=membership}
+			{assign var=user value=$membership->getUser()}
+			<tr valign="top" class="data" id=membership-{$membership->getUserId()}>
+				<td class="drag">{$user->getFullName()|escape}</td>
+				<td>
+					<a href="{url op="deleteMembership" path=$membership->getGroupId()|to_array:$membership->getUserId()}" onclick="return confirm('{translate|escape:"jsparam" key="manager.groups.membership.confirmDelete"}')" class="action">{translate key="common.delete"}</a>&nbsp;|&nbsp;<a href="{url op="moveMembership" d=u path=$group->getId() id=$user->getId()}">&uarr;</a>&nbsp;<a href="{url op="moveMembership" d=d path=$group->getId() id=$user->getId()}">&darr;</a>
+				</td>
+			</tr>
+		{/iterate}
+		{if $memberships->wasEmpty()}
+			<tr>
+				<td colspan="2" class="nodata"><p class="help-block">{translate key="manager.groups.membership.noneCreated"}</p></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="endseparator">&nbsp;</td>
+			</tr>
+		{else}
+			<tr><td colspan="2" class="endseparator">&nbsp;</td></tr>
+			<tr>
+				<td align="left">{page_info iterator=$memberships}</td>
+				<td align="right">{page_links anchor="membership" name="memberships" iterator=$memberships}</td>
+			</tr>
+		{/if}
+	</table>
 
-<a href="{url op="addMembership" path=$group->getId()}" class="action">{translate key="manager.groups.membership.addMember"}</a>
+	<a href="{url op="addMembership" path=$group->getId()}" class="action">{translate key="manager.groups.membership.addMember"}</a>
 </div>
-{include file="common/footer.tpl"}
 
+{include file="common/footer.tpl"}

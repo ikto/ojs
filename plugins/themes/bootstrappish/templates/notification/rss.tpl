@@ -8,6 +8,7 @@
  * RSS feed template
  *
  *}
+
 <?xml version="1.0" encoding="{$defaultCharset|escape}"?>
 <rdf:RDF
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"

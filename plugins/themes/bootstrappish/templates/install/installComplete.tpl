@@ -17,13 +17,15 @@
 {translate key="installer.installationComplete" loginUrl=$loginUrl}
 
 {if $writeConfigFailed}
-	<div id="writeConfigFailed">
+	<div id="writeConfigFailed" class="col-md-12 mag-innert-left">
 		{translate key="installer.overwriteConfigFileInstructions"}
 
-		<form action="#">
+		<form role="form" action="#">
 			<p>
 				{translate key="installer.contentsOfConfigFile"}:<br />
-				<textarea name="config" cols="80" rows="20" class="textArea" style="font-family: Courier,'Courier New',fixed-width">{$configFileContents|escape}</textarea>
+				<div class="form-group">
+					<textarea name="config" cols="80" rows="20" class="form-control" style="font-family: Courier,'Courier New',fixed-width">{$configFileContents|escape}</textarea>
+				</div>
 			</p>
 		</form>
 	</div>{* writeConfigFailed *}

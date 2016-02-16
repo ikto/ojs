@@ -13,6 +13,7 @@
  *   $fieldValue: the current value of the field
  *   $required: whether the field is required
  *}
+
 <tr{if $required} class="citation-field-required"{/if}>
 	<td class="first_column">
 		<div class="row_container">

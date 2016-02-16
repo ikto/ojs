@@ -7,9 +7,9 @@
  * Interstitial page used to display a note
  * before downloading an issue galley file
  *}
+
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -34,6 +34,7 @@
 	<meta http-equiv="refresh" content="2;URL={url op="download" path=$issueId|to_array:$galley->getBestGalleyId($currentJournal)}"/>
 	{$additionalHeadData}
 </head>
+
 <body>
 
 <div id="container">
@@ -42,11 +43,11 @@
 <div id="content">
 <h3>{translate key="issue.nonpdf.title"}</h3>
 {url|assign:"url" op="download" path=$issueId|to_array:$galley->getBestGalleyId($currentJournal)}
-<p>{translate key="article.nonpdf.note" url=$url}</p>
+<p class="help-block">{translate key="article.nonpdf.note" url=$url}</p>
 
 {if $pageFooter}
-<br /><br />
-{$pageFooter}
+	<br /><br />
+	{$pageFooter}
 {/if}
 {call_hook name="Templates::Issue::Interstitial::PageFooter"}
 </div>

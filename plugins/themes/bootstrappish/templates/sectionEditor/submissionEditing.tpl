@@ -40,4 +40,3 @@
 {include file="sectionEditor/submission/proofread.tpl"}
 
 {include file="common/footer.tpl"}
-

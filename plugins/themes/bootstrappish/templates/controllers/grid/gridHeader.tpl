@@ -7,6 +7,7 @@
  *
  * Grid header HTML markup
  *}
+
 <div class="grid_header">
 	{$gridFilterForm}
 	{if $grid->getActions($smarty.const.GRID_ACTION_POSITION_ABOVE) || $grid->getTitle()}

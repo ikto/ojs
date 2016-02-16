@@ -7,21 +7,25 @@
  *
  * List errors that occurred during form processing.
  *}
+
 {if $isError}
-	<div id="formErrors">
+	<div id="formErrors" class="col-md-12 mag-innert-left">
 		<p>
-		<span class="pkp_form_error">{translate key="form.errorsOccurred"}:</span>
-		<ul class="pkp_form_error_list">
-		{foreach key=field item=message from=$errors}
-			<li><a href="#{$field|escape}">{$message}</a></li>
-		{/foreach}
-		</ul>
+			<span class="help-block">{translate key="form.errorsOccurred"}:</span>
+			<ul class="stay">
+				{foreach key=field item=message from=$errors}
+					<li><a href="#{$field|escape}">{$message}</a></li>
+				{/foreach}
+			</ul>
 		</p>
 	</div>
-	<script type="text/javascript">{literal}
+	
+	<script type="text/javascript">
+	{literal}
 		<!--
 		// Jump to form errors.
 		window.location.hash="formErrors";
 		// -->
-	{/literal}</script>
+	{/literal}
+	</script>
 {/if}

@@ -14,22 +14,22 @@
 
 {if !empty($about)}
 	<div id="about" class="col-md-12 mag-innert-left">
-	<p class="text">{$about|nl2br}</p>
+		<p class="text">{$about|nl2br}</p>
 	</div>
 {/if}
 
 <div id="journals" class="col-md-12 mag-innert-left">
-<h3>{translate key="journal.journals"}</h3>
-<ul class="stay">
-{iterate from=journals item=journal}
-	<li class="list-group-item"> <a href="{url journal=$journal->getPath() page="about" op="index"}">{$journal->getLocalizedTitle()|escape}</a></li>
-{/iterate}
-</ul>
+	<h3>{translate key="journal.journals"}</h3>
+	
+	<ul class="list-unstyled">
+		{iterate from=journals item=journal}
+			<li class="list-group-item"> <a target="_blank" href="{url journal=$journal->getPath() page="about" op="index"}">{$journal->getLocalizedTitle()|escape}</a></li>
+		{/iterate}
+	</ul>
 </div>
 
 <div id="journals" class="col-md-12 mag-innert-left">
-<a href="{url op="aboutThisPublishingSystem"}">{translate key="about.aboutThisPublishingSystem"}</a>
+	<a target="_blank" href="{url op="aboutThisPublishingSystem"}">{translate key="about.aboutThisPublishingSystem"}</a>
 </div>
 
 {include file="common/footer.tpl"}
-

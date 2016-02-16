@@ -11,6 +11,7 @@
  *   $titleKey: the option block title translation key
  *   $availableFilters: an array with filters
  *}
+
 <div class="option-block">
 	<p>{translate key=$titleKey}</p>
 	<div>

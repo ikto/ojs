@@ -7,31 +7,32 @@
  * Subtemplate defining the submission status table.
  *
  *}
-<div id="status" class="table-responsive">
-<h3>{translate key="common.status"}</h3>
-
-<table width="100%" class="table table-striped">
-	<tr>
-		{assign var="status" value=$submission->getSubmissionStatus()}
-		<td width="20%">{translate key="common.status"}</td>
-		<td width="80%" class="value">
-			{if $status == STATUS_ARCHIVED}{translate key="submissions.archived"}
-			{elseif $status==STATUS_QUEUED_UNASSIGNED}{translate key="submissions.queuedUnassigned"}
-			{elseif $status==STATUS_QUEUED_EDITING}{translate key="submissions.queuedEditing"}
-			{elseif $status==STATUS_QUEUED_REVIEW}{translate key="submissions.queuedReview"}
-			{elseif $status==STATUS_PUBLISHED}{translate key="submissions.published"}&nbsp;&nbsp;&nbsp;&nbsp;{$issue->getIssueIdentification()|escape}
-			{elseif $status==STATUS_DECLINED}{translate key="submissions.declined"}
-			{/if}
-		</td>
-	</tr>
-	<tr>
-		<td>{translate key="submission.initiated"}</td>
-		<td colspan="2" class="value">{$submission->getDateStatusModified()|date_format:$dateFormatShort}</td>
-	</tr>
-	<tr>
-		<td>{translate key="submission.lastModified"}</td>
-		<td colspan="2" class="value">{$submission->getLastModified()|date_format:$dateFormatShort}</td>
-	</tr>
-</table>
+ 
+<div id="status" class="col-md-12 mag-innert-left">
+	<h3>{translate key="common.status"}</h3>
+	<div class="table-responsive">
+		<table width="100%" class="table table-striped">
+			<tr>
+				{assign var="status" value=$submission->getSubmissionStatus()}
+				<td width="20%">{translate key="common.status"}</td>
+				<td width="80%" class="value">
+					{if $status == STATUS_ARCHIVED}{translate key="submissions.archived"}
+					{elseif $status==STATUS_QUEUED_UNASSIGNED}{translate key="submissions.queuedUnassigned"}
+					{elseif $status==STATUS_QUEUED_EDITING}{translate key="submissions.queuedEditing"}
+					{elseif $status==STATUS_QUEUED_REVIEW}{translate key="submissions.queuedReview"}
+					{elseif $status==STATUS_PUBLISHED}{translate key="submissions.published"}&nbsp;&nbsp;&nbsp;&nbsp;{$issue->getIssueIdentification()|escape}
+					{elseif $status==STATUS_DECLINED}{translate key="submissions.declined"}
+					{/if}
+				</td>
+			</tr>
+			<tr>
+				<td>{translate key="submission.initiated"}</td>
+				<td colspan="2" class="value">{$submission->getDateStatusModified()|date_format:$dateFormatShort}</td>
+			</tr>
+			<tr>
+				<td>{translate key="submission.lastModified"}</td>
+				<td colspan="2" class="value">{$submission->getLastModified()|date_format:$dateFormatShort}</td>
+			</tr>
+		</table>
+	</div>
 </div>
-

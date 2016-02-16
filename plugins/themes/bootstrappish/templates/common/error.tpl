@@ -13,12 +13,12 @@
 {include file="common/header.tpl"}
 {/strip}
 
-<span class="errorText">{translate key=$errorMsg params=$errorParams}</span>
+<span class="help-block">{translate key=$errorMsg params=$errorParams}</span>
 
 {if $backLink}
-<ul>
-	<li><a id="backLink" href="{$backLink}">{translate key="$backLinkLabel"}</li>
-</ul>
+	<ul>
+		<li><a id="backLink" href="{$backLink}">{translate key="$backLinkLabel"}</li>
+	</ul>
 {/if}
 
 {include file="common/footer.tpl"}

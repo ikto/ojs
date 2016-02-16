@@ -22,4 +22,3 @@
 {include file="reviewer/$pageToDisplay.tpl"}
 
 {include file="common/footer.tpl"}
-

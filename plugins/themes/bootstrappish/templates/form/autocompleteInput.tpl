@@ -7,6 +7,7 @@
  *
  * an autocomplete input
  *}
+
 <script type="text/javascript">
 	$(function() {ldelim}
 		$('#{$FBV_id}_container').pkpHandler('$.pkp.controllers.AutocompleteHandler',

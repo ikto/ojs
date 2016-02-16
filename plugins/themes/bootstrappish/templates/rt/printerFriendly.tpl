@@ -7,9 +7,9 @@
  * Article View -- printer friendly version.
  *
  *}
+
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title>{$article->getFirstAuthor(true)|escape}</title>
@@ -35,6 +35,7 @@
 
 	{$additionalHeadData}
 </head>
+
 <body>
 
 <div id="container">
@@ -46,19 +47,19 @@
 <h2>{$siteTitle|escape}{if $issue},&nbsp;{$issue->getIssueIdentification(false,true)|strip_unsafe_html|nl2br}{/if}</h2>
 
 <div id="content">
-{if $galley}
-	{$galley->getHTMLContents()}
-{else}
+	{if $galley}
+		{$galley->getHTMLContents()}
+	{else}
 
-	<h3>{$article->getLocalizedTitle()|strip_unsafe_html}</h3>
-	<div><em>{$article->getAuthorString()|escape}</em></div>
-	{if $article->getLocalizedAbstract()}
-		<br />
-		<h4>{translate key="article.abstract"}</h4>
-		<br />
-		<div>{$article->getLocalizedAbstract()|strip_unsafe_html|nl2br}</div>
+		<h3>{$article->getLocalizedTitle()|strip_unsafe_html}</h3>
+		<div><em>{$article->getAuthorString()|escape}</em></div>
+		{if $article->getLocalizedAbstract()}
+			<br />
+			<h4>{translate key="article.abstract"}</h4>
+			<br />
+			<div>{$article->getLocalizedAbstract()|strip_unsafe_html|nl2br}</div>
+		{/if}
 	{/if}
-{/if}
 </div>
 
 </div>
@@ -75,4 +76,3 @@
 
 </body>
 </html>
-

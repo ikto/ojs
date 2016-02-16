@@ -14,7 +14,7 @@
 
 <ul class="stay">
 	<li>
-		<span{if $error} class="pkp_form_error"{/if}>
+		<span{if $error} class="help-block"{/if}>
 			{translate key="notification.$status"}
 		</span>
 	</li>

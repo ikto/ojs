@@ -9,6 +9,7 @@
 {include file="issue/header.tpl"}
 {url|assign:"pdfUrl" op="viewFile" path=$issueId|to_array:$galley->getBestGalleyId($currentJournal)}
 {translate|assign:"noPluginText" key='article.pdf.pluginMissing'}
+
 <script type="text/javascript">
 {literal}
 	$(document).ready(function(){
@@ -32,7 +33,8 @@
 	});
 {/literal}
 </script>
-<div id="inlinePdfResizer">
+
+<div id="inlinePdfResizer" class="col-md-12 mag-innert-left">
 	<div id="inlinePdf" class="ui-widget-content">
 		{translate key="article.pdf.pluginMissing"}
 	</div>
@@ -43,4 +45,5 @@
 	<a class="action" href="#" id="fullscreenShow">{translate key="common.fullscreen"}</a>
 	<a class="action" href="#" id="fullscreenHide">{translate key="common.fullscreenOff"}</a>
 </p>
+
 {include file="common/footer.tpl"}

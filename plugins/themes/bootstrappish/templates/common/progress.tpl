@@ -12,15 +12,14 @@
 {include file="common/header.tpl"}
 {/strip}
 
-<p>{translate key=$message}</p>
+<p class="help-block">{translate key=$message}</p>
 
-<div class="progressbar">
+<div class="progressbar" class="col-md-12 mag-innert-left">
   {call_progress_function}
 </div>
 
 {if $backLink}
-<p>&#187; <a href="{$backLink}">{translate key="$backLinkLabel"}</a></p>
+	<p>&#187; <a href="{$backLink}">{translate key="$backLinkLabel"}</a></p>
 {/if}
 
 {include file="common/footer.tpl"}
-

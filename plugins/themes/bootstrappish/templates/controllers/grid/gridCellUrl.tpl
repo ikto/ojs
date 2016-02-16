@@ -11,4 +11,3 @@
 <span id="{$cellId}">
 	<a href="{$label|escape}">{$label|escape}</a>
 </span>
-

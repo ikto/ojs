@@ -12,11 +12,10 @@
 {include file="common/header.tpl"}
 {/strip}
 
-<ul class="stay">
+<ul class="list-group">
 	{foreach from=$plugins item=plugin}
-	<li><a href="{url op="importexport" path="plugin"|to_array:$plugin->getName()}">{$plugin->getDisplayName()|escape}</a>:&nbsp;{$plugin->getDescription()|escape}</li>
+		<li class="list-group-item"><a href="{url op="importexport" path="plugin"|to_array:$plugin->getName()}">{$plugin->getDisplayName()|escape}</a>:&nbsp;<p class="help-block">{$plugin->getDescription()|escape}</p></li>
 	{/foreach}
 </ul>
 
 {include file="common/footer.tpl"}
-

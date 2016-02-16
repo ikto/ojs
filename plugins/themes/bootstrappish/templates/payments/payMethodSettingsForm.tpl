@@ -33,32 +33,29 @@ function changePaymentMethod() {
 {/literal}
 </script>
 
-<form method="post" id="paymentSettingsForm" action="{url op="savePayMethodSettings"}">
+<form role="form" method="post" id="paymentSettingsForm" action="{url op="savePayMethodSettings"}">
+	<p class="help-block">{translate key="manager.payment.paymentMethod.description"}</p>
 
-<p>{translate key="manager.payment.paymentMethod.description"}</p>
+	<div class="table-responsive">
+		<table width="100%" class="table table-striped">
+			<tr valign="top">
+				<td class="data" colspan="2">
+					{assign var=pluginIndex value=1}
+					<h4>{translate key="manager.payment.paymentMethods"}</h4>
+					{foreach from=$paymentMethodPlugins item=plugin}
+						&nbsp;<div class="form-group"><input type="radio" name="paymentMethodPluginName" id="paymentMethodPluginName-{$pluginIndex|escape}" value="{$plugin->getName()|escape}" onclick="changePaymentMethod();" {if $paymentMethodPluginName == $plugin->getName()}checked="checked" {/if}/>&nbsp;<label class="control-label" for="paymentMethodPluginName-{$pluginIndex|escape}">{$plugin->getDisplayName()|escape}</label></div><br/>
+						<p class="help-block">{$plugin->getDescription()}</p>
+						{assign var=pluginIndex value=$pluginIndex+1}
+					{/foreach}
+				</td>
+			</tr>
+			{call_hook name="Template::Manager::Payment::displayPaymentSettingsForm" plugin=$paymentMethodPluginName}
+		</table>
+	</div>
 
-<div class="table-responsive">
-<table width="100%" class="table table-striped">
-	<tr valign="top">
-		<td class="data" colspan="2">
-			{assign var=pluginIndex value=1}
-			<h4>{translate key="manager.payment.paymentMethods"}</h4>
-			{foreach from=$paymentMethodPlugins item=plugin}
-				&nbsp;<input type="radio" name="paymentMethodPluginName" id="paymentMethodPluginName-{$pluginIndex|escape}" value="{$plugin->getName()|escape}" onclick="changePaymentMethod();" {if $paymentMethodPluginName == $plugin->getName()}checked="checked" {/if}/>&nbsp;<label class="control-label" for="paymentMethodPluginName-{$pluginIndex|escape}">{$plugin->getDisplayName()|escape}</label><br/>
-				<p>{$plugin->getDescription()}</p>
-				{assign var=pluginIndex value=$pluginIndex+1}
-			{/foreach}
-		</td>
-	</tr>
-	{call_hook name="Template::Manager::Payment::displayPaymentSettingsForm" plugin=$paymentMethodPluginName}
-</table>
-</div>
+	<p><input type="submit" value="{translate key="common.save"}" class="btn btn-success" /> <input type="button" value="{translate key="common.cancel"}" class="btn btn-danger" onclick="document.location.href='{url page="manager"}'" /></p>
 
-<p><input type="submit" value="{translate key="common.save"}" class="btn btn-success" /> <input type="button" value="{translate key="common.cancel"}" class="btn btn-danger" onclick="document.location.href='{url page="manager"}'" /></p>
-
-<p><p class="help-block">{translate key="common.requiredField"}</p></p>
-
+	<p class="help-block">{translate key="common.requiredField"}</p>
 </form>
 
 {include file="common/footer.tpl"}
-

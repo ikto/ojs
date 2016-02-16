@@ -7,6 +7,7 @@
  *
  * Basic markup for extras on demand widget.
  *}
+
 <script type="text/javascript">
 	// Initialise JS handler.
 	$(function() {ldelim}
@@ -14,12 +15,14 @@
 			'$.pkp.controllers.ExtrasOnDemandHandler');
 	{rdelim});
 </script>
+
 {if !$lessDetailsText}
 	{assign var=lessDetailsText value=$moreDetailsText}
 {/if}
 {if !$lessDetailsLabel}
 	{assign var=lessDetailsLabel value=$moreDetailsLabel}
 {/if}
+
 <div id="{$id}" class="pkp_controllers_extrasOnDemand">
 	<div class="toggleExtras">
 		<span class="ui-icon"></span>

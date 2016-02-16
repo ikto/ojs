@@ -8,6 +8,7 @@
  * before downloading a file
  *
  *}
+
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -49,28 +50,28 @@
 	<script type="text/javascript" src="{$baseUrl}/plugins/themes/bootstrappish/js/easing.js"></script>
 	<link rel="stylesheet" href="{$baseUrl}/plugins/themes/bootstrappish/css/flexslider.css" type="text/css" media="screen" />
 </head>
+
 <body>
 <!--JS-->
   <script type="text/javascript" src="{$baseUrl}/plugins/themes/bootstrappish/js/bootstrap-3.1.1.min.js"></script>
 
-<!--/start-main-->
+<!--start-main-->
    <div class="main-content">
 	   <div class="container">
 	        <div class="mag-inner">
 				<div class="col-md-8 mag-innert-left">
-		<h3>{translate key="article.nonpdf.title"}</h3>
-{url|assign:"url" op="download" path=$articleId|to_array:$galley->getBestGalleyId($currentJournal)}
-<p>{translate key="article.nonpdf.note" url=$url}</p>
+					<h3>{translate key="article.nonpdf.title"}</h3>
+					{url|assign:"url" op="download" path=$articleId|to_array:$galley->getBestGalleyId($currentJournal)}
+					<p class="help-block">{translate key="article.nonpdf.note" url=$url}</p>
 
-{if $pageFooter}
-<br /><br />
-{$pageFooter}
-{/if}
-{call_hook name="Templates::Article::Interstitial::PageFooter"}
+					{if $pageFooter}
+						<br /><br />
+						{$pageFooter}
+					{/if}
+					{call_hook name="Templates::Article::Interstitial::PageFooter"}
 </div>
 </div>
 </div>
 </div>
 </body>
 </html>
-

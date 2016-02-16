@@ -27,4 +27,3 @@
 {include file="sectionEditor/submission/editorDecision.tpl"}
 
 {include file="common/footer.tpl"}
-

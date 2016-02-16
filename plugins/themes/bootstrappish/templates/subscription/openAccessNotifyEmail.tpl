@@ -29,27 +29,25 @@ Content-Type: text/html; charset={$defaultCharset|escape}
 Content-Transfer-Encoding: quoted-printable
 
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-	 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset={$defaultCharset|escape}" />
-		<link rel="stylesheet" href="{$baseUrl}/lib/pkp/styles/common.css" type="text/css" />
-		<link rel="stylesheet" href="{$baseUrl}/styles/common.css" type="text/css" />
-		{foreach from=$stylesheets item=cssUrl}
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset={$defaultCharset|escape}" />
+	<link rel="stylesheet" href="{$baseUrl}/lib/pkp/styles/common.css" type="text/css" />
+	<link rel="stylesheet" href="{$baseUrl}/styles/common.css" type="text/css" />
+	{foreach from=$stylesheets item=cssUrl}
 		<link rel="stylesheet" href="{$cssUrl}" type="text/css" />
-		{/foreach}
-		</head>
-	<body>
+	{/foreach}
+</head>
 
-	<p>{$body|escape|nl2br}</p>
-
-		<h3>{$issue->getIssueIdentification()}<br />{translate key="issue.toc"}</h3>
-		{foreach name=sections from=$publishedArticles item=section key=sectionId}
-			{if $section.title}<h4>{$section.title|escape}</h4>{/if}
-
-			{foreach from=$section.articles item=article}
-				<div class="table-responsive">
+<body>
+	<p class="text">{$body|escape|nl2br}</p>
+	<h3>{$issue->getIssueIdentification()}<br />{translate key="issue.toc"}</h3>
+		
+	{foreach name=sections from=$publishedArticles item=section key=sectionId}
+		{if $section.title}<h4>{$section.title|escape}</h4>{/if}
+		{foreach from=$section.articles item=article}
+			<div class="table-responsive">
 				<table class="table table-striped" width="100%">
 					<tr>
 						<td>{$article->getLocalizedTitle()|strip_unsafe_html}</td>
@@ -70,16 +68,17 @@ Content-Transfer-Encoding: quoted-printable
 							{/foreach}
 						</td>
 						<td align="right">{if $article->getPages()}{$article->getPages()|escape}{else}&nbsp;{/if}</td>
-						</tr>
-					</table>
-					</div>
-				{/foreach}
-			{if !$smarty.foreach.sections.last}
-				<div class="separator"></div>
-			{/if}
+					</tr>
+				</table>
+			</div>
 		{/foreach}
-		<pre>{literal}{$templateSignature}{/literal}</pre>
-	</body>
+		{if !$smarty.foreach.sections.last}
+			<div class="separator"></div>
+		{/if}
+	{/foreach}
+	
+	<pre>{literal}{$templateSignature}{/literal}</pre>
+</body>
 </html>
 
 --{$mimeBoundary}--

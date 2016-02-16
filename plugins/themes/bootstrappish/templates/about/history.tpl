@@ -13,10 +13,9 @@
 {/strip}
 
 <div class="col-md-12 mag-innert-left">
-<p class="text">
-{$history}
-</p>
+	<p class="text">
+		{$history}
+	</p>
 </div>
 
 {include file="common/footer.tpl"}
-

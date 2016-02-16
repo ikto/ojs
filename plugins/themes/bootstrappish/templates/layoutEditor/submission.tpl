@@ -28,4 +28,3 @@
 {include file="layoutEditor/submission/scheduling.tpl"}
 
 {include file="common/footer.tpl"}
-

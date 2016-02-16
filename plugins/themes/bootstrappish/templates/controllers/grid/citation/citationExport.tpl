@@ -7,6 +7,7 @@
  *
  * Formatted citation export
  *}
+
 <div id="citationEditorExportCanvas" class="canvas">
 	<div id="citationEditorExportPane" class="pane text-pane">
 		{if $errorMessage}

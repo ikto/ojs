@@ -15,12 +15,11 @@
 {/strip}
 
 <div class="table-responsive">
-<table class="table table-striped" id="announcementDescription" width="100%">
-	<tr>
-		<td>{$announcement->getLocalizedDescription()|nl2br}</td>
-	</tr>
-</table>
+	<table class="table table-striped" id="announcementDescription" width="100%">
+		<tr>
+			<td>{$announcement->getLocalizedDescription()|nl2br}</td>
+		</tr>
+	</table>
 </div>
 
 {include file="common/footer.tpl"}
-

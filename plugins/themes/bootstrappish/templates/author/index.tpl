@@ -19,17 +19,16 @@
 
 <br />
 
-<div class="col-md-12 mag-innert-left">
 {include file="author/$pageToDisplay.tpl"}
-</div>
 
 <div id="submitStart" class="col-md-12 mag-innert-left">
-<h4>{translate key="author.submit.startHereTitle"}</h4>
-{url|assign:"submitUrl" op="submit"}
-{translate submitUrl=$submitUrl key="author.submit.startHereLink"}<br />
+	<h4>{translate key="author.submit.startHereTitle"}</h4>
+	<p class="help-block">
+	{url|assign:"submitUrl" op="submit"}
+	{translate submitUrl=$submitUrl key="author.submit.startHereLink"}
+	</p><br />
 </div>
 
 {call_hook name="Templates::Author::Index::AdditionalItems"}
 
 {include file="common/footer.tpl"}
-

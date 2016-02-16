@@ -14,100 +14,96 @@
 {/strip}
 
 {if $journals}
-<h3>Archive of Published Issues</h3>
+	<h3>Archive of Published Issues</h3>
 
-<ul class="stay">
-{iterate from=journals item=journal}
-	{if $journal->getSetting('enableLockss')}<li><a href="{url journal=$journal->getPath() page="gateway" op="lockss"}">{$journal->getLocalizedTitle()|escape}</a></li>{/if}
-{/iterate}
-</ul>
+	<ul class="stay">
+		{iterate from=journals item=journal}
+			{if $journal->getSetting('enableLockss')}<li><a href="{url journal=$journal->getPath() page="gateway" op="lockss"}">{$journal->getLocalizedTitle()|escape}</a></li>{/if}
+		{/iterate}
+	</ul>
+	
 {else}
+	<p>{if $prevYear !== null}<a href="{url op="lockss" year=$prevYear}" class="action">&lt;&lt; Previous</a>{else}<span class="disabled heading">&lt;&lt; Previous</span>{/if} | {if $nextYear !== null}<a href="{url op="lockss" year=$nextYear}" class="action">Next &gt;&gt;</a>{else}<span class="disabled heading">Next &gt;&gt;</span>{/if}</p>
+	<h3>Archive of Published Issues: {$year|escape}</h3>
 
-<p>{if $prevYear !== null}<a href="{url op="lockss" year=$prevYear}" class="action">&lt;&lt; Previous</a>{else}<span class="disabled heading">&lt;&lt; Previous</span>{/if} | {if $nextYear !== null}<a href="{url op="lockss" year=$nextYear}" class="action">Next &gt;&gt;</a>{else}<span class="disabled heading">Next &gt;&gt;</span>{/if}</p>
+	<ul class="stay">
+		{iterate from=issues item=issue}
+			<li><a href="{url page="issue" op="view" path=$issue->getBestIssueId($journal)}">{$issue->getIssueIdentification()|strip_unsafe_html|nl2br}</a></li>
+		{/iterate}
+	</ul>
 
-<h3>Archive of Published Issues: {$year|escape}</h3>
+	{if $showInfo}
+		<br />
 
-<ul class="stay">
-{iterate from=issues item=issue}
-	<li><a href="{url page="issue" op="view" path=$issue->getBestIssueId($journal)}">{$issue->getIssueIdentification()|strip_unsafe_html|nl2br}</a></li>
-{/iterate}
-</ul>
+		<div class="separator"></div>
 
-{if $showInfo}
-<br />
+		<h3>Front Matter</h3>
+		<p class="help-block">Front Matter associated with this Archival Unit includes:</p>
 
-<div class="separator"></div>
+		<ul class="stay">
+			<li><a href="{url page="about"}">About the Journal</a></li>
+			<li><a href="{url page="about" op="submissions"}">Submission Guidelines</a></li>
+			<li><a href="{url page="about" op="contact"}">Contact Information</a></li>
+		</ul>
 
-<h3>Front Matter</h3>
+		<br />
 
-<p>Front Matter associated with this Archival Unit includes:</p>
+		<div class="separator"></div>
 
-<ul class="stay">
-	<li><a href="{url page="about"}">About the Journal</a></li>
-	<li><a href="{url page="about" op="submissions"}">Submission Guidelines</a></li>
-	<li><a href="{url page="about" op="contact"}">Contact Information</a></li>
-</ul>
+		<h3>Metadata</h3>
+		<p class="help-block">Metadata associated with this Archival Unit includes:</p>
 
-<br />
-
-<div class="separator"></div>
-
-<h3>Metadata</h3>
-
-<p>Metadata associated with this Archival Unit includes:</p>
-
-<div class="table-responsive">
-<table width="100%" class="table table-striped">
-<tr valign="top">
-	<td width="20%">Journal URL</td>
-	<td width="80%" class="value"><a href="{$journal->getUrl()|escape}">{$journal->getUrl()|escape}</a></td>
-</tr>
-<tr valign="top">
-	<td>Title</td>
-	<td class="value">{$journal->getLocalizedTitle()|escape}</td>
-</tr>
-<tr valign="top">
-	<td>Publisher</td>
-	<td class="value"><a href="{$journal->getSetting('publisherUrl')|escape}">{$journal->getSetting('publisherInstitution')|escape}</a></td>
-</tr>
-<tr valign="top">
-	<td>Description</td>
-	<td class="value">{$journal->getLocalizedSetting('searchDescription')|escape}</td>
-</tr>
-<tr valign="top">
-	<td>Keywords</td>
-	<td class="value">{$journal->getLocalizedSetting('searchKeywords')|escape}</td>
-</tr>
-{if $journal->getSetting('issn')}
-<tr valign="top">
-	<td>ISSN</td>
-	<td class="value">{$journal->getSetting('issn')|escape}</td>
-</tr>
-{/if}
-<tr valign="top">
-	<td>Language(s)</td>
-	<td class="value">{foreach from=$locales key=localeKey item=localeName}{$localeName|escape} ({$localeKey|escape})<br />{/foreach}</td>
-</tr>
-<tr valign="top">
-	<td>Publisher Email</td>
-	<td class="value">{mailto address=$journal->getSetting('contactEmail')|escape encode="hex"}</td>
-</tr>
-{if $journal->getLocalizedSetting('copyrightNotice')}
-<tr valign="top">
-	<td>Copyright</td>
-	<td class="value">{$journal->getLocalizedSetting('copyrightNotice')|nl2br}</td>
-</tr>
-{/if}
-{if $journal->getLocalizedSetting('openAccessPolicy')}
-<tr valign="top">
-	<td>Rights</td>
-	<td class="value">{$journal->getLocalizedSetting('openAccessPolicy')|nl2br}</td>
-</tr>
-{/if}
-</table>
-<div>
-{/if}
-
+		<div class="table-responsive">
+			<table width="100%" class="table table-striped">
+			<tr valign="top">
+				<td width="20%">Journal URL</td>
+				<td width="80%" class="value"><a href="{$journal->getUrl()|escape}">{$journal->getUrl()|escape}</a></td>
+			</tr>
+			<tr valign="top">
+				<td>Title</td>
+				<td class="value">{$journal->getLocalizedTitle()|escape}</td>
+			</tr>
+			<tr valign="top">
+				<td>Publisher</td>
+				<td class="value"><a href="{$journal->getSetting('publisherUrl')|escape}">{$journal->getSetting('publisherInstitution')|escape}</a></td>
+			</tr>
+			<tr valign="top">
+				<td>Description</td>
+				<td class="value">{$journal->getLocalizedSetting('searchDescription')|escape}</td>
+			</tr>
+			<tr valign="top">
+				<td>Keywords</td>
+				<td class="value">{$journal->getLocalizedSetting('searchKeywords')|escape}</td>
+			</tr>
+			{if $journal->getSetting('issn')}
+				<tr valign="top">
+					<td>ISSN</td>
+					<td class="value">{$journal->getSetting('issn')|escape}</td>
+				</tr>
+			{/if}
+			<tr valign="top">
+				<td>Language(s)</td>
+				<td class="value">{foreach from=$locales key=localeKey item=localeName}{$localeName|escape} ({$localeKey|escape})<br />{/foreach}</td>
+			</tr>
+			<tr valign="top">
+				<td>Publisher Email</td>
+				<td class="value">{mailto address=$journal->getSetting('contactEmail')|escape encode="hex"}</td>
+			</tr>
+			{if $journal->getLocalizedSetting('copyrightNotice')}
+				<tr valign="top">
+					<td>Copyright</td>
+					<td class="value">{$journal->getLocalizedSetting('copyrightNotice')|nl2br}</td>
+				</tr>
+			{/if}
+			{if $journal->getLocalizedSetting('openAccessPolicy')}
+				<tr valign="top">
+					<td>Rights</td>
+					<td class="value">{$journal->getLocalizedSetting('openAccessPolicy')|nl2br}</td>
+				</tr>
+			{/if}
+			</table>
+		<div>
+	{/if}
 {/if}
 
 <br /><br />
@@ -125,4 +121,3 @@
 </div>
 
 {include file="common/footer.tpl"}
-

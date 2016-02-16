@@ -8,6 +8,7 @@
  * Atom feed template
  *
  *}
+
 <?xml version="1.0" encoding="{$defaultCharset|escape}"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<id>{$selfUrl|escape}</id>

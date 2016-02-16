@@ -7,22 +7,23 @@
  * Subtemplate defining the scheduling view.
  *
  *}
-<div id="scheduling">
-<h3>{translate key="submission.scheduling"}</h3>
 
-{if $issue}
-	{assign var=issueName value=$issue->getIssueIdentification()}
-{else}
-	{translate|assign:"issueName" key="submission.scheduledIn.tba"}
-{/if}
+<div id="scheduling" class="col-md-12 mag-innert-left">
+	<h3>{translate key="submission.scheduling"}</h3>
 
-{translate key="submission.scheduledIn" issueName=$issueName}
-
-{if $issue}
-	{if $issue->getPublished()}
-		<a href="{url page="issue" op="view" path=$issue->getBestIssueId()}" class="action">{translate key="issue.toc"}</a>
+	{if $issue}
+		{assign var=issueName value=$issue->getIssueIdentification()}
 	{else}
-		<a href="{url op="issueToc" path=$issue->getId()}" class="action">{translate key="issue.toc"}</a>
+		{translate|assign:"issueName" key="submission.scheduledIn.tba"}
 	{/if}
-{/if}
+
+	{translate key="submission.scheduledIn" issueName=$issueName}
+
+	{if $issue}
+		{if $issue->getPublished()}
+			<a href="{url page="issue" op="view" path=$issue->getBestIssueId()}" class="action">{translate key="issue.toc"}</a>
+		{else}
+			<a href="{url op="issueToc" path=$issue->getId()}" class="action">{translate key="issue.toc"}</a>
+		{/if}
+	{/if}
 </div>

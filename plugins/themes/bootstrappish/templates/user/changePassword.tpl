@@ -14,35 +14,35 @@
 {/strip}
 
 <div id="changePassword">
-<form method="post" action="{url op="savePassword"}">
+	<form role="form" method="post" action="{url op="savePassword"}">
 
-{include file="common/formErrors.tpl"}
+		{include file="common/formErrors.tpl"}
 
-<p><p class="help-block">{translate key="user.profile.changePasswordInstructions"}</p></p>
+		<p class="help-block">{translate key="user.profile.changePasswordInstructions"}</p>
 
-<div class="table-responsive">
-<table class="table table-striped" width="100%">
-<tr valign="top">
-	<td width="20%">{fieldLabel name="oldPassword" key="user.profile.oldPassword"}</td>
-	<td width="80%" class="value"><input type="password" name="oldPassword" id="oldPassword" value="{$oldPassword|escape}" size="20" maxlength="32" class="textField" /></td>
-</tr>
-<tr valign="top">
-	<td>{fieldLabel name="password" key="user.profile.newPassword"}</td>
-	<td class="value"><input type="password" name="password" value="{$password|escape}" id="password" size="20" maxlength="32" class="textField" /></td>
-</tr>
-<tr valign="top">
-	<td></td>
-	<td><p class="help-block">{translate key="user.register.passwordLengthRestriction" length=$minPasswordLength}</p></td>
-</tr>
-<tr valign="top">
-	<td>{fieldLabel name="password2" key="user.profile.repeatNewPassword"}</td>
-	<td class="value"><input type="password" name="password2" id="password2" value="{$password2|escape}" size="20" maxlength="32" class="textField" /></td>
-</tr>
-</table>
+		<div class="table-responsive">
+			<table class="table table-striped" width="100%">
+				<tr valign="top">
+					<td width="20%">{fieldLabel name="oldPassword" key="user.profile.oldPassword"}</td>
+					<td width="80%" class="value"><div class="form-group"><input type="password" name="oldPassword" id="oldPassword" value="{$oldPassword|escape}" size="20" maxlength="32" class="form-control" /></div></td>
+				</tr>
+				<tr valign="top">
+					<td>{fieldLabel name="password" key="user.profile.newPassword"}</td>
+					<td class="value"><div class="form-group"><input type="password" name="password" value="{$password|escape}" id="password" size="20" maxlength="32" class="form-control" /></div></td>
+				</tr>
+				<tr valign="top">
+					<td></td>
+					<td><p class="help-block">{translate key="user.register.passwordLengthRestriction" length=$minPasswordLength}</p></td>
+				</tr>
+				<tr valign="top">
+					<td>{fieldLabel name="password2" key="user.profile.repeatNewPassword"}</td>
+					<td class="value"><div class="form-group"><input type="password" name="password2" id="password2" value="{$password2|escape}" size="20" maxlength="32" class="form-control" /></div></td>
+				</tr>
+			</table>
+		</div>
+
+		<p><input type="submit" value="{translate key="common.save"}" class="btn btn-success" /> <input type="button" value="{translate key="common.cancel"}" class="btn btn-danger" onclick="document.location.href='{url page="user" escape=false}'" /></p>
+	</form>
 </div>
 
-<p><input type="submit" value="{translate key="common.save"}" class="btn btn-success" /> <input type="button" value="{translate key="common.cancel"}" class="btn btn-danger" onclick="document.location.href='{url page="user" escape=false}'" /></p>
-</form>
-</div>
 {include file="common/footer.tpl"}
-

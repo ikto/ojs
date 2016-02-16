@@ -37,5 +37,4 @@
 <script type="text/javascript" src="{$baseUrl}/plugins/themes/bootstrappish/js/easing.js"></script>
 <script type="text/javascript" src="{$baseUrl}/plugins/themes/bootstrappish/js/jquery.flexisel.js"></script>
 <script type="text/javascript" src="{$baseUrl}/plugins/themes/bootstrappish/js/move-top.js"></script>
-<script type="text/javascript" src="{$baseUrl}/plugins/themes/bootstrappish/js/owl.carousel.js"></script>
 <script type="text/javascript" src="{$baseUrl}/plugins/themes/bootstrappish/js/responsiveslides.min.js"></script>

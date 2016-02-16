@@ -8,7 +8,6 @@
  * Form section.
  *}
 
-
 <div {if $FBV_id}id="{$FBV_id|escape}" {/if}class="section {$FBV_class|escape} {$FBV_layoutInfo|escape}">
 	{if $FBV_label}<label>{translate key=$FBV_label|escape}</label>{/if}
 	{if $FBV_description}<span><label class="sub_label">{if $FBV_translate}{translate key=$FBV_description}{else}{$FBV_description|strip_unsafe_html}{/if}</label></span>{/if}

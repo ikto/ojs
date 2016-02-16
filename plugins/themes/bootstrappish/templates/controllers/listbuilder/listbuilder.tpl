@@ -24,7 +24,6 @@
 	});
 </script>
 
-
 <div id="{$gridId|escape}" class="pkp_controllers_grid pkp_controllers_listbuilder formWidget">
 
 	{* Use this disabled input to store LB deletions. See ListbuilderHandler.js *}
@@ -38,4 +37,3 @@
 		{/if}
 	</div>
 </div>
-
