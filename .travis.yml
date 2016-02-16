@@ -16,6 +16,8 @@ addons:
 git:
   # We have to init submodules ourselves to make it recursive
   submodules: false
+# Use standard archtecture instead of container-based
+sudo: required
 
 before_install:
   # Start submodules
