@@ -6,3 +6,6 @@ files
 .project
 .buildpath
 .settings
+
+# Specially for templates in bootstrappish theme (to override 'files' entry above)
+!/plugins/themes/bootstrappish/templates/manager/files
