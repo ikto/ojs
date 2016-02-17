@@ -15,7 +15,7 @@
 #  <patch-dir>: A directory containg .tar.gz files of previous releases to create patches from
 #
 
-GITREP=git://github.com/pkp/ojs.git
+GITREP=git://github.com/ikto/ojs-science.git
 
 if [ -z "$3" ]; then
 	echo "Usage: $0 <version> <tag>-<branch> <patch_dir>";
@@ -25,7 +25,7 @@ fi
 VERSION=$1
 TAG=$2
 PATCHDIR=${3-}
-PREFIX=ojs
+PREFIX=ikto-ojs-science
 BUILD=$PREFIX-$VERSION
 TMPDIR=`mktemp -d $PREFIX.XXXXXX` || exit 1
 
