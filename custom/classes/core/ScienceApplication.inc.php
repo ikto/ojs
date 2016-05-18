@@ -16,21 +16,21 @@ class ScienceApplication extends Application {
         HookRegistry::register('LoadHandler', array($this, 'hookLoadHandlerCallback'));
     }
 
-    function getDAOMap() {
-        return array_merge(parent::getDAOMap(), array(
-            'UserDAO' => 'custom.classes.user.ScienceUserDAO',
-        ));
-    }
-
     function hookLoadHandlerCallback($hookName, $args) {
         if (empty($args[0]) || empty($args[1])) {
             return false;
         }
 
-        if (($args[0] == 'admin') && ($args[1] == 'clearTemplateCache')) {
-            define('HANDLER_CLASS', 'ScienceAdminFunctionsHandler');
-            import('custom.pages.admin.ScienceAdminFunctionsHandler');
-            return true;
+        if ($args[0] == 'admin') {
+            switch ($args[1]) {
+                case 'clearTemplateCache':
+                case 'clearDataCache':
+                    define('HANDLER_CLASS', 'ScienceAdminFunctionsHandler');
+                    import('custom.pages.admin.ScienceAdminFunctionsHandler');
+
+                    return true;
+                    break;
+            }
         }
 
         return false;
