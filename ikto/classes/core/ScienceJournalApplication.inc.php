@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file custom/classes/core/ScienceApplication.inc.php
+ * @file ikto/classes/core/ScienceApplication.inc.php
  *
  * This file contains an overridden application class
  * for specific purposes of certain website.
@@ -9,8 +9,8 @@
 
 import('classes.core.Application');
 
-class ScienceApplication extends Application {
-    function ScienceApplication() {
+class ScienceJournalApplication extends Application {
+    function ScienceJournalApplication() {
         parent::Application();
 
         HookRegistry::register('LoadHandler', array($this, 'hookLoadHandlerCallback'));
@@ -25,8 +25,8 @@ class ScienceApplication extends Application {
             switch ($args[1]) {
                 case 'clearTemplateCache':
                 case 'clearDataCache':
-                    define('HANDLER_CLASS', 'ScienceAdminFunctionsHandler');
-                    import('custom.pages.admin.ScienceAdminFunctionsHandler');
+                    define('HANDLER_CLASS', 'ScienceJournalAdminFunctionsHandler');
+                    import('ikto.pages.admin.ScienceJournalAdminFunctionsHandler');
 
                     return true;
                     break;

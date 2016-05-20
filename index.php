@@ -57,7 +57,7 @@
 
 // Initialize global environment
 define('INDEX_FILE_LOCATION', __FILE__);
-require(__DIR__ . '/custom/includes/bootstrap.inc.php');
+require(__DIR__ . '/ikto/includes/bootstrap.inc.php');
 
 // Serve the request
 $application =& PKPApplication::getApplication();

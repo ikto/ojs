@@ -2,7 +2,7 @@
 
 import('pages.admin.AdminFunctionsHandler');
 
-class ScienceAdminFunctionsHandler extends AdminFunctionsHandler {
+class ScienceJournalAdminFunctionsHandler extends AdminFunctionsHandler {
 
     /**
      * Clear compiled templates.

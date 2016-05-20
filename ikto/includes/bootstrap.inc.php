@@ -5,7 +5,7 @@
  */
 
 /**
- * @file custom/includes/bootstrap.inc.php
+ * @file ikto/includes/bootstrap.inc.php
  *
  * Mostly copied from includes/bootstrap.inc.php from PKP lib.
  * Need to properly override an application class.
@@ -51,8 +51,8 @@ ini_set('include_path', '.'
 require(BASE_SYS_DIR . '/lib/pkp/includes/functions.inc.php');
 
 // Initialize the application environment
-import('custom.classes.core.ScienceApplication');
+import('ikto.classes.core.ScienceJournalApplication');
 // FIXME: As long as we support PHP4 we cannot use the return
 // value from the new statement directly. See http://pkp.sfu.ca/wiki/index.php/Information_for_Developers#Use_of_.24this_in_the_constructor
 // We rather retrieve the application instance by-ref from the registry.
-new ScienceApplication();
+new ScienceJournalApplication();
