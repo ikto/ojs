@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file custom/classes/YiiRequestSimplified.inc.php
+ * @file ikto/classes/YiiRequestSimplified.inc.php
  *
  * All methods of this class were stolen from Request class
  * of Yii2 framework.

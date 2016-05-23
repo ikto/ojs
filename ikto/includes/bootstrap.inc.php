@@ -51,7 +51,7 @@ ini_set('include_path', '.'
 require(BASE_SYS_DIR . '/lib/pkp/includes/functions.inc.php');
 
 // Override PATH_INFO with proper value (which can be extracted on simplified mod_rewrite config)
-import('custom.classes.YiiRequestSimplified');
+import('ikto.classes.YiiRequestSimplified');
 $yii_request = new YiiRequestSimplified();
 $_SERVER['PATH_INFO'] = $yii_request->getPathInfo();
 unset($yii_request);
