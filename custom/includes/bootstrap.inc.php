@@ -50,6 +50,12 @@ ini_set('include_path', '.'
 // System-wide functions
 require(BASE_SYS_DIR . '/lib/pkp/includes/functions.inc.php');
 
+// Override PATH_INFO with proper value (which can be extracted on simplified mod_rewrite config)
+import('custom.classes.YiiRequestSimplified');
+$yii_request = new YiiRequestSimplified();
+$_SERVER['PATH_INFO'] = $yii_request->getPathInfo();
+unset($yii_request);
+
 // Initialize the application environment
 import('custom.classes.core.ScienceApplication');
 // FIXME: As long as we support PHP4 we cannot use the return
