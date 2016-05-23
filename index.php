@@ -59,6 +59,11 @@
 define('INDEX_FILE_LOCATION', __FILE__);
 require(__DIR__ . '/custom/includes/bootstrap.inc.php');
 
+import('custom.classes.YiiRequestSimplified');
+$yii_request = new YiiRequestSimplified();
+$_SERVER['PATH_INFO'] = $yii_request->getPathInfo();
+unset($yii_request);
+
 // Serve the request
 $application =& PKPApplication::getApplication();
 $application->execute();
