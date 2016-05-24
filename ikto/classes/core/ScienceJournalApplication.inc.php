@@ -13,6 +13,8 @@ class ScienceJournalApplication extends Application {
     function ScienceJournalApplication() {
         parent::Application();
 
+        import('ikto.classes.core.ScienceJournalCoreHelper');
+
         HookRegistry::register('LoadHandler', array($this, 'hookLoadHandlerCallback'));
     }
 
@@ -34,5 +36,29 @@ class ScienceJournalApplication extends Application {
         }
 
         return false;
+    }
+
+    /**
+     * Get the dispatcher implementation singleton
+     * @return Dispatcher
+     */
+    function &getDispatcher() {
+        $dispatcher =& Registry::get('dispatcher', true, null);
+
+        if (is_null($dispatcher)) {
+            import('ikto.classes.core.ScienceJournalDispatcher');
+
+            // Implicitly set dispatcher by ref in the registry
+            $dispatcher = new ScienceJournalDispatcher();
+
+            // Inject dependency
+            $dispatcher->setApplication(PKPApplication::getApplication());
+
+            // Inject router configuration
+            $dispatcher->addRouterName('ikto.classes.core.ScienceJournalComponentRouter', ROUTE_COMPONENT);
+            $dispatcher->addRouterName('ikto.classes.core.ScienceJournalPageRouter', ROUTE_PAGE);
+        }
+
+        return $dispatcher;
     }
 }
