@@ -43,12 +43,7 @@ class ScienceJournalCoreHelper
 
             // If we've successfully determined master context path
             if ($masterContextPath) {
-                $pathInfoOffset = self::getContextPathInfoOffset($masterContextPath);
-                if ($contextDepth - $pathInfoOffset) {
-                    $contextPaths = array_slice($contextPaths, $contextDepth - $pathInfoOffset);
-                    // WARNING!! Does not support two contexts or more
-                    array_unshift($contextPaths, $masterContextPath);
-                }
+                $contextPaths = array($masterContextPath);
             }
         } else {
             // Retrieve context from url query string
@@ -193,15 +188,29 @@ class ScienceJournalCoreHelper
     function getContextByHostAndUrlInfo($urlInfo, $hostInfo = null)
     {
         $contexts = self::getAvailableContextsFromConfig();
+        $candidates = array();
 
         // Try to find proper context by hostname
         foreach ($contexts as $contextPath => $context) {
             if (!empty($hostInfo) && !empty($context['host']) && ($hostInfo == $context['host'])) {
-                return $contextPath;
+                if (empty($context['path'])) {
+                    $candidates[$contextPath] = 0;
+                }
+                elseif (strpos(trim($urlInfo, '/'), trim($context['path'], '/')) === 0) {
+                    $candidates[$contextPath] = strlen(trim($context['path'], '/'));
+                }
             }
         }
 
-        return null;
+        if (empty($candidates)) {
+            return null;
+        }
+
+        arsort($candidates, SORT_NUMERIC);
+
+        $candidatesPaths = array_keys($candidates);
+
+        return reset($candidatesPaths);
     }
 
     function getContextPathInfoOffset($contextPath)
