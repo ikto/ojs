@@ -136,4 +136,22 @@ class ScienceJournalPageRouter extends PageRouter {
         // Stolen from Drupal 7 (mostly)
         return strtr(base64_encode(sha1($id)), array('+' => '-', '/' => '_', '=' => ''));
     }
+
+    /**
+     * @param PKPRequest $request
+     */
+    function route($request) {
+
+        // Need for ikto/ojs-science#14
+        if ($request->isPathInfoEnabled()) {
+            $pathInfo = $_SERVER['PATH_INFO'];
+            $pathInfo = trim($pathInfo);
+            $pathInfo = trim($pathInfo, '/');
+            if (empty($pathInfo)) {
+                $request->redirect(null, 'index');
+            }
+        }
+
+        parent::route($request);
+    }
 }
