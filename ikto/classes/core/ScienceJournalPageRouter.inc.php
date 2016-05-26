@@ -99,4 +99,41 @@ class ScienceJournalPageRouter extends PageRouter {
         $userVars = $request->getUserVars();
         return call_user_func_array($callback, array($url, $isPathInfoEnabled, $userVars, $request->getServerHost()));
     }
+
+    /**
+     * @see PKPRouter::getCacheFilename()
+     */
+    function getCacheFilename(&$request) {
+        if (!isset($this->_cacheFilename)) {
+            $cacheKey = $this->getCacheKey($request);
+            $path = dirname(INDEX_FILE_LOCATION);
+            $this->_cacheFilename = $path . '/cache/_web/wc-' . $cacheKey . '.html';
+        }
+        return $this->_cacheFilename;
+    }
+
+    /**
+     * Creates the cache key for the web cache
+     *
+     * @param PKPRequest $request
+     * @return string
+     */
+    function getCacheKey($request) {
+        if ($request->isPathInfoEnabled()) {
+            $id = implode('-', $this->getRequestedContextPaths($request));
+            $id .= isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : 'index';
+            $id .= '-' . AppLocale::getLocale();
+        } else {
+            $id = '';
+            $application =& $this->getApplication();
+            foreach($application->getContextList() as $contextName) {
+                $id .= $request->getUserVar($contextName) . '-';
+            }
+            $id .= $request->getUserVar('page') . '-' . $request->getUserVar('op');
+            $id .= '-' . $request->getUserVar('path') . '-' . AppLocale::getLocale();
+        }
+
+        // Stolen from Drupal 7 (mostly)
+        return strtr(base64_encode(sha1($id)), array('+' => '-', '/' => '_', '=' => ''));
+    }
 }
