@@ -34,7 +34,7 @@
 	{if $coverPagePath}<div id="issueCoverImage"><a href="{$currentUrl}"><img class="img-responsive" src="{$coverPagePath|escape}{$issue->getFileName($locale)|escape}"{if $coverPageAltText != ''} alt="{$coverPageAltText|escape}"{else} alt="{translate key="issue.coverPage.altText"}"{/if}{if $width} width="{$width|escape}"{/if}{if $height} height="{$height|escape}"{/if}/></a></div>{/if}
 	<div id="issueCoverDescription" class="col-md-12 mag-innert-left">{$issue->getLocalizedCoverPageDescription()|strip_unsafe_html|nl2br}</div>
 {elseif $issue}
-	<div id="issueDescription"><p class="help-block">{$issue->getLocalizedDescription()|strip_unsafe_html|nl2br}</p></div>
+	<div class="col-md-12 mag-innert-left" id="issueDescription"><p class="help-block">{$issue->getLocalizedDescription()|strip_unsafe_html|nl2br}</p></div>
 	{if $issueGalleys}
 		<h3>{translate key="issue.fullIssue"}</h3>
 		{if (!$subscriptionRequired || $issue->getAccessStatus() == $smarty.const.ISSUE_ACCESS_OPEN || $subscribedUser || $subscribedDomain || ($subscriptionExpiryPartial && $issueExpiryPartial))}

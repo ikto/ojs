@@ -57,10 +57,11 @@
 	text-transform: uppercase;
 	color: #000;
 }
-.ei-slider-thumbs{
+.ei-slider-thumbs {
 	height: 13px;
 	margin: 0 auto;
 	position: relative;
+	list-style-type: none;
 }
 .ei-slider-thumbs li{
 	position: relative;

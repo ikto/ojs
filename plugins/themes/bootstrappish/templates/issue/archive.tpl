@@ -12,7 +12,7 @@
 {include file="common/header.tpl"}
 {/strip}
 
-<div id="issues" class="col-md-12 mag-innert-left">
+<div id="issues">
 	{iterate from=issues item=issue}
 		{if $issue->getYear() != $lastYear}
 			{if !$notFirstYear}
@@ -22,7 +22,7 @@
 				<br />
 				<div class="separator" style="clear:left;"></div>
 			{/if}
-			<div style="float: left; width: 100%;">
+			<div class="col-md-12 mag-innert-left" style="float: left; width: 100%;">
 				<h3>{$issue->getYear()|escape}</h3>
 				{assign var=lastYear value=$issue->getYear()}
 		{/if}

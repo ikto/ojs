@@ -42,7 +42,7 @@
 		</div>
 	{/if}
 	{call_hook name="Templates::Article::Article::ArticleCoverImage"}
-	<div id="articleTitle" class="col-md-12 mag-innert-left"><h3>{$article->getLocalizedTitle()|strip_unsafe_html}</h3></div>
+	<div id="articleTitle"><br /><br /><h3>{$article->getLocalizedTitle()|strip_unsafe_html}</h3></div>
 	<div id="authorString" class="col-md-12 mag-innert-left"><em>{$article->getAuthorString()|escape}</em></div>
 	<br />
 	{if $article->getLocalizedAbstract()}

@@ -134,7 +134,7 @@
 			
 <!--start-copyright-section-->
 <div class="copyright">
-	<p>&copy; 2016 Наукові періодичні видання ЧНУ ім. Богдана Хмельницького | Design by <a href="http://w3layouts.com/">W3layouts</a> </p>
+	<p>&copy; 2016 Scientific periodicals of Cherkasy National University</p>
 </div>
 
 <!--start-smoth-scrolling-->

@@ -140,10 +140,6 @@
 	<script type="text/javascript" src="{$baseUrl}/plugins/themes/bootstrappish/js/move-top.js"></script>
 	<script type="text/javascript" src="{$baseUrl}/plugins/themes/bootstrappish/js/easing.js"></script>
 
-	<!-- TinyMCE -->
-	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-	<script>{literal}tinymce.init({ selector:'textarea' });{/literal}</script>
-
 	<!-- Slider -->
 	<script src="{$baseUrl}/plugins/themes/bootstrappish/slider/src/skdslider.min.js"></script>
 	<link href="{$baseUrl}/plugins/themes/bootstrappish/slider/src/skdslider.css" rel="stylesheet">
@@ -194,7 +190,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="{url page="index"}"><h1>E<span> - Journal</span></h1></a>
+					<a class="navbar-brand" href="{url page="index"}"><img class="img-responsive" title="Scientific periodicals of Cherkasy National University" alt="Scientific periodicals of Cherkasy National University" src="{$baseUrl}/plugins/themes/bootstrappish/images/logo.png" /></a>
 				</div>
 				<!--.navbar-header-->
 					{include file="common/navbar.tpl"}
@@ -211,56 +207,56 @@
 		<li>
 			<img src="{$baseUrl}/plugins/themes/bootstrappish/mainslider/images/large/1.jpg" alt="image01" />
 			<div class="ei-title">
-				<h2>Наукові періодичні</h2>
-				<h3>видання ЧНУ</h3>
+				<h2>Scientific periodicals of Cherkasy National</h2>
+				<h3>University</h3>
 			</div>
 		</li>
 		<li>
 			<img src="{$baseUrl}/plugins/themes/bootstrappish/mainslider/images/large/2.jpg" alt="image02" />
 			<div class="ei-title">
-				<h2>Шевченків</h2>
-				<h3>світ</h3>
+				<h2>Shevchenko</h2>
+				<h3>World</h3>
 			</div>
 		</li>
 		<li>
 			<img src="{$baseUrl}/plugins/themes/bootstrappish/mainslider/images/large/3.jpg" alt="image03"/>
 			<div class="ei-title">
-				<h2>Український</h2>
-				<h3>селянин</h3>
+				<h2>Ukrainian</h2>
+				<h3>Peasant</h3>
 			</div>
 		</li>
 		<li>
 			<img src="{$baseUrl}/plugins/themes/bootstrappish/mainslider/images/large/4.jpg" alt="image04"/>
 			<div class="ei-title">
-				<h2><strong>Л</strong>ітературознавство</h2>
-				<h2><strong>Ф</strong>ольклористика</h2>
-				<h2><strong>К</strong>ультурологія</h2>
+				<h2><strong>L</strong>iterary Criticism</h2>
+				<h2><strong>F</strong>olkloristics</h2>
+				<h2><strong>C</strong>ultural Studies</h2>
 			</div>
 		</li>
 		<li>
 			<img src="{$baseUrl}/plugins/themes/bootstrappish/mainslider/images/large/5.jpg" alt="image05"/>
 			<div class="ei-title">
-				<h2>Гуржіївські</h2>
-				<h3>історичні читання</h3>
+				<h2>Hurzhii</h2>
+				<h3>Historical Readings</h3>
 			</div>
 		</li>
 		<li>
 			<img src="{$baseUrl}/plugins/themes/bootstrappish/mainslider/images/large/6.jpg" alt="image06"/>
 			<div class="ei-title">
-				<h2>Мовознавчий</h2>
-				<h3>вісник</h3>
+				<h2>Linguistic</h2>
+				<h3>Bulletin</h3>
 			</div>
 		</li>
 		
 	</ul><!-- ei-slider-large -->
 	<ul class="ei-slider-thumbs">
 		<li class="ei-slider-element"></li>
-		<li><a href="#">—лайд 1</a><img src="{$baseUrl}/plugins/themes/bootstrappish/mainslider/images/thumbs/1.jpg" alt="thumb01" /></li>
-		<li><a href="#">—лайд 2</a><img src="{$baseUrl}/plugins/themes/bootstrappish/mainslider/images/thumbs/2.jpg" alt="thumb02" /></li>
-		<li><a href="#">—лайд 3</a><img src="{$baseUrl}/plugins/themes/bootstrappish/mainslider/images/thumbs/3.jpg" alt="thumb03" /></li>
-		<li><a href="#">—лайд 4</a><img src="{$baseUrl}/plugins/themes/bootstrappish/mainslider/images/thumbs/4.jpg" alt="thumb04" /></li>
-		<li><a href="#">—лайд 5</a><img src="{$baseUrl}/plugins/themes/bootstrappish/mainslider/images/thumbs/5.jpg" alt="thumb05" /></li>
-		<li><a href="#">—лайд 6</a><img src="{$baseUrl}/plugins/themes/bootstrappish/mainslider/images/thumbs/6.jpg" alt="thumb06" /></li>
+		<li><a href="#">Слайд 1</a><img src="{$baseUrl}/plugins/themes/bootstrappish/mainslider/images/thumbs/1.jpg" alt="thumb01" /></li>
+		<li><a href="#">Слайд 2</a><img src="{$baseUrl}/plugins/themes/bootstrappish/mainslider/images/thumbs/2.jpg" alt="thumb02" /></li>
+		<li><a href="#">Слайд 3</a><img src="{$baseUrl}/plugins/themes/bootstrappish/mainslider/images/thumbs/3.jpg" alt="thumb03" /></li>
+		<li><a href="#">Слайд 4</a><img src="{$baseUrl}/plugins/themes/bootstrappish/mainslider/images/thumbs/4.jpg" alt="thumb04" /></li>
+		<li><a href="#">Слайд 5</a><img src="{$baseUrl}/plugins/themes/bootstrappish/mainslider/images/thumbs/5.jpg" alt="thumb05" /></li>
+		<li><a href="#">Слайд 6</a><img src="{$baseUrl}/plugins/themes/bootstrappish/mainslider/images/thumbs/6.jpg" alt="thumb06" /></li>
 	</ul><!-- ei-slider-thumbs -->
 </div><!-- ei-slider -->
 <!--/end-MainSlider-->

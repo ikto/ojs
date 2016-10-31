@@ -92,7 +92,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="{url page="index"}"><h1>E<span> - Journal</span></h1> </a>
+					<a class="navbar-brand" href="{url page="index"}"><img class="img-responsive" title="Scientific periodicals of Cherkasy National University" alt="Scientific periodicals of Cherkasy National University" src="{$baseUrl}/plugins/themes/bootstrappish/images/logo.png" /></a>
 				</div>
 				<!--/.navbar-header-->
 				{include file="common/navbar.tpl"}

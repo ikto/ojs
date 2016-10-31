@@ -54,7 +54,13 @@
 	{translate key="site.noJournals"}
 {/if}
 
-<div id="journalListPageInfo">{page_info iterator=$journals}</div>
-<div id="journalListPageLinks">{page_links anchor="journals" name="journals" iterator=$journals}</div>
+<div id="journalListPageInfo" class="col-md-12 mag-innert-left">{page_info iterator=$journals}</div>
+<div id="journalListPageLinks" class="col-md-12 mag-innert-left">{page_links anchor="journals" name="journals" iterator=$journals}</div>
+
+<script type="text/javascript">
+{literal}
+	$('#journalListPageLinks a, #journalListPageLinks strong').addClass('journals-link');
+{/literal}
+</script>
 
 {include file="common/footer.tpl"}

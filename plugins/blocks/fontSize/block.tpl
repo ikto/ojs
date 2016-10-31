@@ -22,6 +22,6 @@
 
 <h4 class="side">{translate key="plugins.block.fontSize.title"}</h4>
 <div class="edit-pics" id="sidebarFontSize" style="margin-bottom: 4px;">
-	<div id="sizer"></div>
+	<div id="sizer" style="margin-bottom: 8%; margin-left: 4%;"></div>
 </div>
 <br />

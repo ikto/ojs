@@ -26,8 +26,8 @@
 	<div class="table-responsive">
 		<table id="lostPasswordTable" class="table table-striped" width="100%">
 			<tr valign="top">
-				<td width="25%">{translate key="user.login.registeredEmail"}</td>
-				<td class="value" width="75%"><div class="form-group"><input type="text" name="email" value="{$username|escape}" size="30" maxlength="90" class="form-control" /></div></td>
+				<td width="25%"><label for="registeredEmail">{translate key="user.login.registeredEmail"}</label></td>
+				<td class="value" width="75%"><div class="form-group"><input type="text" name="email" value="{$username|escape}" size="30" maxlength="90" class="form-control" id="registeredEmail" /></div></td>
 			</tr>
 		</table>
 	</div>
