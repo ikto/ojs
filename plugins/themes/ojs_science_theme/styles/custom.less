@@ -1,0 +1,140 @@
+@brand-primary: #28ad62;
+@brand-opposite: #dc2621;
+
+@navbar-menu-link-color: #000;
+@navbar-menu-link-hover-color: @brand-primary;
+@navbar-menu-link-border-color: @brand-primary;
+@navbar-toggle-color: @brand-primary;
+@navbar-toggle-contrast-color: #fff;
+
+@footer-color: #282828;
+@footer-content-color: #9b9ea2;
+@footer-link-color: @footer-content-color;
+@footer-link-hover-color: #fff;
+@footer-section-title-color: #fff;
+@footer-section-marker-color: @brand-primary;
+
+a {
+	transition: all 0.5s ease-out;
+
+	&:hover {
+	  	color: @brand-opposite;
+	}
+}
+
+.navbar-main {
+	.navbar-header {
+		.navbar-brand {
+			height: auto;
+			padding: 0;
+		}
+	}
+
+	.navbar-nav {
+		a {
+			font-size: 0.85em;
+			color: @navbar-menu-link-color;
+			text-transform: uppercase;
+			font-weight: bold;
+
+			&:hover {
+			  	color: @navbar-menu-link-hover-color;
+			}
+		}
+
+		@media (min-width: @grid-float-breakpoint) {
+			> li {
+				> a {
+					padding: 30px 15px 24px;
+					border-top: 1px solid @navbar-menu-link-border-color;
+
+					&:hover {
+						border-top: none;
+						border-bottom: 1px solid @navbar-menu-link-border-color;
+					}
+				}
+
+				&.dropdown.open {
+					> a {
+						color: @navbar-menu-link-hover-color;
+						border-top: none;
+						border-bottom: 1px solid @navbar-menu-link-border-color;
+					}
+				}
+			}
+		}
+	}
+
+	.navbar-toggle {
+		border-color: @navbar-toggle-color;
+		background-color: @navbar-toggle-color;
+
+		.icon-bar {
+		  	background-color: @navbar-toggle-contrast-color;
+		}
+
+		&:hover,
+		&:focus {
+		  	background-color: @navbar-toggle-color;
+		}
+	}
+}
+
+footer[role="contentinfo"] {
+	background: @footer-color;
+	color: @footer-content-color;
+
+	h4 {
+		font-size: 1em;
+		text-transform: uppercase;
+		color: @footer-section-title-color;
+		border-left: 4px solid @footer-section-marker-color;
+		font-weight: bold;
+		padding: 0 0 0 0.5em;
+		margin-bottom: 1.5em;
+	}
+
+	.footer-navigation-menu {
+		margin: 0;
+		padding: 0;
+
+		> li {
+			list-style: none;
+			line-height: 1.8em;
+
+			> a {
+				font-size: 1em;
+				color: @footer-link-color;
+				text-decoration: none;
+
+				&:hover {
+				  	color: @footer-link-hover-color;
+				}
+			}
+		}
+	}
+}
+
+.banner-top {
+  	// TODO: Different sizes for different screen sizes.
+	background: url("@{baseUrl}/plugins/themes/ojs_science_theme/images/banner.jpg");
+	background-size: cover;
+	min-height: 100px;
+  	margin-top: 15px;
+
+  .site-name {
+	font-size: inherit;
+	margin: 0;
+	line-height: inherit;
+
+	.banner-top__title {
+	  display: block;
+	  text-align: center;
+	  margin-top: 1em;
+	  font-size: 1.4em;
+	  text-transform: uppercase;
+	  text-shadow: 1px 1px 2px white;
+	  font-weight: bold;
+	}
+  }
+}
