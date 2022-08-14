@@ -1,3 +1,5 @@
+dist: bionic
+
 env:
   global:
   # Used for saving generated test datasets. See Notion for details.
@@ -44,6 +46,7 @@ cache:
     - $HOME/.cache
 addons:
   chrome: beta
+  postgresql: "9.5"
   apt:
     update: true
     packages:
